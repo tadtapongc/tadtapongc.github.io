@@ -8,6 +8,7 @@
   <meta property="og:title" content="Portfolio — Tadtapong Chuenchumsaeng">
   <meta property="og:description" content="Computer Engineering student passionate about research, R&D, and applying computing systems to solve multi-disciplinary engineering challenges.">
   <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://tadtapong.vercel.app/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,15 +115,31 @@
     /* ─── SKILLS ──────────────────────────────────────────── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2.5rem;
     }
     .skill-group h3 {
       font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .skill-detail-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .skill-detail-list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .skill-detail-list li strong {
+      color: var(--ink);
+      font-weight: 400;
     }
 
     /* ─── EXPERIENCE ──────────────────────────────────────── */
@@ -220,9 +237,21 @@
     <div class="container">
       <div class="section-heading fade-in">
         <h2>Selected Work</h2>
-        <span class="count">02 projects</span>
+        <span class="count">03 projects</span>
       </div>
       <div class="projects-grid">
+
+        <article class="project-card fade-in" onclick="location.href='formula-student.html'" tabindex="0" onkeydown="if(event.key==='Enter')location.href='formula-student.html'">
+          <span class="project-tag">Formula Student · Manufacturing</span>
+          <h3 class="project-title">Aero Package Manufacturing</h3>
+          <p class="project-desc">
+            [Add short project description here]
+          </p>
+          <div class="project-footer">
+            <span>TSAE2027 Car</span>
+            <a class="project-link" href="formula-student.html" aria-hidden="true" tabindex="-1">View details →</a>
+          </div>
+        </article>
 
         <article class="project-card fade-in" onclick="window.open('https://fastmath-korn.vercel.app/','_blank')" tabindex="0" onkeydown="if(event.key==='Enter')window.open('https://fastmath-korn.vercel.app/','_blank')">
           <span class="project-tag">Math Tool</span>
@@ -233,7 +262,7 @@
           </p>
           <div class="project-footer">
             <span>2025</span>
-            <a class="project-link" href="https://fastmath-korn.vercel.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">View project →</a>
+            <a class="project-link" href="https://fastmath-korn.vercel.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">View details →</a>
           </div>
         </article>
 
@@ -246,7 +275,7 @@
           </p>
           <div class="project-footer">
             <span>2025</span>
-            <a class="project-link" href="https://qr-korn.vercel.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">View project →</a>
+            <a class="project-link" href="https://qr-korn.vercel.app/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">View details →</a>
           </div>
         </article>
 
@@ -286,20 +315,21 @@
       <div class="skills-grid">
 
         <div class="skill-group fade-in">
-          <h3>Programming</h3>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">C++</span>
-            <span class="tag">Java</span>
-          </div>
+          <h3>Programming & Algorithms</h3>
+          <ul class="skill-detail-list">
+            <li><strong>C++</strong> — Competitive programming (TOI20 Bronze Medal) & algorithmic problem solving</li>
+            <li><strong>Python</strong> — Scientific scripting</li>
+            <li><strong>Java</strong> — Object-oriented programming & core software systems</li>
+          </ul>
         </div>
 
         <div class="skill-group fade-in">
-          <h3>Engineering Tools</h3>
-          <div class="tags">
-            <span class="tag">SolidWorks</span>
-            <span class="tag">Ansys Fluent</span>
-          </div>
+          <h3>Engineering & Manufacturing</h3>
+          <ul class="skill-detail-list">
+            <li><strong>Composite Layup</strong> — Hands-on carbon fiber fabrication & molding for Formula Student aero package</li>
+            <li><strong>SolidWorks</strong> — 3D CAD modeling & assembly design for aerodynamic elements</li>
+            <li><strong>Ansys Fluent</strong> — CFD fluid dynamics simulation & aerodynamic analysis</li>
+          </ul>
         </div>
 
       </div>
@@ -318,7 +348,7 @@
           <span class="exp-period">Aug 2025 — Present</span>
           <div>
             <div class="exp-role">B.Eng. Computer Engineering</div>
-            <div class="exp-company">Chulalongkorn University</div>
+            <div class="exp-company">Chulalongkorn University · GPAX 3.53 / 4.00</div>
             <p class="exp-desc">
               Studying Computer Engineering with a focus on applying computing systems,
               algorithms, and hardware architectures to solve cross-disciplinary engineering

@@ -7,13 +7,13 @@
 
 /* ─── DESIGN TOKENS ─────────────────────────────────────── */
 :root {
-  /* Colours */
-  --bg:        #F5F3EE;   /* page background */
-  --surface:   #EDEAE2;   /* card / panel background */
-  --ink:       #1A1814;   /* primary text */
-  --muted:     #7A7570;   /* secondary text */
-  --accent:    #C4602A;   /* highlight / links */
-  --border:    #D8D4CC;   /* dividers & outlines */
+  /* Colours — Chula Pink (#DF5D8D) Palette */
+  --bg:        #FDFBFB;   /* ultra-clean soft rose-tinted background */
+  --surface:   #F5F0F2;   /* soft rose-tinted card surface */
+  --ink:       #1C1618;   /* deep rich charcoal text */
+  --muted:     #6E6266;   /* secondary muted text */
+  --accent:    #DF5D8D;   /* official Chula Pink */
+  --border:    #EBDDE1;   /* delicate rose-gray border */
 
   /* Typography */
   --serif:     'DM Serif Display', Georgia, serif;
@@ -105,6 +105,7 @@ nav .container {
   color: var(--muted);
   margin-bottom: 1rem;
 }
+nav .breadcrumb { margin-bottom: 0; }
 .breadcrumb a { color: var(--accent); transition: color var(--transition); }
 .breadcrumb a:hover { color: var(--ink); }
 
