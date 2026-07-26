@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://tadtapong.vercel.app/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="theme.css">
   <style>
     /* ─── HERO ────────────────────────────────────────────── */
@@ -28,12 +28,14 @@
       margin-bottom: 1.25rem;
     }
     .hero-name {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: clamp(2.8rem, 8vw, 6rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
       line-height: 1.05;
       margin-bottom: 1.5rem;
     }
-    .hero-name em { font-style: italic; color: var(--muted); }
+    .hero-name em { font-style: normal; color: var(--muted); font-weight: 400; }
     .hero-bio {
       max-width: 520px;
       color: var(--muted);
@@ -82,9 +84,10 @@
       color: var(--accent);
     }
     .project-title {
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      font-weight: 400;
+      font-family: var(--sans);
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
       line-height: 1.25;
     }
     .project-desc {
@@ -153,7 +156,7 @@
     }
     .exp-item:first-child { border-top: 1px solid var(--border); }
     .exp-period { font-size: 0.78rem; color: var(--muted); padding-top: 0.2rem; }
-    .exp-role { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
+    .exp-role { font-family: var(--sans); font-size: 1.15rem; font-weight: 600; }
     .exp-company { color: var(--accent); font-size: 0.85rem; margin: 0.2rem 0 0.5rem; }
     .exp-desc { color: var(--muted); font-size: 0.84rem; line-height: 1.75; }
     .exp-link {
@@ -177,9 +180,10 @@
       gap: 2rem;
     }
     .contact-text h2 {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: clamp(2rem, 6vw, 4rem);
-      font-weight: 400;
+      font-weight: 600;
+      letter-spacing: -0.02em;
       line-height: 1.1;
       margin-bottom: 1rem;
     }

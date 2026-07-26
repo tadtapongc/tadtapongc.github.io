@@ -18,6 +18,7 @@
   /* Typography */
   --serif:     'DM Serif Display', Georgia, serif;
   --mono:      'DM Mono', 'Courier New', monospace;
+  --sans:      'Space Grotesk', system-ui, -apple-system, sans-serif;
 
   /* Spacing & shape */
   --gap:       clamp(2rem, 5vw, 5rem);
@@ -65,9 +66,10 @@ nav .container {
   padding-bottom: 1rem;
 }
 .nav-logo {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  letter-spacing: 0.01em;
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .nav-links a {
@@ -87,9 +89,10 @@ nav .container {
   margin-bottom: 2.5rem;
 }
 .section-heading h2 {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 .section-heading .count {
   font-size: 0.75rem;

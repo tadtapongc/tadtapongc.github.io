@@ -1,13 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <style>
-    .accent { fill: none; stroke: #DF5D8D; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-    .main { fill: none; stroke: #1C1618; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-    @media (prefers-color-scheme: dark) {
-      .main { stroke: #FDFBFB; }
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
+    .bg { fill: #1C1618; }
+    .chevron {
+      fill: none;
+      stroke: #DF5D8D;
+      stroke-width: 4.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .text {
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      fill: #FDFBFB;
+    }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #FDFBFB; }
+      .text { fill: #1C1618; }
     }
   </style>
-  <!-- Code/Terminal Chevron (>) in Chula Pink -->
-  <path class="accent" d="M 11 23 L 20 32 L 11 41"/>
-  <!-- Minimalist Monogram T in Charcoal / White -->
-  <path class="main" d="M 28 20 L 52 20 M 40 20 L 40 44"/>
+  <rect class="bg" width="64" height="64" rx="16"/>
+  <!-- Terminal Chevron command prompt in Chula Pink -->
+  <path class="chevron" d="M 14 23 L 23 32 L 14 41"/>
+  <!-- Initial T in Space Grotesk -->
+  <text x="35" y="43" class="text">T</text>
 </svg>
