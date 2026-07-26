@@ -8,8 +8,8 @@
 /* ─── DESIGN TOKENS ─────────────────────────────────────── */
 :root {
   /* Colours — Chula Pink (#DF5D8D) Palette */
-  --bg:        #FDFBFB;   /* ultra-clean soft rose-tinted background */
-  --surface:   #F5F0F2;   /* soft rose-tinted card surface */
+  --bg:        #FFFFFF;   /* ultra-crisp pure white background */
+  --surface:   #F6F1F3;   /* soft rose-tinted card surface */
   --ink:       #1C1618;   /* deep rich charcoal text */
   --muted:     #6E6266;   /* secondary muted text */
   --accent:    #DF5D8D;   /* official Chula Pink */

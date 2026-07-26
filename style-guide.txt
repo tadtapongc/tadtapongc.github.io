@@ -17,8 +17,8 @@ OVERALL AESTHETIC
 COLOR PALETTE
 ----------------------------------------------------------------
 Variable        Hex       Usage
---bg            #FDFBFB   Page background (ultra-clean soft rose-white)
---surface       #F5F0F2   Card / panel background (soft rose-tinted surface)
+--bg            #FFFFFF   Page background (ultra-crisp pure white)
+--surface       #F6F1F3   Card / panel background (soft rose-tinted surface)
 --ink           #1C1618   Primary text (deep rich charcoal)
 --muted         #6E6266   Secondary / supporting text (muted rose-slate)
 --accent        #DF5D8D   Highlight color, links, tags (Chula Pink)
