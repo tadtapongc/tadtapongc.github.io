@@ -1,4 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="16" fill="#DF5D8D"/>
-  <text x="32" y="44" font-family="'DM Serif Display', Georgia, serif" font-size="38" font-weight="bold" fill="#FFFFFF" text-anchor="middle">T.</text>
+  <style>
+    .accent { fill: none; stroke: #DF5D8D; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    .main { fill: none; stroke: #1C1618; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    @media (prefers-color-scheme: dark) {
+      .main { stroke: #FDFBFB; }
+    }
+  </style>
+  <!-- Code/Terminal Chevron (>) in Chula Pink -->
+  <path class="accent" d="M 11 23 L 20 32 L 11 41"/>
+  <!-- Minimalist Monogram T in Charcoal / White -->
+  <path class="main" d="M 28 20 L 52 20 M 40 20 L 40 44"/>
 </svg>
