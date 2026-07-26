@@ -156,6 +156,16 @@
     .exp-role { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
     .exp-company { color: var(--accent); font-size: 0.85rem; margin: 0.2rem 0 0.5rem; }
     .exp-desc { color: var(--muted); font-size: 0.84rem; line-height: 1.75; }
+    .exp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.65rem;
+      font-size: 0.78rem;
+      color: var(--accent);
+      transition: color var(--transition);
+    }
+    .exp-link:hover { color: var(--ink); }
 
     /* ─── CONTACT ─────────────────────────────────────────── */
     #contact { border-bottom: 1px solid var(--border); }
@@ -391,6 +401,9 @@
               Awarded a bronze medal at the 20th Thailand Olympiad in Informatics,
               competing in algorithmic problem-solving at the national level.
             </p>
+            <a class="exp-link" href="https://www.posn.or.th/alumni/thatphngs-chuenchumaesng" target="_blank" rel="noopener noreferrer">
+              POSN Alumni Profile →
+            </a>
           </div>
         </li>
 
