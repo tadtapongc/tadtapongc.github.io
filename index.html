@@ -736,71 +736,39 @@
     const modalContainer = document.getElementById('modal-content-container');
     const modalCloseBtn = document.getElementById('modal-close-btn');
 
-    async function openModal(url) {
+    function openModal(url) {
       const modalWin = modalOverlay.querySelector('.modal-window');
-      if (modalWin) modalWin.classList.remove('has-iframe');
+      if (modalWin) modalWin.classList.add('has-iframe');
 
-      modalContainer.innerHTML = '<div style="padding: 4rem 0; text-align: center; color: var(--muted); font-family: var(--mono);">⚙️ Loading project details...</div>';
+      modalContainer.innerHTML = '<div id="modal-loader" style="padding: 4rem 0; text-align: center; color: var(--muted); font-family: var(--mono);">⚙️ Loading project details...</div>';
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
 
-      // Bulletproof iframe loader (works offline on file:// protocol and as fallback)
-      const loadIframe = () => {
-        if (modalWin) modalWin.classList.add('has-iframe');
-        const iframe = document.createElement('iframe');
-        const sep = url.includes('?') ? '&' : '?';
-        iframe.src = url + sep + 'modal=true';
-        iframe.style.cssText = 'width: 100%; height: calc(85vh - 3rem); border: none; border-radius: 8px; background: var(--bg); display: block;';
-        iframe.onload = () => {
-          try {
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            if (iframeDoc) {
-              const nav = iframeDoc.querySelector('nav');
-              const footer = iframeDoc.querySelector('footer');
-              const workNav = iframeDoc.querySelector('.work-nav');
-              if (nav) nav.style.display = 'none';
-              if (footer) footer.style.display = 'none';
-              if (workNav) workNav.style.display = 'none';
-            }
-          } catch (e) {
-            console.log('Cross-frame access note:', e);
+      const iframe = document.createElement('iframe');
+      const sep = url.includes('?') ? '&' : '?';
+      iframe.src = url + sep + 'modal=true';
+      iframe.style.cssText = 'width: 100%; height: calc(85vh - 3rem); border: none; border-radius: 8px; background: var(--bg); display: none;';
+      
+      iframe.onload = () => {
+        try {
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          if (iframeDoc) {
+            const nav = iframeDoc.querySelector('nav');
+            const footer = iframeDoc.querySelector('footer');
+            const workNav = iframeDoc.querySelector('.work-nav');
+            if (nav) nav.style.display = 'none';
+            if (footer) footer.style.display = 'none';
+            if (workNav) workNav.style.display = 'none';
           }
-        };
-        modalContainer.innerHTML = '';
-        modalContainer.appendChild(iframe);
+        } catch (e) {
+          console.log('Cross-frame access note:', e);
+        }
+        const loader = document.getElementById('modal-loader');
+        if (loader) loader.remove();
+        iframe.style.display = 'block';
       };
 
-      if (window.location.protocol === 'file:') {
-        loadIframe();
-        return;
-      }
-
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Network response was not ok');
-        const htmlText = await response.text();
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlText, 'text/html');
-
-        const hero = doc.getElementById('project-hero');
-        const showcase = doc.getElementById('project-showcase');
-        const mainContent = doc.querySelector('section:not(#project-hero):not(#project-showcase):not(#hero):not(#portfolio)');
-
-        let combinedHtml = '';
-        if (hero) combinedHtml += hero.outerHTML;
-        if (showcase) combinedHtml += showcase.outerHTML;
-        if (mainContent) combinedHtml += mainContent.outerHTML;
-
-        if (!combinedHtml) combinedHtml = doc.body.innerHTML;
-
-        modalContainer.innerHTML = combinedHtml;
-        modalContainer.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-
-      } catch (error) {
-        console.log('Fetch unavailable, switching to iframe modal:', error);
-        loadIframe();
-      }
+      modalContainer.appendChild(iframe);
     }
 
     function closeModal() {
