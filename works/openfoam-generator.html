@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tadtapong Chuenchumsaeng — OpenFOAM Case Generator</title>
+  <meta name="description" content="Automated CFD simulation case setup tool for OpenFOAM developed by Tadtapong Chuenchumsaeng.">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, OpenFOAM, CFD, Case Generator, Scientific Computing, Python, k-omega SST, Parallel Decomposition, Chulalongkorn University">
+  <meta name="author" content="Tadtapong Chuenchumsaeng">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://tadtapongc.github.io/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../theme.css">
+  <script>
+    if (window.self !== window.top || window.location.search.includes('modal=true')) {
+      document.documentElement.classList.add('in-modal');
+    }
+  </script>
+  <style>
+    /* ─── PROJECT DETAIL STYLES ───────────────────────────── */
+    #project-hero {
+      padding: clamp(3rem, 8vw, 6rem) 0 var(--gap);
+      border-top: none;
+    }
+    .project-header-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .project-main-title {
+      font-family: var(--sans);
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .project-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Meta Info Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .meta-item h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .meta-item p {
+      font-size: 0.88rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Visual Showcase Banner */
+    #project-showcase {
+      margin-bottom: 4rem;
+    }
+    .showcase-banner {
+      width: 100%;
+      height: clamp(240px, 45vw, 480px);
+      background: linear-gradient(135deg, var(--surface) 0%, var(--border) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .showcase-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .showcase-icon {
+      font-size: clamp(3.5rem, 12vw, 7rem);
+    }
+
+    /* Content Sections */
+    .content-block {
+      max-width: 720px;
+      margin-bottom: 3.5rem;
+    }
+    .content-block h3 {
+      font-family: var(--sans);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+    .content-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .content-block ul {
+      list-style-type: square;
+      padding-left: 1.25rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .content-block ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Highlight Card / Note */
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.75rem;
+      border-radius: var(--radius);
+      margin: 2.5rem 0 3.5rem;
+      max-width: 720px;
+    }
+    .highlight-card h4 {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .highlight-card p {
+      margin-bottom: 0;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink);
+      font-style: italic;
+    }
+
+    /* Next / Previous Work Navigation */
+    .work-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .work-nav-link {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      color: var(--ink);
+      text-decoration: none;
+      transition: transform var(--transition);
+    }
+    .work-nav-link:hover {
+      transform: translateY(-2px);
+    }
+    .work-nav-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .work-nav-title {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ──────────────────────────────────────── -->
+  <nav>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <span class="nav-logo"><a href="../index.html">Tadtapong C.</a></span>
+        <div class="breadcrumb">
+          <a href="../index.html">← Back to What I've Done</a>
+        </div>
+      </div>
+      <div>
+        <a class="btn" href="https://github.com/tadtapongc/OpenFOAM-CaseGenerator" target="_blank" rel="noopener noreferrer" style="padding: 0.4rem 0.9rem; font-size: 0.78rem;">View GitHub Repo ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO SECTION ────────────────────────────────────── -->
+  <section id="project-hero">
+    <div class="container">
+      <div class="project-header-tag fade-in">CFD Scientific Computing · OpenFOAM & Python</div>
+      <h1 class="project-main-title fade-in">OpenFOAM Case Generator</h1>
+      
+      <!-- ✏️ EDIT: 1-Sentence High-Impact Subtitle -->
+      <p class="project-subtitle fade-in">
+        [Write your 1-2 sentence overview of your OpenFOAM case generator tool and Python automation workflow here...]
+      </p>
+
+      <!-- 4-Pillar Meta Grid -->
+      <div class="meta-grid fade-in">
+        <div class="meta-item">
+          <h4>Role / Type</h4>
+          <p>Sole Developer & Researcher</p>
+        </div>
+        <div class="meta-item">
+          <h4>Timeline / Context</h4>
+          <p>Scientific Computing R&D (2026)</p>
+        </div>
+        <div class="meta-item">
+          <h4>Core Skills & Tools</h4>
+          <p>Python, OpenFOAM, Shell Scripting</p>
+        </div>
+        <div class="meta-item">
+          <h4>Key Outcome & Impact</h4>
+          <p>5x Faster Setup & Zero Syntax Error</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SHOWCASE BANNER ─────────────────────────────────── -->
+  <section id="project-showcase" class="fade-in">
+    <div class="container">
+      <div class="showcase-banner">
+        <span class="showcase-icon">🌊</span>
+        <img src="../images/openfoam-detail.jpg" alt="OpenFOAM CFD Simulation" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAIN CONTENT SECTION ────────────────────────────── -->
+  <section>
+    <div class="container">
+
+      <!-- Pillar 1: Background & Objective -->
+      <article class="content-block fade-in">
+        <h3>1. The Challenge & Engineering Objectives</h3>
+        <!-- ✏️ Write your background context and objectives below -->
+        <p>
+          [Write about why manual OpenFOAM dictionary editing is tedious and your automation goals here...]
+        </p>
+      </article>
+
+      <!-- Pillar 2: Approach, Methodology & Execution -->
+      <article class="content-block fade-in">
+        <h3>2. Approach, Methodology & Execution</h3>
+        <!-- ✏️ Write your methodology and script architecture below -->
+        <p>
+          [Describe how your Python and shell script tool automates mesh generation, boundary conditions, and solver setup here...]
+        </p>
+        <ul>
+          <li><strong>[Key Feature 1]:</strong> [Explain how your tool handles mesh generation...]</li>
+          <li><strong>[Key Feature 2]:</strong> [Explain how your tool configures turbulence models...]</li>
+          <li><strong>[Key Feature 3]:</strong> [Explain how your tool sets up parallel decomposition...]</li>
+        </ul>
+      </article>
+
+      <!-- Highlight Card / Insight -->
+      <div class="highlight-card fade-in">
+        <h4>Key Engineering Takeaway</h4>
+        <!-- ✏️ Write your memorable lesson or engineering takeaway below -->
+        <p>
+          "[Write your key insight on automating CFD simulation workflows and reducing syntax errors...]"
+        </p>
+      </div>
+
+      <!-- Pillar 3: Results, Impact & Takeaways -->
+      <article class="content-block fade-in">
+        <h3>3. Results, Impact & Future R&D</h3>
+        <!-- ✏️ Write your final results and future plans below -->
+        <p>
+          [Summarize the setup speedup achieved and your future automation plans (like PyVista post-processing) here...]
+        </p>
+      </article>
+
+      <!-- Next / Previous Work Navigation -->
+      <div class="work-nav fade-in">
+        <a class="work-nav-link" href="formula-student.html">
+          <span class="work-nav-label">← Previous Work</span>
+          <span class="work-nav-title">Aero Package Manufacturing</span>
+        </a>
+        <a class="work-nav-link" href="fastmath.html" style="text-align: right;">
+          <span class="work-nav-label">Next Work →</span>
+          <span class="work-nav-title">FastMath Solver</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Tadtapong Chuenchumsaeng</span>
+      <span>Designed & built by Tadtapong</span>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

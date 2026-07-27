@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ✏️ EDIT: Page Title and SEO Metadata -->
+  <title>Tadtapong Chuenchumsaeng — [Project Title]</title>
+  <meta name="description" content="[Short 1-2 sentence description of your project or activity for search engines and social sharing.]">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, [Keyword 1], [Keyword 2], [Keyword 3], Chulalongkorn University">
+  <meta name="author" content="Tadtapong Chuenchumsaeng">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://tadtapongc.github.io/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../theme.css">
+  <script>
+    if (window.self !== window.top || window.location.search.includes('modal=true')) {
+      document.documentElement.classList.add('in-modal');
+    }
+  </script>
+  <style>
+    /* ─── PROJECT DETAIL STYLES ───────────────────────────── */
+    #project-hero {
+      padding: clamp(3rem, 8vw, 6rem) 0 var(--gap);
+      border-top: none;
+    }
+    .project-header-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .project-main-title {
+      font-family: var(--sans);
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .project-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Meta Info Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .meta-item h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .meta-item p {
+      font-size: 0.88rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Visual Showcase Banner */
+    #project-showcase {
+      margin-bottom: 4rem;
+    }
+    .showcase-banner {
+      width: 100%;
+      height: clamp(240px, 45vw, 480px);
+      background: linear-gradient(135deg, var(--surface) 0%, var(--border) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .showcase-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .showcase-icon {
+      font-size: clamp(3.5rem, 12vw, 7rem);
+    }
+
+    /* Content Sections */
+    .content-block {
+      max-width: 720px;
+      margin-bottom: 3.5rem;
+    }
+    .content-block h3 {
+      font-family: var(--sans);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+    .content-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .content-block ul {
+      list-style-type: square;
+      padding-left: 1.25rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .content-block ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Highlight Card / Note */
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.75rem;
+      border-radius: var(--radius);
+      margin: 2.5rem 0 3.5rem;
+      max-width: 720px;
+    }
+    .highlight-card h4 {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .highlight-card p {
+      margin-bottom: 0;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink);
+      font-style: italic;
+    }
+
+    /* Next / Previous Work Navigation */
+    .work-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .work-nav-link {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      color: var(--ink);
+      text-decoration: none;
+      transition: transform var(--transition);
+    }
+    .work-nav-link:hover {
+      transform: translateY(-2px);
+    }
+    .work-nav-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .work-nav-title {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ──────────────────────────────────────── -->
+  <nav>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <span class="nav-logo"><a href="../index.html">Tadtapong C.</a></span>
+        <div class="breadcrumb">
+          <a href="../index.html">← Back to What I've Done</a>
+        </div>
+      </div>
+      <!-- ✏️ EDIT: Optional Action Button (e.g. GitHub Repo, Live Demo, Slides). Remove div if not needed. -->
+      <div>
+        <a class="btn" href="[https://github.com/your-repo-link]" target="_blank" rel="noopener noreferrer" style="padding: 0.4rem 0.9rem; font-size: 0.78rem;">[Action Button ↗]</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO SECTION ────────────────────────────────────── -->
+  <section id="project-hero">
+    <div class="container">
+      <!-- ✏️ EDIT: Category Tag and Title -->
+      <div class="project-header-tag fade-in">[Category · Specialization Area]</div>
+      <h1 class="project-main-title fade-in">[Main Project or Activity Title]</h1>
+      
+      <!-- ✏️ EDIT: 1-Sentence High-Impact Subtitle -->
+      <p class="project-subtitle fade-in">
+        [Write a crisp, high-impact 1-2 sentence summary of what this project accomplished, the problem it solved, or your leadership role.]
+      </p>
+
+      <!-- ✏️ EDIT: 4-Pillar Meta Grid -->
+      <div class="meta-grid fade-in">
+        <div class="meta-item">
+          <h4>Role / Type</h4>
+          <p>[e.g. Lead Developer / Camp Mentor]</p>
+        </div>
+        <div class="meta-item">
+          <h4>Timeline / Context</h4>
+          <p>[e.g. 2026 / Academic Camp / TSAE Car]</p>
+        </div>
+        <div class="meta-item">
+          <h4>Core Skills & Tools</h4>
+          <p>[e.g. Python, OpenFOAM, Leadership]</p>
+        </div>
+        <div class="meta-item">
+          <h4>Key Outcome & Impact</h4>
+          <p>[e.g. 5x Faster Setup / 50+ Mentored]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SHOWCASE BANNER ─────────────────────────────────── -->
+  <section id="project-showcase" class="fade-in">
+    <div class="container">
+      <div class="showcase-banner">
+        <!-- ✏️ EDIT: Fallback Icon and Image URL. When you save an image in images/, update src below. -->
+        <span class="showcase-icon">🚀</span>
+        <img src="../images/[your-image.jpg]" alt="[Project Screenshot or Photo]" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAIN CONTENT SECTION ────────────────────────────── -->
+  <section>
+    <div class="container">
+
+      <!-- ✏️ Pillar 1: Background & Objective -->
+      <article class="content-block fade-in">
+        <h3>1. The Challenge & Objectives</h3>
+        <p>
+          [Describe the background context, the problem statement, or why this project/event was initiated. Why did this challenge exist?]
+        </p>
+        <p>
+          [Explain your core engineering or leadership objectives. What specific target or improvement were you aiming to achieve?]
+        </p>
+      </article>
+
+      <!-- ✏️ Pillar 2: Approach, Methodology & Execution -->
+      <article class="content-block fade-in">
+        <h3>2. Approach, Methodology & Execution</h3>
+        <p>
+          [Describe your methodology, engineering workflow, or leadership strategies. How did you execute on your objectives?]
+        </p>
+        <ul>
+          <li><strong>[Key Step / Technique 1]:</strong> [Explain what you did and why it mattered...]</li>
+          <li><strong>[Key Step / Technique 2]:</strong> [Explain what you did and why it mattered...]</li>
+          <li><strong>[Key Step / Technique 3]:</strong> [Explain what you did and why it mattered...]</li>
+          <li><strong>[Key Step / Technique 4]:</strong> [Explain what you did and why it mattered...]</li>
+        </ul>
+      </article>
+
+      <!-- ✏️ EDIT: Highlight Card / Insight Quote -->
+      <div class="highlight-card fade-in">
+        <h4>Key Engineering Takeaway</h4>
+        <p>
+          "[Write a memorable quote, technical lesson, or key insight you gained from completing this project or activity.]"
+        </p>
+      </div>
+
+      <!-- ✏️ Pillar 3: Results, Impact & Takeaways -->
+      <article class="content-block fade-in">
+        <h3>3. Results, Impact & Future R&D</h3>
+        <p>
+          [Summarize the final results, quantitative metrics (e.g. speedup, accuracy, participant satisfaction), or tangible impact of your work.]
+        </p>
+        <p>
+          [Discuss next steps, future improvements, or how this experience empowers your ongoing engineering and R&D ambitions.]
+        </p>
+      </article>
+
+      <!-- ✏️ EDIT: Next / Previous Work Navigation Links -->
+      <div class="work-nav fade-in">
+        <a class="work-nav-link" href="[previous-project.html]">
+          <span class="work-nav-label">← Previous Work</span>
+          <span class="work-nav-title">[Previous Project Title]</span>
+        </a>
+        <a class="work-nav-link" href="[next-project.html]" style="text-align: right;">
+          <span class="work-nav-label">Next Work →</span>
+          <span class="work-nav-title">[Next Project Title]</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Tadtapong Chuenchumsaeng</span>
+      <span>Designed & built by Tadtapong</span>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
+

@@ -21,7 +21,7 @@
   --sans:      'Space Grotesk', system-ui, -apple-system, sans-serif;
 
   /* Spacing & shape */
-  --gap:       clamp(2rem, 5vw, 5rem);
+  --gap:       clamp(1.75rem, 4vw, 3.25rem);
   --radius:    4px;
   --transition: 200ms ease;
 }
@@ -40,6 +40,24 @@ body {
 a { color: inherit; text-decoration: none; }
 img { display: block; width: 100%; object-fit: cover; }
 ul { list-style: none; }
+
+/* ─── THUMBNAIL & SHOWCASE IMAGE OVERLAY FIX ─────────────── */
+.project-thumb,
+.showcase-banner {
+  position: relative !important;
+  overflow: hidden !important;
+}
+.project-thumb img,
+.showcase-banner img {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 10 !important;
+  background: var(--surface) !important;
+}
 
 /* ─── LAYOUT ─────────────────────────────────────────────── */
 .container {
@@ -86,7 +104,7 @@ nav .container {
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 .section-heading h2 {
   font-family: var(--sans);
@@ -220,29 +238,192 @@ footer .container {
     gap: 0.75rem;
   }
   .nav-links {
-    gap: 0.85rem;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-  }
-  .nav-links::-webkit-scrollbar {
-    display: none; /* Chrome / Safari */
+    gap: 1rem;
+    flex-wrap: wrap;
   }
   .nav-links a {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     letter-spacing: 0.06em;
+    padding: 0.3rem 0;
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 540px) {
   nav .container {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.6rem;
   }
+  .nav-logo {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
   .nav-links {
     width: 100%;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+}
+
+/* ─── PROJECT MODAL OVERLAY ───────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 12, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 2.5rem);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-window {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 1.5);
+  width: 100%;
+  max-width: 880px;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.modal-overlay.active .modal-window {
+  transform: scale(1) translateY(0);
+}
+.modal-close-btn {
+  position: sticky;
+  top: 0;
+  float: right;
+  z-index: 20;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-bottom: -40px;
+  margin-right: -0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.modal-close-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: rotate(90deg) scale(1.05);
+}
+/* Ensure clean styling inside modal body and iframe modal */
+html.in-modal nav,
+html.in-modal footer,
+html.in-modal .work-nav,
+.modal-body nav,
+.modal-body footer,
+.modal-body .work-nav {
+  display: none !important;
+}
+.modal-body #project-hero,
+html.in-modal #project-hero {
+  padding-top: 1rem !important;
+  padding-bottom: 2rem !important;
+}
+
+/* Eliminate double scrollbars when iframe is inside pop-up modal */
+.modal-window.has-iframe {
+  overflow: hidden !important;
+  padding: 1.25rem 1.25rem 0.5rem 1.25rem !important;
+}
+html.in-modal {
+  overflow-x: hidden !important;
+}
+html.in-modal body {
+  padding-bottom: 2rem !important;
+}
+
+/* ─── COMPREHENSIVE MOBILE OPTIMIZATIONS (< 640px) ───────── */
+@media (max-width: 640px) {
+  /* 1. Full-Screen Bottom Sheet for Pop-Up Modal */
+  .modal-overlay {
+    padding: 0.3rem !important;
+    align-items: flex-end !important;
+  }
+  .modal-window {
+    max-height: 95vh !important;
+    border-radius: calc(var(--radius) * 1.5) calc(var(--radius) * 1.5) 0 0 !important;
+    padding: 2.75rem 1.25rem 1.5rem !important;
+    transform: translateY(100%);
+  }
+  .modal-overlay.active .modal-window {
+    transform: translateY(0);
+  }
+  .modal-window.has-iframe {
+    padding: 1rem 0.5rem 0.2rem !important;
+  }
+  .modal-window.has-iframe iframe {
+    height: calc(92vh - 2.5rem) !important;
+  }
+  .modal-close-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+    margin-bottom: -44px;
+    margin-right: -0.25rem;
+    top: 0.5rem;
+  }
+
+  /* 2. Detail Page Adjustments */
+  #project-hero {
+    padding: 2rem 0 !important;
+  }
+  .project-main-title {
+    font-size: 1.8rem !important;
+  }
+  .showcase-banner {
+    height: 200px !important;
+  }
+  .meta-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .meta-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── TOUCH SCREEN OPTIMIZATIONS (No Hover Friction) ─────── */
+@media (hover: none) {
+  .card:hover,
+  .project-card:hover {
+    transform: none !important;
+    box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.2) !important;
+  }
+  .card:active,
+  .project-card:active {
+    transform: scale(0.98) !important;
+    border-color: var(--accent) !important;
   }
 }
