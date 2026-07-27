@@ -262,7 +262,7 @@
         engineering disciplines. Passionate about research and R&D, I focus on bridging
         the gap between computer science theory and real-world physical engineering problems.
       </p>
-      <a class="hero-cta fade-in" href="mailto:6832083321@student.chula.ac.th">
+      <a class="hero-cta fade-in email-link" data-user="6832083321" data-domain="student.chula.ac.th" href="#">
         Say hello <span class="arrow">→</span>
       </a>
     </div>
@@ -456,7 +456,7 @@
           <p>Have a project in mind or just want to chat? My inbox is always open.</p>
         </div>
         <div class="contact-links fade-in">
-          <a class="contact-link" href="mailto:6832083321@student.chula.ac.th">6832083321@student.chula.ac.th →</a>
+          <a class="contact-link email-link" data-user="6832083321" data-domain="student.chula.ac.th" data-display="true" href="#">Email Me →</a>
           <a class="contact-link" href="https://www.linkedin.com/in/tadtapong-chuenchumsaeng/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
           <a class="contact-link" href="https://github.com/tadtapongc" target="_blank" rel="noopener noreferrer">GitHub →</a>
           <!-- <a class="contact-link" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF) →</a> -->
@@ -499,6 +499,15 @@
     if (countEl) {
       countEl.textContent = String(cards).padStart(2, '0') + ' project' + (cards !== 1 ? 's' : '');
     }
+
+    // Email spam protection (obfuscated email assembly)
+    document.querySelectorAll('.email-link').forEach(link => {
+      const email = link.dataset.user + '@' + link.dataset.domain;
+      link.href = 'mailto:' + email;
+      if (link.dataset.display === 'true') {
+        link.textContent = email + ' →';
+      }
+    });
   </script>
 
 </body>
