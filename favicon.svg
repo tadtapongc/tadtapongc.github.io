@@ -1,28 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
-    .bg { fill: #1C1618; }
-    .chevron {
-      fill: none;
-      stroke: #DF5D8D;
-      stroke-width: 4.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .text {
-      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-      font-weight: 700;
-      font-size: 32px;
-      fill: #FDFBFB;
-    }
+    .bg { fill: #121214; }
+    .tau { fill: #FFFFFF; }
     @media (prefers-color-scheme: light) {
-      .bg { fill: #FDFBFB; }
-      .text { fill: #1C1618; }
+      .bg { fill: #FFFFFF; }
+      .tau { fill: #121214; }
     }
   </style>
   <rect class="bg" width="64" height="64" rx="16"/>
-  <!-- Terminal Chevron command prompt in Chula Pink -->
-  <path class="chevron" d="M 14 23 L 23 32 L 14 41"/>
-  <!-- Initial T in Space Grotesk -->
-  <text x="35" y="43" class="text">T</text>
+  <!-- Classical Calligraphic Greek Lowercase Tau (τ) Silhouette — 4-Axis Mathematical Center (14px Margins All Around) -->
+  <path class="tau" d="M 14 22 C 14 17, 17 14, 22 14 L 48 14 C 50 14, 50 18, 48 18 L 33 18 L 33 32 C 33 42, 40 45, 48 40 C 50 38, 50 42, 47 44 C 40 52, 27 52, 27 34 L 27 18 L 20 18 C 17 18, 14 20, 14 22 Z"/>
 </svg>
