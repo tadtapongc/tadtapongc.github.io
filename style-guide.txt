@@ -1,144 +1,199 @@
-================================================================
-  STYLE GUIDE — Portfolio Theme (Tadtapong Chuenchumsaeng)
-================================================================
-Use this as a reference to replicate the same look and feel
-on future websites.
+================================================================================
+  DESIGN SYSTEM & STYLE GUIDE
+  Portfolio of Tadtapong Chuenchumsaeng (ทัตพงศ์ ชื่นชุมแสง)
+================================================================================
+Version: 2.0 (Updated July 2026)
+Target Codebase: tadtapongc.github.io (index.html, formula-student.html, theme.css)
 
-----------------------------------------------------------------
-OVERALL AESTHETIC
-----------------------------------------------------------------
-- Minimal, editorial, warm-neutral design
-- Inspired by print / typographic portfolios
-- Clean whitespace, no decorative graphics
-- Monospaced body text gives a technical / engineering feel
-- Serif headings add elegance and contrast
+This document serves as the authoritative architectural and visual reference for
+the portfolio codebase. Use this specification to maintain aesthetic harmony,
+structural integrity, and responsive behavior when building new pages, sub-projects,
+or interactive engineering tools.
 
-----------------------------------------------------------------
-COLOR PALETTE
-----------------------------------------------------------------
-Variable        Hex       Usage
---bg            #FFFFFF   Page background (ultra-crisp pure white)
---surface       #F6F1F3   Card / panel background (soft rose-tinted surface)
---ink           #1C1618   Primary text (deep rich charcoal)
---muted         #6E6266   Secondary / supporting text (muted rose-slate)
---accent        #DF5D8D   Highlight color, links, tags (Chula Pink)
---border        #EBDDE1   Dividers, outlines, card borders (rose-gray border)
+--------------------------------------------------------------------------------
+1. CORE DESIGN PHILOSOPHY
+--------------------------------------------------------------------------------
+The visual identity merges "Editorial Elegance" with "Technical Precision":
+- Editorial & Academic: Inspired by print typography and academic journals. Clean
+  whitespace, no unnecessary decorative clutter, and high readability.
+- Technical & Algorithmic: Monospaced body text (DM Mono) evokes a command-line,
+  scientific computing, and CFD engineering environment.
+- Warm Neutrality: Soft rose-gray borders and tinted surfaces replace harsh clinical
+  greys, creating a welcoming, human-centric presentation.
+- University Pride: Anchored by official Chula Pink (#DF5D8D), paying homage to
+  Chulalongkorn University's Computer Engineering program.
 
-----------------------------------------------------------------
-TYPOGRAPHY
-----------------------------------------------------------------
-Fonts (Google Fonts):
-  - DM Serif Display  → headings, logo, large display text
-  - DM Mono           → body text, labels, buttons, nav links
+--------------------------------------------------------------------------------
+2. COLOR PALETTE & DESIGN TOKENS
+--------------------------------------------------------------------------------
+All colors are defined as CSS root variables in theme.css. Never hardcode hex
+values in individual stylesheets or inline styles; always reference design tokens.
 
-CSS Variables:
-  --serif:  'DM Serif Display', Georgia, serif
-  --mono:   'DM Mono', 'Courier New', monospace
+Variable     Hex Code   Role & Usage Guidelines
+--------------------------------------------------------------------------------
+--bg         #FFFFFF    Ultra-crisp pure white page background. Ensures maximum
+                        contrast and a clean, lightweight visual canvas.
+--surface    #F6F1F3    Soft rose-tinted card and input surface. Used for hover
+                        states, form fields, and highlighted callout boxes.
+--ink        #1C1618    Deep rich charcoal for primary text and borders. Avoids
+                        the eye fatigue caused by pure #000000 black.
+--muted      #6E6266    Muted rose-slate for supporting text, metadata, dates,
+                        captions, and secondary labels.
+--accent     #DF5D8D    Chula Pink. Used for interactive links, primary buttons,
+                        category tags, chevron prompts, and active highlights.
+--border     #EBDDE1    Delicate rose-gray divider line. Used for section breaks,
+                        card outlines, and grid layout borders.
 
-Font sizes:
-  - Base body:    clamp(13px, 1.4vw, 15px)
-  - Small labels: 0.72rem – 0.78rem, uppercase, letter-spacing 0.08–0.12em
-  - Body text:    0.84rem – 0.9rem, line-height 1.7 – 1.85
-  - Section h2:   clamp(1.6rem, 4vw, 2.4rem), font-weight 400
-  - Hero h1:      clamp(2.8rem, 8vw, 6rem), line-height 1.05
-  - Contact h2:   clamp(2rem, 6vw, 4rem)
+--------------------------------------------------------------------------------
+3. TYPOGRAPHY & HIERARCHY
+--------------------------------------------------------------------------------
+Google Fonts Imports:
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
 
-Typography rules:
-  - Headings use font-weight 400 (not bold) for an editorial feel
-  - Italic text in headings uses --muted color for soft contrast
-  - Labels / categories are UPPERCASE with wide letter-spacing
-  - Accent color (#C4602A) used for category tags and labels
+CSS Custom Properties:
+  --serif: 'DM Serif Display', Georgia, serif;
+  --mono:  'DM Mono', 'Courier New', monospace;
+  --sans:  'Space Grotesk', system-ui, -apple-system, sans-serif;
 
-----------------------------------------------------------------
-SPACING & LAYOUT
-----------------------------------------------------------------
-- Max content width: 860px, centered with auto margins
-- Horizontal padding: clamp(1.25rem, 5vw, 2.5rem)
-- Section vertical padding: clamp(2rem, 5vw, 5rem)  → var(--gap)
-- Sections separated by a 1px border-top (--border color)
-- Border radius: 4px (--radius) — subtle, not pill-shaped
+Type Scale & Usage Rules:
+- Body Text: Set in --mono, clamp(13px, 1.4vw, 15px), line-height 1.7 to 1.85.
+  Provides structured, code-like readability for technical descriptions.
+- Section Headings (h2): Set in --sans, clamp(1.6rem, 4vw, 2.4rem), font-weight 600,
+  letter-spacing -0.02em. Bold, modern, and highly legible.
+- Hero Display (h1): Set in --sans, clamp(2.8rem, 8vw, 6rem), font-weight 600,
+  line-height 1.05, letter-spacing -0.03em.
+- Article Titles (h1/h3): Used in project detail pages (e.g., formula-student.html)
+  to establish clear semantic hierarchy.
+- Italic Contrast: Italicized words in headings (e.g., <em>Chuenchumsaeng.</em> or
+  <em>together.</em>) use font-style: normal/italic with color: var(--muted) and
+  font-weight: 400 to create a sophisticated editorial cadence.
+- Labels & Meta: Set in 0.7rem to 0.78rem, uppercase, letter-spacing 0.08em to
+  0.12em, color var(--accent) or var(--muted).
 
-----------------------------------------------------------------
-NAVIGATION
-----------------------------------------------------------------
-- Sticky top nav, background matches --bg
-- Bottom border: 1px solid --border
-- Logo: DM Serif Display, 1.1rem
-- Nav links: DM Mono, 0.8rem, uppercase, letter-spacing 0.08em
-- Link color: --muted by default, transitions to --ink on hover
-- Transition: 200ms ease
+--------------------------------------------------------------------------------
+4. SPACING, LAYOUT & THE 1.5PX GRID TRICK
+--------------------------------------------------------------------------------
+- Container Width: Maximum width of 860px (.container), horizontally centered with
+  auto margins and responsive padding clamp(1.25rem, 5vw, 2.5rem).
+- Section Spacing: Vertical padding defined by var(--gap) = clamp(2rem, 5vw, 5rem).
+- Section Dividers: Each <section> receives a 1px solid var(--border) top border.
+  The first section on a page explicitly removes this border (border-top: none;).
+- Border Radius: Uniform 4px (--radius) applied to buttons, cards, tags, and form
+  inputs. Subtly rounded, avoiding pill-shaped or overly boxy corners.
 
-----------------------------------------------------------------
-COMPONENTS
-----------------------------------------------------------------
+The 1.5px Grid Architecture (.projects-grid):
+To achieve crisp, architectural grid lines between project cards without doubling
+up borders, use the following CSS pattern:
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .project-card {
+    background: var(--bg); /* Reveals the 1.5px --border gap as grid lines */
+  }
 
-BUTTONS (.btn / .hero-cta)
-  - Transparent background, 1px solid --ink border
-  - DM Mono font, 0.8rem, letter-spacing 0.05em
-  - Hover: background fills to --ink, text becomes --bg
-  - Variant .btn-accent: --accent background, same hover behavior
-  - Arrow icon shifts 4px right on hover (translateX)
+--------------------------------------------------------------------------------
+5. UI COMPONENT SPECIFICATIONS
+--------------------------------------------------------------------------------
 
-TAGS (.tag)
-  - Border: 1px solid --border
-  - Padding: 0.3rem 0.75rem
-  - Font: 0.78rem, color --muted
-  - Hover: border and text color shift to --ink
+A. NAVIGATION (<nav>)
+- Sticky positioning at top: 0 with z-index: 100 and background: var(--bg).
+- Bottom border: 1px solid var(--border).
+- Logo (.nav-logo): Set in --sans, 1.05rem, font-weight 600.
+- Links (.nav-links a): Set in --mono, 0.8rem, uppercase, letter-spacing 0.08em.
+- Interactive State: Text color transitions from --muted to --ink over 200ms ease.
 
-CARDS (.card / .project-card)
-  - Background: --bg
-  - Border: 1px solid --border
-  - Padding: 2rem
-  - Hover: background shifts to --surface
-  - Project cards use a CSS grid with 1.5px gap (gap acts as border)
-  - Grid background set to --border to create visible grid lines
+B. BUTTONS (.btn, .btn-accent, .hero-cta)
+- Standard (.btn / .hero-cta): Transparent background, 1px solid var(--ink) border,
+  font --mono 0.8rem, letter-spacing 0.05em, color var(--ink).
+- Hover State: Background fills with var(--ink), text shifts to var(--bg).
+- Arrow Micro-animation (.arrow): Embedded arrows (→) shift right by 4px on hover
+  using transform: translateX(4px); transition: transform 200ms ease;.
+- Accent Variant (.btn-accent): Solid var(--accent) background with pure white text,
+  shifting to charcoal --ink on hover.
 
-SECTION HEADINGS (.section-heading)
-  - Flex row, baseline aligned
-  - h2 in DM Serif Display, font-weight 400
-  - Optional .count label in 0.75rem --muted text
-  - Margin-bottom: 2.5rem
+C. TAGS & BADGES (.tag, .project-tag, .hero-label)
+- Small uppercase metadata pills and category indicators.
+- .tag: 1px solid var(--border), padding 0.3rem 0.75rem, radius 4px, color --muted.
+  On hover, border and text color transition to var(--ink).
+- .project-tag / .hero-label: No border, 0.7rem to 0.75rem, color var(--accent),
+  wide letter-spacing (0.1em to 0.12em), bold uppercase presentation.
 
-FORM ELEMENTS
-  - Background: --surface
-  - Border: 1px solid --border, focus shifts to --ink
-  - Font: DM Mono, 0.9rem
-  - Labels: uppercase, 0.75rem, --muted, letter-spacing 0.08em
+D. CARDS (.card, .project-card, .highlight-card)
+- Standard Card (.card): 1px solid var(--border), padding 2rem, radius 4px.
+  Background shifts from var(--bg) to var(--surface) on hover.
+- Project Card (.project-card): Flex column layout with gap 0.75rem. Includes an
+  opacity-transitioned link (.project-link) that fades from 0 to 1 on card hover.
+- Highlight Callout (.highlight-card): Used in technical articles. Background set
+  to var(--surface), radius 4px, with a distinctive 3px solid var(--accent) left border.
 
-FOOTER
-  - Flex row, space-between
-  - Font: 0.75rem, --muted
-  - Border-top: 1px solid --border
+E. FORM ELEMENTS (input, select, textarea)
+- Background: var(--surface) with 1px solid var(--border).
+- Typography: Set in --mono, 0.9rem, color var(--ink).
+- Focus State: Outline removed; border color transitions cleanly to var(--ink).
+- Labels: Above inputs, 0.75rem uppercase in --muted with 0.08em letter-spacing.
 
-----------------------------------------------------------------
-ANIMATIONS
-----------------------------------------------------------------
-- Fade-in on scroll using IntersectionObserver
-- Elements start: opacity 0, translateY(18px)
-- Transition: opacity 0.55s ease, transform 0.55s ease
-- Siblings stagger with 60ms delay between each
-- Threshold: 0.12 (triggers when 12% of element is visible)
-- Class .fade-in → add .visible to trigger animation
+F. TIMELINE & EDUCATION LISTS (.exp-list, .exp-item)
+- Two-column CSS grid (grid-template-columns: 1fr 1fr; gap: 1rem 2rem;).
+- Left column displays period (.exp-period) in 0.78rem --muted text.
+- Right column displays role (.exp-role in --sans 1.15rem bold), institution
+  (.exp-company in --accent 0.85rem), and description (.exp-desc in --muted).
+- Items separated by horizontal dividers (border-bottom: 1px solid var(--border)).
 
-----------------------------------------------------------------
-RESPONSIVE BREAKPOINTS
-----------------------------------------------------------------
-- Main breakpoint: max-width 580px
-  - Nav links gap reduces to 1rem
-  - Experience grid collapses to single column
-  - Contact links align to flex-start
+G. METADATA GRID (.meta-grid)
+- Used on project detail pages (e.g., formula-student.html) for specs and roles.
+- Responsive grid: repeat(auto-fit, minmax(160px, 1fr)) with 1.5rem gap.
+- Top and bottom bordered panel with uppercase h4 headers and crisp body text.
 
-----------------------------------------------------------------
-HOW TO REUSE THIS THEME
-----------------------------------------------------------------
-1. Copy theme.css into your new project as-is.
-2. Add Google Fonts link in <head>:
-   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-3. Use CSS variables (--bg, --ink, --accent, etc.) for all colors.
-4. Use .container for centered content blocks.
-5. Use .fade-in + IntersectionObserver script for scroll animations.
-6. Sections get border-top automatically; first section overrides to none.
-7. Adjust --accent color to brand the site differently while keeping
-   the same structural feel.
+--------------------------------------------------------------------------------
+6. ANIMATIONS & MICRO-INTERACTIONS
+--------------------------------------------------------------------------------
+- Universal Transition Token: var(--transition) = 200ms ease. Used for all color,
+  background, border, and opacity shifts on hover/focus.
+- Scroll Entrance Animation (.fade-in):
+  Elements start at opacity: 0; transform: translateY(18px);.
+  When triggered by IntersectionObserver, class .visible is appended, transitioning
+  opacity and transform to normal over 0.55s ease.
+- Staggered Execution: JavaScript observer calculates sibling index and applies a
+  staggered delay (index * 60ms) for an elegant cascading entrance effect.
+- Threshold: Observer threshold is set to 0.12 (triggers when 12% visible).
 
-================================================================
+--------------------------------------------------------------------------------
+7. RESPONSIVE BREAKPOINTS & MOBILE ADAPTABILITY
+--------------------------------------------------------------------------------
+- < 640px (Tablet / Large Mobile):
+  - Navigation padding condenses to 0.85rem.
+  - .nav-links converts into a horizontal scrollable tab row (overflow-x: auto;
+    white-space: nowrap;) with browser scrollbars cleanly hidden via CSS.
+- < 580px (Standard Mobile):
+  - .exp-item timeline grid collapses from two columns into a single column (1fr).
+  - .contact-links realignment shifts from right-aligned to left-aligned.
+- < 440px (Compact Mobile):
+  - Main <nav> container stacks vertically, aligning logo and links to flex-start.
+
+--------------------------------------------------------------------------------
+8. FAVICON & COLOR SCHEME ADAPTATION
+--------------------------------------------------------------------------------
+The project uses a dynamic vector favicon (favicon.svg) that adapts to user OS
+theme preferences (Light vs. Dark mode) using embedded CSS media queries:
+- Default (Dark Theme): Background #1C1618, Chevron #DF5D8D, Initial 'T' #FDFBFB.
+- @media (prefers-color-scheme: light): Background flips to #FDFBFB, 'T' flips
+  to #1C1618, while the Chula Pink chevron remains consistent.
+
+--------------------------------------------------------------------------------
+9. NEW PAGE IMPLEMENTATION CHECKLIST
+--------------------------------------------------------------------------------
+When creating a new article or interactive tool page:
+[ ] Reference theme.css and import the 3 Google Fonts in <head>.
+[ ] Include standard SEO metadata and schema.org JSON-LD blocks.
+[ ] Maintain sticky <nav> with .breadcrumb back-navigation linking to index.html.
+[ ] Wrap main content inside <div class="container"> and semantic <section> tags.
+[ ] Apply .fade-in class to major headings, cards, and article sections.
+[ ] Include footer with dynamic year script and IntersectionObserver initialization.
+[ ] Ensure all links opening in new tabs include target="_blank" and
+    rel="noopener noreferrer" for security and SEO best practices.
+
+================================================================================
