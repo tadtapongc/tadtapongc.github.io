@@ -38,7 +38,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
-img { display: block; width: 100%; object-fit: cover; }
+img { display: block; width: 100%; object-fit: contain; }
 ul { list-style: none; }
 
 /* ─── THUMBNAIL & SHOWCASE IMAGE OVERLAY FIX ─────────────── */
@@ -54,9 +54,9 @@ ul { list-style: none; }
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
   z-index: 10 !important;
-  background: var(--surface) !important;
+  background: transparent !important;
 }
 
 /* ─── LAYOUT ─────────────────────────────────────────────── */
