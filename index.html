@@ -446,7 +446,7 @@
         <h3 class="group-title">Technical & Engineering Projects</h3>
         <div class="projects-grid">
 
-          <a class="project-card" href="works/formula-student.html">
+          <a class="project-card" href="works/tsae2027.html">
             <div class="project-thumb">
               <span class="project-thumb-icon">🏎️</span>
               <img src="images/formula.jpg" alt="Formula Student Car" onerror="this.style.display='none'">
@@ -526,7 +526,7 @@
         <h3 class="group-title">Leadership & Activities</h3>
         <div class="projects-grid">
 
-          <a class="project-card" href="works/academic-camp.html">
+          <a class="project-card" href="works/cpxcedt2025.html">
             <div class="project-thumb">
               <span class="project-thumb-icon">🏕️</span>
               <img src="images/camp.jpg" alt="Academic Camp" onerror="this.style.display='none'">
@@ -613,7 +613,6 @@
 
   <!-- ── EDUCATION (STATIC SECTION) ───────────────────────── -->
   <section id="education">
-    <span id="experience"></span>
     <div class="container">
       <div class="section-heading fade-in">
         <h2>Education</h2>
@@ -774,6 +773,10 @@
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
 
+      if (!history.state || !history.state.modalOpen) {
+        history.pushState({ modalOpen: true }, '', window.location.href);
+      }
+
       const iframe = document.createElement('iframe');
       const sep = url.includes('?') ? '&' : '?';
       iframe.src = url + sep + 'modal=true';
@@ -811,7 +814,8 @@
       modalContainer.appendChild(iframe);
     }
 
-    function closeModal() {
+    function closeModal(fromPopState = false) {
+      if (!modalOverlay.classList.contains('active')) return;
       const modalWin = modalOverlay.querySelector('.modal-window');
       if (modalWin) modalWin.classList.remove('has-iframe');
       modalOverlay.classList.remove('active');
@@ -819,15 +823,22 @@
       setTimeout(() => {
         modalContainer.innerHTML = '';
       }, 300);
+
+      if (!fromPopState && history.state && history.state.modalOpen) {
+        history.back();
+      }
     }
 
     if (modalCloseBtn && modalOverlay) {
-      modalCloseBtn.addEventListener('click', closeModal);
+      modalCloseBtn.addEventListener('click', () => closeModal(false));
       modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) closeModal();
+        if (e.target === modalOverlay) closeModal(false);
       });
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal(false);
+      });
+      window.addEventListener('popstate', () => {
+        if (modalOverlay.classList.contains('active')) closeModal(true);
       });
 
       document.querySelectorAll('.project-card').forEach(card => {

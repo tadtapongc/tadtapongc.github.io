@@ -3,7 +3,7 @@
   Portfolio of Tadtapong Chuenchumsaeng (ทัตพงศ์ ชื่นชุมแสง)
 ================================================================================
 Version: 2.0 (Updated July 2026)
-Target Codebase: tadtapongc.github.io (index.html, formula-student.html, theme.css)
+Target Codebase: tadtapongc.github.io (index.html, tsae2027.html, theme.css)
 
 This document serves as the authoritative architectural and visual reference for
 the portfolio codebase. Use this specification to maintain aesthetic harmony,
@@ -62,7 +62,7 @@ Type Scale & Usage Rules:
   letter-spacing -0.02em. Bold, modern, and highly legible.
 - Hero Display (h1): Set in --sans, clamp(2.8rem, 8vw, 6rem), font-weight 600,
   line-height 1.05, letter-spacing -0.03em.
-- Article Titles (h1/h3): Used in project detail pages (e.g., formula-student.html)
+- Article Titles (h1/h3): Used in project detail pages (e.g., tsae2027.html)
   to establish clear semantic hierarchy.
 - Italic Contrast: Italicized words in headings (e.g., <em>Chuenchumsaeng.</em> or
   <em>together.</em>) use font-style: normal/italic with color: var(--muted) and
@@ -144,7 +144,7 @@ F. TIMELINE & EDUCATION LISTS (.exp-list, .exp-item)
 - Items separated by horizontal dividers (border-bottom: 1px solid var(--border)).
 
 G. METADATA GRID (.meta-grid)
-- Used on project detail pages (e.g., formula-student.html) for specs and roles.
+- Used on project detail pages (e.g., tsae2027.html) for specs and roles.
 - Responsive grid: repeat(auto-fit, minmax(160px, 1fr)) with 1.5rem gap.
 - Top and bottom bordered panel with uppercase h4 headers and crisp body text.
 
