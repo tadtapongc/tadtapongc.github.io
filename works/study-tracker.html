@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tadtapong Chuenchumsaeng — QR Code Generator</title>
-  <meta name="description" content="Customizable client-side QR code generator web application supporting custom color palettes, size scaling, and instant image export by Tadtapong Chuenchumsaeng.">
-  <meta name="keywords" content="Tadtapong Chuenchumsaeng, QR Code Generator, Canvas API, Client-Side Rendering, Web Utility, JavaScript, Matrix Barcode">
+  <title>Tadtapong Chuenchumsaeng — Paced Study Tracker</title>
+  <meta name="description" content="A modern dashboard to track university courses, topics, and deadlines with built-in markdown notes and cloud sync.">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, Full-Stack, Productivity, Next.js, Drizzle ORM, Chulalongkorn University">
   <meta name="author" content="Tadtapong Chuenchumsaeng">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tadtapongc.github.io/">
@@ -198,29 +198,29 @@
   <!-- ── HERO SECTION ────────────────────────────────────── -->
   <section id="project-hero">
     <div class="container">
-      <div class="project-header-tag fade-in">Utility Web Application · Digital Tools</div>
-      <h1 class="project-main-title fade-in">QR Code Generator</h1>
+      <div class="project-header-tag fade-in">Full-Stack · Productivity</div>
+      <h1 class="project-main-title fade-in">Paced Study Tracker</h1>
       
       <p class="project-subtitle fade-in">
-        A fast, customizable client-side QR code generator that uses debounced inputs and complex HTML5 Canvas manipulation for instant, high-quality image exports.
+        A comprehensive dashboard designed for students to track university courses, manage topic-level deadlines, and maintain markdown notes with cloud sync.
       </p>
 
       <div class="meta-grid fade-in">
         <div class="meta-item">
           <h4>Role</h4>
-          <p>Frontend Web Developer</p>
+          <p>Full-Stack Developer</p>
         </div>
         <div class="meta-item">
           <h4>Timeline</h4>
-          <p>2025</p>
+          <p>2026</p>
         </div>
         <div class="meta-item">
           <h4>Core Tech</h4>
-          <p>Vanilla JS, Canvas API, QR Encoding</p>
+          <p>Next.js 14, Drizzle ORM, Neon Postgres</p>
         </div>
         <div class="meta-item">
           <h4>Live App</h4>
-          <p><a href="https://qr-korn.vercel.app" target="_blank" style="color: var(--accent);">Visit Site ↗</a></p>
+          <p><a href="https://getpaced.vercel.app" target="_blank" style="color: var(--accent);">Visit Site ↗</a></p>
         </div>
       </div>
     </div>
@@ -230,8 +230,8 @@
   <section id="project-showcase" class="fade-in">
     <div class="container">
       <div class="showcase-banner">
-        <span class="showcase-icon">📱</span>
-        <img src="../images/qrcode-detail.jpg" alt="QR Code Generator Interface" onerror="this.style.display='none'">
+        <span class="showcase-icon">📚</span>
+        <img src="../images/study-detail.jpg" alt="Paced Study Tracker Dashboard" onerror="this.style.display='none'">
       </div>
     </div>
   </section>
@@ -241,38 +241,41 @@
     <div class="container">
 
       <article class="content-block fade-in">
-        <h3>1. The Challenge & Engineering Objectives</h3>
+        <h3>1. The Challenge & Objectives</h3>
         <p>
-          Many online QR code generators are riddled with ads, paywalls for high-resolution exports, or slow server-side rendering. The objective was to build a clean, ad-free utility that generated fully customizable QR codes entirely on the client-side for maximum speed and privacy.
+          Managing academic life efficiently is challenging when syllabi, assignments, and study materials are scattered across different platforms. The objective behind Paced was to centralize academic tracking into one intuitive hub.
+        </p>
+        <p>
+          The system needed to process highly relational data (semesters, courses, topics, deadlines, and markdown notes) rapidly without bogging down the database with constant multi-table join queries.
         </p>
       </article>
 
       <article class="content-block fade-in">
         <h3>2. Architecture & Execution</h3>
         <p>
-          The application is built completely dependency-free, avoiding heavy frameworks to maintain a small footprint, relying solely on vanilla web APIs.
+          Built with Next.js 14 utilizing the App Router, Paced focuses on a fluid, responsive user experience backed by a unique document-oriented data model.
         </p>
         <ul>
-          <li><strong>Performant Live Updates:</strong> I wrapped the text input events in a 200ms debounce function. This prevents the UI from freezing by ensuring the matrix encoding algorithm only runs when the user stops typing, providing a buttery-smooth experience.</li>
-          <li><strong>Client-Side Matrix Encoding:</strong> The core logic utilizes the lightweight <code>qrcode.js</code> library via CDN. To maximize performance, the application reuses the same QR code instance for text updates and only destroys/recreates the instance when structural changes (like size or color) occur.</li>
-          <li><strong>HTML5 Canvas Export Pipeline:</strong> To support custom padding and background colors, the raw generated QR image is intercepted. It is redrawn onto a temporary, off-screen HTML5 <code>&lt;canvas&gt;</code>, manipulated to inject the user's selected styles, and then exported directly as a downloadable PNG data URL.</li>
+          <li><strong>Document-Oriented SQL:</strong> Instead of spreading entities across multiple normalized tables, Drizzle ORM leverages PostgreSQL's <code>jsonb</code> type. The entire application state (courses, topics, deadlines) is stored as a single JSON blob per user, seamlessly synced from React Context to the cloud via a custom sync engine.</li>
+          <li><strong>Dashboard Triage Algorithm:</strong> The dashboard aggregates data across active courses to prioritize focus. It generates a dynamic 14-day timeline array and categorizes items into Overdue, In-Progress, and Upcoming to help users triage effectively.</li>
+          <li><strong>Secure Markdown Engine:</strong> Topics include rich markdown notes parsed using the <code>marked</code> library. A custom Renderer intercepts the HTML generation to inject Tailwind CSS classes (e.g., <code>.md-p</code>). The output is aggressively sanitized with <code>DOMPurify</code> to restrict rendering to a safe subset of tags, preventing XSS attacks.</li>
         </ul>
       </article>
 
       <div class="highlight-card fade-in">
         <h4>Key Engineering Takeaway</h4>
         <p>
-          "Mastering the HTML5 Canvas API allowed me to turn a basic QR matrix array into a fully styled, downloadable asset without ever relying on backend image processing. It demonstrated the sheer power and privacy benefits of client-side web APIs."
+          "Storing the entire state as a single JSONB blob drastically reduced database read/write complexity and latency. Paired with React Context, it allowed me to build an app that feels entirely local and instantaneous, with cloud persistence happening transparently in the background."
         </p>
       </div>
 
       <article class="content-block fade-in">
         <h3>3. Results & Next Steps</h3>
         <p>
-          The tool is incredibly fast and serves as a reliable daily utility. Because everything executes locally in the browser, there are zero server costs and infinite scalability.
+          Paced serves as a unified workspace that replaces disjointed to-do list apps and note-taking silos. The real-time synchronization and document-oriented architecture mean users experience zero load times when navigating between courses and notes.
         </p>
         <p>
-          Next steps include adding support for embedded center logos and vector (SVG) exports for print media.
+          Future updates aim to integrate calendar exports, collaborative study groups, and AI-assisted study planning based on historical velocity.
         </p>
       </article>
 

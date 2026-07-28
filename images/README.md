@@ -3,9 +3,15 @@
 Place your project photos and screenshots in this folder.
 When an image file matches the filename below, the website will automatically display it in place of the fallback emoji!
 
+## Naming Convention Rule:
+1. **`{project-name}.jpg`** -> Home Page Card Thumbnail (minimalist graphics or icons)
+2. **`{project-name}-detail.jpg`** -> Detail Page Showcase Banner (full UI dashboards or realistic photos)
+
 ## Expected Image Filenames:
 
 ### Home Page Card Thumbnails (~600px wide, landscape)
+- `meme-generator.jpg` (MemeAI Generator Icon)
+- `study-tracker.jpg` (Paced Study Tracker Icon)
 - `formula.jpg` (Formula Student Composite Wing)
 - `openfoam.webp` (OpenFOAM CFD Generator)
 - `fastmath.jpg` (FastMath Engineering Solver)
@@ -14,6 +20,8 @@ When an image file matches the filename below, the website will automatically di
 - `toi20.jpg` (TOI20 Olympiad Medal)
 
 ### Detail Page Banner Photos (~1200px wide, landscape)
+- `meme-detail.jpg` (MemeAI Dashboard UI)
+- `study-detail.jpg` (Paced Study Tracker Dashboard UI)
 - `formula-detail.jpg`
 - `openfoam-detail.jpg`
 - `fastmath-detail.jpg`
@@ -21,4 +29,4 @@ When an image file matches the filename below, the website will automatically di
 - `camp-detail.jpg`
 - `toi20-detail.jpg`
 
-Note: You can also use `.png` or `.webp` files, or use custom names — just remember to update the `src="images/..."` attribute in `index.html` or `works/*.html`!
+Note: You can also use `.png` or `.webp` files, or use custom names — just remember to update the `src="images/..."` or `src="../images/..."` attribute in `index.html` or `works/*.html`!

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tadtapong Chuenchumsaeng — QR Code Generator</title>
-  <meta name="description" content="Customizable client-side QR code generator web application supporting custom color palettes, size scaling, and instant image export by Tadtapong Chuenchumsaeng.">
-  <meta name="keywords" content="Tadtapong Chuenchumsaeng, QR Code Generator, Canvas API, Client-Side Rendering, Web Utility, JavaScript, Matrix Barcode">
+  <title>Tadtapong Chuenchumsaeng — MemeAI Generator</title>
+  <meta name="description" content="An AI-powered web app that uses computer vision to analyze images and generate meme captions in multiple humor styles.">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, Full-Stack, AI, Meme Generator, Next.js, Prisma, Chulalongkorn University">
   <meta name="author" content="Tadtapong Chuenchumsaeng">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tadtapongc.github.io/">
@@ -198,29 +198,29 @@
   <!-- ── HERO SECTION ────────────────────────────────────── -->
   <section id="project-hero">
     <div class="container">
-      <div class="project-header-tag fade-in">Utility Web Application · Digital Tools</div>
-      <h1 class="project-main-title fade-in">QR Code Generator</h1>
+      <div class="project-header-tag fade-in">Full-Stack · AI</div>
+      <h1 class="project-main-title fade-in">MemeAI Generator</h1>
       
       <p class="project-subtitle fade-in">
-        A fast, customizable client-side QR code generator that uses debounced inputs and complex HTML5 Canvas manipulation for instant, high-quality image exports.
+        An AI-powered web app that uses computer vision to analyze images and generate meme captions in multiple humor styles.
       </p>
 
       <div class="meta-grid fade-in">
         <div class="meta-item">
           <h4>Role</h4>
-          <p>Frontend Web Developer</p>
+          <p>Full-Stack Developer</p>
         </div>
         <div class="meta-item">
           <h4>Timeline</h4>
-          <p>2025</p>
+          <p>2026</p>
         </div>
         <div class="meta-item">
           <h4>Core Tech</h4>
-          <p>Vanilla JS, Canvas API, QR Encoding</p>
+          <p>Next.js, Prisma, Qwen3.6 27B, Tailwind</p>
         </div>
         <div class="meta-item">
           <h4>Live App</h4>
-          <p><a href="https://qr-korn.vercel.app" target="_blank" style="color: var(--accent);">Visit Site ↗</a></p>
+          <p><a href="https://samsantech-compengess.vercel.app" target="_blank" style="color: var(--accent);">Visit Site ↗</a></p>
         </div>
       </div>
     </div>
@@ -230,8 +230,8 @@
   <section id="project-showcase" class="fade-in">
     <div class="container">
       <div class="showcase-banner">
-        <span class="showcase-icon">📱</span>
-        <img src="../images/qrcode-detail.jpg" alt="QR Code Generator Interface" onerror="this.style.display='none'">
+        <span class="showcase-icon">😂</span>
+        <img src="../images/meme-detail.jpg" alt="Meme Generator Dashboard" onerror="this.style.display='none'">
       </div>
     </div>
   </section>
@@ -241,38 +241,41 @@
     <div class="container">
 
       <article class="content-block fade-in">
-        <h3>1. The Challenge & Engineering Objectives</h3>
+        <h3>1. The Challenge & Objectives</h3>
         <p>
-          Many online QR code generators are riddled with ads, paywalls for high-resolution exports, or slow server-side rendering. The objective was to build a clean, ad-free utility that generated fully customizable QR codes entirely on the client-side for maximum speed and privacy.
+          Coming up with funny, relevant captions for images can be tough. MemeAI was created to automate the process using cutting-edge computer vision models. The goal was to build a full-stack platform where users could instantly generate context-aware memes, share them, and build a personalized collection.
+        </p>
+        <p>
+          Beyond the AI generation, the challenge lay in handling unpredictable LLM formatting, building a resilient backend for image storage, and seamlessly rendering memes dynamically in the browser.
         </p>
       </article>
 
       <article class="content-block fade-in">
         <h3>2. Architecture & Execution</h3>
         <p>
-          The application is built completely dependency-free, avoiding heavy frameworks to maintain a small footprint, relying solely on vanilla web APIs.
+          The application leverages the Next.js App Router for server-side API execution and React for complex state management.
         </p>
         <ul>
-          <li><strong>Performant Live Updates:</strong> I wrapped the text input events in a 200ms debounce function. This prevents the UI from freezing by ensuring the matrix encoding algorithm only runs when the user stops typing, providing a buttery-smooth experience.</li>
-          <li><strong>Client-Side Matrix Encoding:</strong> The core logic utilizes the lightweight <code>qrcode.js</code> library via CDN. To maximize performance, the application reuses the same QR code instance for text updates and only destroys/recreates the instance when structural changes (like size or color) occur.</li>
-          <li><strong>HTML5 Canvas Export Pipeline:</strong> To support custom padding and background colors, the raw generated QR image is intercepted. It is redrawn onto a temporary, off-screen HTML5 <code>&lt;canvas&gt;</code>, manipulated to inject the user's selected styles, and then exported directly as a downloadable PNG data URL.</li>
+          <li><strong>AI Integration:</strong> Uses the <strong>Qwen3.6 27B vision model</strong> (via Groq API). Images are resized client-side to 800px to optimize payload size, converted to base64, and sent to the API. The model processes a strict system prompt to return an array of 3 top/bottom text pairs in 5 distinct humor styles (Sarcastic, Wholesome, Gen-Z, Cursed, Roast).</li>
+          <li><strong>State & Rendering:</strong> Employs React's <code>useReducer</code> to handle complex generation transitions. Memes are rendered dynamically in the DOM using absolute-positioned CSS over the image, allowing instant live updates. When downloading, an off-screen HTML5 <code>&lt;canvas&gt;</code> draws the image and applies <code>ctx.fillText</code> to construct a flattened PNG file.</li>
+          <li><strong>Database & Storage:</strong> Utilizes Prisma ORM with PostgreSQL. Instead of relying on external object storage like S3, the application encodes and stores the original <code>imageData</code> directly in the database as base64 blobs, streamlining infrastructure.</li>
         </ul>
       </article>
 
       <div class="highlight-card fade-in">
         <h4>Key Engineering Takeaway</h4>
         <p>
-          "Mastering the HTML5 Canvas API allowed me to turn a basic QR matrix array into a fully styled, downloadable asset without ever relying on backend image processing. It demonstrated the sheer power and privacy benefits of client-side web APIs."
+          "To handle unpredictable LLM JSON outputs from the Qwen vision model, I implemented a 3-layer parsing fallback mechanism: direct JSON parse, aggressive text sanitization, and regex extraction. This ensures the app doesn't crash even if the AI hallucinates markdown tags."
         </p>
       </div>
 
       <article class="content-block fade-in">
         <h3>3. Results & Next Steps</h3>
         <p>
-          The tool is incredibly fast and serves as a reliable daily utility. Because everything executes locally in the browser, there are zero server costs and infinite scalability.
+          The project successfully demonstrates the integration of modern web technologies with advanced 27B parameter vision models. The inclusion of caching headers, optimistic UI updates for likes, and robust database models allows the community feed to remain highly performant.
         </p>
         <p>
-          Next steps include adding support for embedded center logos and vector (SVG) exports for print media.
+          Future improvements may include personalized user feeds, video meme support, and advanced image editing controls.
         </p>
       </article>
 
