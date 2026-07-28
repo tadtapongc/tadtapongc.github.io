@@ -7,7 +7,7 @@ When an image file matches the filename below, the website will automatically di
 
 ### Home Page Card Thumbnails (~600px wide, landscape)
 - `formula.jpg` (Formula Student Composite Wing)
-- `openfoam.jpg` (OpenFOAM CFD Generator)
+- `openfoam.webp` (OpenFOAM CFD Generator)
 - `fastmath.jpg` (FastMath Engineering Solver)
 - `qrcode.jpg` (High-Density QR Generator)
 - `camp.jpg` (2-Day Academic Camp Staff)
