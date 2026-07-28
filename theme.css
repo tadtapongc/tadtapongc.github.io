@@ -363,48 +363,104 @@ html.in-modal body {
 
 /* ─── COMPREHENSIVE MOBILE OPTIMIZATIONS (< 640px) ───────── */
 @media (max-width: 640px) {
-  /* 1. Full-Screen Bottom Sheet for Pop-Up Modal */
+  /* 1. Centered Floating Pop-Up Modal for Mobile */
   .modal-overlay {
-    padding: 0.3rem !important;
-    align-items: flex-end !important;
+    padding: clamp(1rem, 4vw, 1.5rem) !important;
+    align-items: center !important;
   }
   .modal-window {
-    max-height: 95vh !important;
-    border-radius: calc(var(--radius) * 1.5) calc(var(--radius) * 1.5) 0 0 !important;
-    padding: 2.75rem 1.25rem 1.5rem !important;
-    transform: translateY(100%);
+    max-height: 80vh !important;
+    border-radius: calc(var(--radius) * 1.5) !important;
+    padding: 2.25rem 1.25rem 1.25rem !important;
+    transform: scale(0.95) translateY(15px);
   }
   .modal-overlay.active .modal-window {
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
   .modal-window.has-iframe {
     padding: 1rem 0.5rem 0.2rem !important;
   }
   .modal-window.has-iframe iframe {
-    height: calc(92vh - 2.5rem) !important;
+    height: calc(76vh - 2.5rem) !important;
   }
   .modal-close-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 1.15rem;
-    margin-bottom: -44px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+    margin-bottom: -42px;
     margin-right: -0.25rem;
-    top: 0.5rem;
+    top: 0.4rem;
   }
 
-  /* 2. Detail Page Adjustments */
+  /* 2. Detail Page & Global Typography Adjustments */
   #project-hero {
-    padding: 2rem 0 !important;
+    padding: 1.5rem 0 !important;
+  }
+  .project-header-tag {
+    font-size: 0.68rem !important;
+    margin-bottom: 0.5rem !important;
   }
   .project-main-title {
-    font-size: 1.8rem !important;
+    font-size: 1.45rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+  }
+  .project-subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 1.75rem !important;
+  }
+  .content-block {
+    margin-bottom: 2.25rem !important;
+  }
+  .content-block h3 {
+    font-size: 1.15rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .content-block p,
+  .content-block ul {
+    font-size: 0.82rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 1rem !important;
+  }
+  .content-block ul li {
+    margin-bottom: 0.45rem !important;
+  }
+  .highlight-card {
+    padding: 1.25rem !important;
+    margin: 1.75rem 0 2.25rem !important;
+  }
+  .highlight-card h4 {
+    font-size: 0.72rem !important;
+  }
+  .highlight-card p {
+    font-size: 0.84rem !important;
+    line-height: 1.6 !important;
   }
   .showcase-banner {
-    height: 200px !important;
+    height: 180px !important;
   }
   .meta-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 1rem !important;
+    padding: 1.25rem 0 !important;
+    margin-bottom: 2.25rem !important;
+  }
+  .meta-item h4 {
+    font-size: 0.68rem !important;
+  }
+  .meta-item p {
+    font-size: 0.82rem !important;
+  }
+  .work-nav {
+    padding: 2rem 0 !important;
+    gap: 1rem !important;
+  }
+  .work-nav-title {
+    font-size: 1rem !important;
+  }
+  .section-heading h2 {
+    font-size: 1.45rem !important;
   }
 }
 

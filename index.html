@@ -328,9 +328,15 @@
 
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 640px) {
-      /* Ensure hero name never gets cut on small screens */
+      /* Refined mobile hero typography */
       .hero-name {
-        font-size: clamp(2.1rem, 9vw, 3.2rem) !important;
+        font-size: clamp(1.8rem, 8vw, 2.4rem) !important;
+        margin-bottom: 1rem !important;
+      }
+      .hero-bio {
+        font-size: 0.84rem !important;
+        line-height: 1.65 !important;
+        margin-bottom: 1.25rem !important;
       }
 
       /* Auto-Wrapping Pill Cluster for Filter Tabs */
@@ -344,9 +350,9 @@
       .filter-btn {
         flex-shrink: 0;
         white-space: nowrap;
-        padding: 0.55rem 1rem !important;
-        font-size: 0.78rem !important;
-        min-height: 44px;
+        padding: 0.5rem 0.9rem !important;
+        font-size: 0.74rem !important;
+        min-height: 40px;
         display: inline-flex;
         align-items: center;
       }
@@ -367,15 +373,19 @@
         gap: 0.4rem !important;
       }
       .project-title {
-        font-size: 1.1rem !important;
+        font-size: 0.98rem !important;
       }
       .project-desc {
-        font-size: 0.82rem !important;
-        line-height: 1.55 !important;
+        font-size: 0.76rem !important;
+        line-height: 1.5 !important;
       }
 
       /* Timeline & Contact on Mobile */
       .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
+      .exp-role { font-size: 1rem !important; }
+      .exp-desc { font-size: 0.8rem !important; line-height: 1.6 !important; }
+      .contact-text h2 { font-size: 1.7rem !important; margin-bottom: 0.6rem !important; }
+      .contact-text p { font-size: 0.82rem !important; }
       .contact-links { align-items: flex-start; }
     }
   </style>
