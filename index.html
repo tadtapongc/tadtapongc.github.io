@@ -651,6 +651,7 @@
         </div>
         <div class="contact-links fade-in">
           <a class="contact-link email-link" data-user="6832083321" data-domain="student.chula.ac.th" data-display="true" href="#">Email Me →</a>
+          <button class="contact-link copy-btn" id="copy-email-btn" data-user="6832083321" data-domain="student.chula.ac.th" type="button" style="background:none;border:none;font-family:inherit;cursor:pointer;padding:0;">Copy Email →</button>
           <a class="contact-link" href="https://www.linkedin.com/in/tadtapong-chuenchumsaeng/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
           <a class="contact-link" href="https://github.com/tadtapongc" target="_blank" rel="noopener noreferrer">GitHub →</a>
           <!-- <a class="contact-link" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF) →</a> -->
@@ -687,7 +688,7 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Email spam protection (obfuscated email assembly)
+    // Email spam protection & One-click clipboard copy
     document.querySelectorAll('.email-link').forEach(link => {
       const email = link.dataset.user + '@' + link.dataset.domain;
       link.href = 'mailto:' + email;
@@ -696,7 +697,22 @@
       }
     });
 
-    // Filter Tabs Logic & Dynamic Entry Counter
+    const copyBtn = document.getElementById('copy-email-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const email = copyBtn.dataset.user + '@' + copyBtn.dataset.domain;
+        navigator.clipboard.writeText(email).then(() => {
+          const toast = document.getElementById('toast-notification');
+          if (toast) {
+            toast.textContent = '✓ Copied ' + email + ' to clipboard!';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3200);
+          }
+        });
+      });
+    }
+
+    // Filter Tabs Logic & Dynamic Entry Counter (with Smooth Animation)
     function filterTab(category) {
       document.querySelectorAll('.filter-btn').forEach(btn => {
         if (btn.getAttribute('data-filter') === category) {
@@ -710,9 +726,13 @@
       document.querySelectorAll('.filter-group').forEach(group => {
         if (group.getAttribute('data-group') === category) {
           group.style.display = 'block';
+          group.classList.remove('active-group');
+          void group.offsetWidth; // Trigger DOM reflow for CSS animation
+          group.classList.add('active-group');
           visibleCards += group.querySelectorAll('.project-card').length;
         } else {
           group.style.display = 'none';
+          group.classList.remove('active-group');
         }
       });
 
@@ -750,14 +770,14 @@
       const modalWin = modalOverlay.querySelector('.modal-window');
       if (modalWin) modalWin.classList.add('has-iframe');
 
-      modalContainer.innerHTML = '<div id="modal-loader" style="padding: 4rem 0; text-align: center; color: var(--muted); font-family: var(--mono);">⚙️ Loading project details...</div>';
+      modalContainer.innerHTML = '<div id="modal-loader" class="modal-loader-box"><div class="modal-spinner"></div><div class="modal-loader-text">Loading architectural specs...</div></div>';
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
 
       const iframe = document.createElement('iframe');
       const sep = url.includes('?') ? '&' : '?';
       iframe.src = url + sep + 'modal=true';
-      iframe.style.cssText = 'width: 100%; height: calc(85vh - 3rem); border: none; border-radius: 8px; background: var(--bg); display: none;';
+      iframe.style.cssText = 'width: 100%; height: calc(85vh - 3rem); border: none; border-radius: 8px; background: var(--bg); display: none; opacity: 0; transition: opacity 0.35s ease;';
       
       iframe.onload = () => {
         try {
@@ -774,8 +794,18 @@
           console.log('Cross-frame access note:', e);
         }
         const loader = document.getElementById('modal-loader');
-        if (loader) loader.remove();
-        iframe.style.display = 'block';
+        if (loader) {
+          loader.style.transition = 'opacity 0.25s ease';
+          loader.style.opacity = '0';
+          setTimeout(() => {
+            if (loader.parentNode) loader.remove();
+            iframe.style.display = 'block';
+            setTimeout(() => iframe.style.opacity = '1', 30);
+          }, 250);
+        } else {
+          iframe.style.display = 'block';
+          setTimeout(() => iframe.style.opacity = '1', 30);
+        }
       };
 
       modalContainer.appendChild(iframe);
@@ -812,5 +842,7 @@
     }
   </script>
 
+  <!-- ── TOAST NOTIFICATION BANNER ────────────────────────── -->
+  <div id="toast-notification" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
