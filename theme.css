@@ -336,30 +336,14 @@ footer .container {
   border-color: var(--accent);
   transform: rotate(90deg) scale(1.05);
 }
-/* Ensure clean styling inside modal body and iframe modal */
-html.in-modal nav,
-html.in-modal footer,
-html.in-modal .work-nav,
+/* Ensure clean styling inside modal body */
 .modal-body nav,
 .modal-body footer,
 .modal-body .work-nav {
   display: none !important;
 }
-.modal-body #project-hero,
-html.in-modal #project-hero {
+.modal-body #project-hero {
   padding-top: 1rem !important;
-  padding-bottom: 2rem !important;
-}
-
-/* Eliminate double scrollbars when iframe is inside pop-up modal */
-.modal-window.has-iframe {
-  overflow: hidden !important;
-  padding: 1.25rem 1.25rem 0.5rem 1.25rem !important;
-}
-html.in-modal {
-  overflow-x: hidden !important;
-}
-html.in-modal body {
   padding-bottom: 2rem !important;
 }
 
@@ -540,4 +524,169 @@ html.in-modal body {
 }
 .filter-group.active-group {
   animation: filterFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── PROJECT DETAIL STYLES ───────────────────────────── */
+#project-hero {
+  padding: clamp(3rem, 8vw, 6rem) 0 var(--gap);
+  border-top: none;
+}
+.project-header-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.project-main-title {
+  font-family: var(--sans);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.project-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 680px;
+  margin-bottom: 2.5rem;
+}
+
+/* Meta Info Grid */
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+.meta-item h4 {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.meta-item p {
+  font-size: 0.88rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Visual Showcase Banner */
+#project-showcase {
+  margin-bottom: 4rem;
+}
+.showcase-banner {
+  width: 100%;
+  height: clamp(240px, 45vw, 480px);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--border) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.showcase-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.showcase-icon {
+  font-size: clamp(3.5rem, 12vw, 7rem);
+}
+
+/* Content Sections */
+.content-block {
+  max-width: 720px;
+  margin-bottom: 3.5rem;
+}
+.content-block h3 {
+  font-family: var(--sans);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+.content-block p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+.content-block ul {
+  list-style-type: square;
+  padding-left: 1.25rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+.content-block ul li {
+  margin-bottom: 0.6rem;
+}
+
+/* Highlight Card / Note */
+.highlight-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 1.75rem;
+  border-radius: var(--radius);
+  margin: 2.5rem 0 3.5rem;
+  max-width: 720px;
+}
+.highlight-card h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+.highlight-card p {
+  margin-bottom: 0;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--ink);
+  font-style: italic;
+}
+
+/* Next / Previous Work Navigation */
+.work-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.work-nav-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform var(--transition);
+}
+.work-nav-link:hover {
+  transform: translateY(-2px);
+}
+.work-nav-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.work-nav-title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--accent);
 }
