@@ -202,13 +202,13 @@
       <h1 class="project-main-title fade-in">FastMath Solver</h1>
       
       <p class="project-subtitle fade-in">
-        An interactive, purely client-side numerical solver that evaluates complex combinatorial arithmetic puzzles and renders the steps in real-time using MathJax LaTeX.
+        A blazing-fast, client-side combinatorial solver prototyped through AI collaboration, evaluating complex permutations and rendering exact algorithmic steps via MathJax.
       </p>
 
       <div class="meta-grid fade-in">
         <div class="meta-item">
           <h4>Role</h4>
-          <p>Developer & Designer</p>
+          <p>Architect & Prompt Engineer</p>
         </div>
         <div class="meta-item">
           <h4>Timeline</h4>
@@ -216,7 +216,7 @@
         </div>
         <div class="meta-item">
           <h4>Core Tech</h4>
-          <p>Vanilla JS, MathJax, LaTeX, DFS Algorithm</p>
+          <p>Vanilla JS, AI Pair Programming, DFS Algorithm</p>
         </div>
         <div class="meta-item">
           <h4>Live App</h4>
@@ -243,36 +243,33 @@
       <article class="content-block fade-in">
         <h3>1. The Challenge & Engineering Objectives</h3>
         <p>
-          Evaluating combinatorial arithmetic puzzles, such as the 24-game, requires exhaustively testing every permutation of numbers and mathematical operations (addition, subtraction, multiplication, division, roots, factorials). Building a solver that can find exact matches or closest approximations across millions of permutations—instantly in the browser without server lag—was the primary engineering goal.
+          Solving arithmetic puzzles computationally requires evaluating massive permutation spaces. The challenge was to engineer a recursive algorithm capable of resolving these branches instantly in the browser. I utilized AI-assisted coding to iteratively scaffold and optimize this complex mathematical logic.
         </p>
       </article>
 
       <article class="content-block fade-in">
         <h3>2. Architecture & Execution</h3>
         <p>
-          The FastMath solver was built using a lightweight vanilla web stack (HTML/CSS/JS) to maximize execution speed and minimize load times.
+          By treating the AI as an intelligent pair programmer, I directed the development of a lightweight vanilla web stack (HTML/CSS/JS) to maximize execution speed.
         </p>
         <ul>
-          <li><strong>Depth-First Search (DFS) Algorithm:</strong> The core solver utilizes a highly optimized recursive backtracking approach to evaluate all combinations of user inputs. It dynamically prunes impossible branches and caches intermediate results to achieve near-instantaneous execution times on standard devices.</li>
-          <li><strong>MathJax & LaTeX Rendering:</strong> To present complex mathematical operations cleanly to the user, the DOM outputs raw LaTeX strings which are then intercepted and beautifully typeset by MathJax v3 running in the browser.</li>
-          <li><strong>Zero-Dependency Architecture:</strong> The project intentionally avoids heavy bundlers or frontend frameworks. By manipulating the DOM imperatively, the UI updates synchronously with the solver without abstraction overhead.</li>
+          <li><strong>Optimized DFS Algorithm:</strong> I iteratively prompted the AI to construct a recursive Depth-First Search algorithm in Vanilla JavaScript, guiding it to aggressively prune invalid mathematical paths and cache intermediate states.</li>
+          <li><strong>MathJax & LaTeX Rendering:</strong> Orchestrated the logic to output raw LaTeX strings cleanly to the DOM, intercepting them for typesetting by MathJax v3 running natively in the browser.</li>
+          <li><strong>Zero-Dependency Architecture:</strong> Instructed the AI to strictly avoid heavy frontend frameworks, ensuring all UI updates were handled imperatively to prevent abstraction overhead.</li>
         </ul>
       </article>
 
       <div class="highlight-card fade-in">
         <h4>Key Engineering Takeaway</h4>
         <p>
-          "By utilizing a pure Vanilla JS stack and a well-optimized recursive Depth-First Search algorithm, I proved that intensive combinatorial math solvers can run entirely on the client side with zero server dependency, delivering a lightning-fast user experience."
+          "Acting as the architect and directing AI to implement highly optimized recursive algorithms demonstrated that complex combinatorial math solvers can be rapidly prototyped to run entirely on the client side with zero latency."
         </p>
       </div>
 
       <article class="content-block fade-in">
-        <h3>3. Results & Next Steps</h3>
+        <h3>3. Results & Impact</h3>
         <p>
-          The application serves as a robust personal utility tool and a solid demonstration of algorithm optimization in JavaScript. The solver evaluates solutions in milliseconds and formats them perfectly.
-        </p>
-        <p>
-          Future improvements may involve moving the solver algorithm into a Web Worker to ensure the UI thread is completely unblocked during exceptionally large permutation sets.
+          The application serves as a robust utility tool and a definitive demonstration of how AI collaboration can dramatically accelerate the development of highly optimized algorithmic logic in JavaScript.
         </p>
       </article>
 

@@ -202,13 +202,13 @@
       <h1 class="project-main-title fade-in">Paced Study Tracker</h1>
       
       <p class="project-subtitle fade-in">
-        A comprehensive dashboard designed for students to track university courses, manage topic-level deadlines, and maintain markdown notes with cloud sync.
+        A centralized academic management dashboard co-architected with AI, featuring dynamic timeline triage, markdown note parsing, and JSONB cloud synchronization.
       </p>
 
       <div class="meta-grid fade-in">
         <div class="meta-item">
           <h4>Role</h4>
-          <p>Full-Stack Developer</p>
+          <p>Architect & AI Orchestrator</p>
         </div>
         <div class="meta-item">
           <h4>Timeline</h4>
@@ -216,7 +216,7 @@
         </div>
         <div class="meta-item">
           <h4>Core Tech</h4>
-          <p>Next.js 14, Drizzle ORM, Neon Postgres</p>
+          <p>Next.js 14, Drizzle ORM, AI Pair Programming</p>
         </div>
         <div class="meta-item">
           <h4>Live App</h4>
@@ -243,39 +243,36 @@
       <article class="content-block fade-in">
         <h3>1. The Challenge & Objectives</h3>
         <p>
-          Managing academic life efficiently is challenging when syllabi, assignments, and study materials are scattered across different platforms. The objective behind Paced was to centralize academic tracking into one intuitive hub.
+          Academic workflows are frequently fragmented across disparate syllabi, calendars, and note-taking silos. The objective was to engineer a singular, high-performance interface to unify this experience. By utilizing AI-assisted development, I focused heavily on data architecture and user experience, delegating the boilerplate generation to the AI.
         </p>
         <p>
-          The system needed to process highly relational data (semesters, courses, topics, deadlines, and markdown notes) rapidly without bogging down the database with constant multi-table join queries.
+          The core challenge was orchestrating the AI to model highly relational academic data efficiently, avoiding expensive multi-table joins in PostgreSQL.
         </p>
       </article>
 
       <article class="content-block fade-in">
         <h3>2. Architecture & Execution</h3>
         <p>
-          Built with Next.js 14 utilizing the App Router, Paced focuses on a fluid, responsive user experience backed by a unique document-oriented data model.
+          Constructed with Next.js 14 utilizing the App Router, I served as the primary architect, directing the AI to implement a fluid, desktop-class user experience backed by a unique document-oriented data model.
         </p>
         <ul>
-          <li><strong>Document-Oriented SQL:</strong> Instead of spreading entities across multiple normalized tables, Drizzle ORM leverages PostgreSQL's <code>jsonb</code> type. The entire application state (courses, topics, deadlines) is stored as a single JSON blob per user, seamlessly synced from React Context to the cloud via a custom sync engine.</li>
-          <li><strong>Dashboard Triage Algorithm:</strong> The dashboard aggregates data across active courses to prioritize focus. It generates a dynamic 14-day timeline array and categorizes items into Overdue, In-Progress, and Upcoming to help users triage effectively.</li>
-          <li><strong>Secure Markdown Engine:</strong> Topics include rich markdown notes parsed using the <code>marked</code> library. A custom Renderer intercepts the HTML generation to inject Tailwind CSS classes (e.g., <code>.md-p</code>). The output is aggressively sanitized with <code>DOMPurify</code> to restrict rendering to a safe subset of tags, preventing XSS attacks.</li>
+          <li><strong>Document-Oriented SQL via JSONB:</strong> Directed the AI to leverage PostgreSQL's native <code>jsonb</code> datatype through Drizzle ORM. The complete academic hierarchy is encapsulated as a single JSON document, radically reducing read/write latency.</li>
+          <li><strong>Algorithmic Dashboard Triage:</strong> Guided the AI to construct a bespoke triage engine that aggregates tasks across active courses, intelligently categorizing items into Overdue, In-Progress, and Upcoming states.</li>
+          <li><strong>Secure Markdown Engine:</strong> Orchestrated the integration of the <code>marked</code> library with a custom AST Renderer, prompting the AI to aggressively sanitize outputs via <code>DOMPurify</code> to guarantee strict protection against XSS vulnerabilities.</li>
         </ul>
       </article>
 
       <div class="highlight-card fade-in">
         <h4>Key Engineering Takeaway</h4>
         <p>
-          "Storing the entire state as a single JSONB blob drastically reduced database read/write complexity and latency. Paired with React Context, it allowed me to build an app that feels entirely local and instantaneous, with cloud persistence happening transparently in the background."
+          "Collaborating with AI allowed me to boldly experiment with a JSONB document-oriented schema within a traditional SQL database. The AI seamlessly translated this architectural vision into reality, resulting in instantaneous client-side interactions paired with transparent cloud persistence."
         </p>
       </div>
 
       <article class="content-block fade-in">
-        <h3>3. Results & Next Steps</h3>
+        <h3>3. Results & Impact</h3>
         <p>
-          Paced serves as a unified workspace that replaces disjointed to-do list apps and note-taking silos. The real-time synchronization and document-oriented architecture mean users experience zero load times when navigating between courses and notes.
-        </p>
-        <p>
-          Future updates aim to integrate calendar exports, collaborative study groups, and AI-assisted study planning based on historical velocity.
+          Paced delivers a frictionless, real-time experience yielding zero perceptible load times, proving that modern full-stack architecture coupled with AI orchestration can produce production-grade platforms at incredible speed.
         </p>
       </article>
 

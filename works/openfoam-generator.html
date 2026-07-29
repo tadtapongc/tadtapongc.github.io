@@ -201,16 +201,15 @@
       <div class="project-header-tag fade-in">CFD Scientific Computing · OpenFOAM & Python</div>
       <h1 class="project-main-title fade-in">OpenFOAM Case Generator</h1>
       
-      <!-- ✏️ EDIT: 1-Sentence High-Impact Subtitle -->
       <p class="project-subtitle fade-in">
-        A geometry-agnostic Python automation tool that transforms raw STL files into complete, ready-to-run OpenFOAM CFD simulations with zero manual dictionary tuning.
+        A fully automated, Python-driven CFD pipeline built through AI collaboration, intelligently processing STL geometries to construct, mesh, and solve OpenFOAM cases.
       </p>
 
       <!-- 4-Pillar Meta Grid -->
       <div class="meta-grid fade-in">
         <div class="meta-item">
           <h4>Role / Type</h4>
-          <p>Sole Developer & Researcher</p>
+          <p>Architect & AI Orchestrator</p>
         </div>
         <div class="meta-item">
           <h4>Timeline / Context</h4>
@@ -218,7 +217,7 @@
         </div>
         <div class="meta-item">
           <h4>Core Skills & Tools</h4>
-          <p>Python, OpenFOAM, Shell Scripting</p>
+          <p>Python, OpenFOAM, AI Collaboration</p>
         </div>
         <div class="meta-item">
           <h4>GitHub Repo</h4>
@@ -245,41 +244,37 @@
       <!-- Pillar 1: Background & Objective -->
       <article class="content-block fade-in">
         <h3>1. The Challenge & Engineering Objectives</h3>
-        <!-- ✏️ Write your background context and objectives below -->
         <p>
-          Setting up OpenFOAM simulations traditionally requires tedious, manual editing of dozens of configuration dictionaries, which is highly prone to syntax errors and extremely time-consuming. My objective was to build a robust Python tool that completely abstracts away this boilerplate, scaling mesh parameters dynamically based on the input geometry and accelerating iterative aerodynamic design for Formula Student race cars.
+          Traditional OpenFOAM setups demand painstaking manual tuning of countless dictionary files. To accelerate iterative aerodynamic testing for Formula Student vehicles, I collaborated with AI development tools to translate complex CFD domain knowledge into a robust, generative Python automation script.
         </p>
       </article>
 
       <!-- Pillar 2: Approach, Methodology & Execution -->
       <article class="content-block fade-in">
-        <h3>2. Approach, Methodology & Execution</h3>
-        <!-- ✏️ Write your methodology and script architecture below -->
+        <h3>2. Architecture & Execution</h3>
         <p>
-          The <code>cfd-gen</code> tool is built around a minimal JSON configuration file. It reads an STL file, computes the bounding box, and automatically derives the required mesh sizing, domain padding, and refinement regions. The Python script then generates all necessary OpenFOAM dictionaries (0, constant, system) and execution scripts (including HPC SLURM submission scripts) for the complete simulation pipeline.
+          By establishing strict architectural boundaries, I directed AI models to scaffold the <code>cfd_gen</code> engine around a declarative JSON configuration.
         </p>
         <ul>
-          <li><strong>Dynamic Mesh Generation:</strong> Automatically configures <code>blockMesh</code> and <code>snappyHexMesh</code> parameters, offering three fidelity presets (Fast, Standard, Fine) with scalable surface and edge refinement levels.</li>
-          <li><strong>Automated Solver & Turbulence Setup:</strong> Configures <code>simpleFoam</code> with k-ω SST turbulence modeling and Spalding wall functions, ensuring stable convergence across a wide y+ range without manual tuning.</li>
-          <li><strong>Integrated Post-Processing:</strong> Includes a dedicated CLI to monitor forces in real-time, generate convergence plots via Matplotlib, and compare aerodynamic performance across multiple design iterations.</li>
+          <li><strong>Automated Meshing Pipeline:</strong> Prompted AI to generate precise logic orchestrating <code>blockMesh</code> and <code>snappyHexMesh</code>, dynamically calculating scaling and refinement levels on the fly based on STL bounding boxes.</li>
+          <li><strong>Turbulence & Solver Initialization:</strong> Orchestrated the generation of scripts that inject k-ω SST turbulence parameters directly into <code>simpleFoam</code> dictionaries.</li>
+          <li><strong>HPC Integration:</strong> Guided the AI to output deployment-ready SLURM execution scripts and domain decomposition routines for high-performance computing clusters.</li>
         </ul>
       </article>
 
       <!-- Highlight Card / Insight -->
       <div class="highlight-card fade-in">
         <h4>Key Engineering Takeaway</h4>
-        <!-- ✏️ Write your memorable lesson or engineering takeaway below -->
         <p>
-          "Abstracting away the tedious syntax of OpenFOAM dictionaries into a programmatic Python pipeline completely eliminated human setup errors, transforming our CFD workflow from a day-long struggle into a 5-minute automated breeze."
+          "By strategically prompting AI with complex scientific computing requirements, I successfully bridged the gap between raw aerodynamic theory and a fully functional Python CLI tool, reducing CFD setup times by a factor of five."
         </p>
       </div>
 
       <!-- Pillar 3: Results, Impact & Takeaways -->
       <article class="content-block fade-in">
-        <h3>3. Results, Impact & Future R&D</h3>
-        <!-- ✏️ Write your final results and future plans below -->
+        <h3>3. Results & Impact</h3>
         <p>
-          By automating the entire case setup and meshing process, the tool successfully accelerated our CFD workflow by 5x, achieving zero syntax errors during case initialization. This allowed the engineering team to focus purely on aerodynamic design rather than software troubleshooting. Future development plans include integrating PyVista for automated 3D post-processing and streamline visualization.
+          This AI-assisted automation empowered the engineering team to focus on aerodynamic innovation rather than software debugging, achieving a zero-fault initialization rate across all test cases.
         </p>
       </article>
 

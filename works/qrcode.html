@@ -202,13 +202,13 @@
       <h1 class="project-main-title fade-in">QR Code Generator</h1>
       
       <p class="project-subtitle fade-in">
-        A fast, customizable client-side QR code generator that uses debounced inputs and complex HTML5 Canvas manipulation for instant, high-quality image exports.
+        A highly responsive QR code utility rapidly prototyped via AI-assisted coding, leveraging HTML5 Canvas manipulation for instantaneous client-side rendering.
       </p>
 
       <div class="meta-grid fade-in">
         <div class="meta-item">
           <h4>Role</h4>
-          <p>Frontend Web Developer</p>
+          <p>Architect & AI Prototyper</p>
         </div>
         <div class="meta-item">
           <h4>Timeline</h4>
@@ -216,7 +216,7 @@
         </div>
         <div class="meta-item">
           <h4>Core Tech</h4>
-          <p>Vanilla JS, Canvas API, QR Encoding</p>
+          <p>Vanilla JS, Canvas API, Prompt Engineering</p>
         </div>
         <div class="meta-item">
           <h4>Live App</h4>
@@ -243,36 +243,33 @@
       <article class="content-block fade-in">
         <h3>1. The Challenge & Engineering Objectives</h3>
         <p>
-          Many online QR code generators are riddled with ads, paywalls for high-resolution exports, or slow server-side rendering. The objective was to build a clean, ad-free utility that generated fully customizable QR codes entirely on the client-side for maximum speed and privacy.
+          Many online QR generators are burdened with paywalls or slow server-side rendering. I aimed to construct a lightweight, privacy-focused utility entirely within the browser's sandbox. By leveraging AI development tools, I sought to drastically compress the prototyping phase and directly architect advanced Canvas manipulations.
         </p>
       </article>
 
       <article class="content-block fade-in">
         <h3>2. Architecture & Execution</h3>
         <p>
-          The application is built completely dependency-free, avoiding heavy frameworks to maintain a small footprint, relying solely on vanilla web APIs.
+          The application revolves around a pure Vanilla JavaScript architecture, eschewing heavy frameworks to ensure sub-millisecond execution times.
         </p>
         <ul>
-          <li><strong>Performant Live Updates:</strong> I wrapped the text input events in a 200ms debounce function. This prevents the UI from freezing by ensuring the matrix encoding algorithm only runs when the user stops typing, providing a buttery-smooth experience.</li>
-          <li><strong>Client-Side Matrix Encoding:</strong> The core logic utilizes the lightweight <code>qrcode.js</code> library via CDN. To maximize performance, the application reuses the same QR code instance for text updates and only destroys/recreates the instance when structural changes (like size or color) occur.</li>
-          <li><strong>HTML5 Canvas Export Pipeline:</strong> To support custom padding and background colors, the raw generated QR image is intercepted. It is redrawn onto a temporary, off-screen HTML5 <code>&lt;canvas&gt;</code>, manipulated to inject the user's selected styles, and then exported directly as a downloadable PNG data URL.</li>
+          <li><strong>Debounced Event Architecture:</strong> Prompted AI to wrap the underlying matrix encoding in a highly responsive debounce function, preventing main-thread freezing and guaranteeing a buttery-smooth user interface.</li>
+          <li><strong>Client-Side Matrix Manipulation:</strong> Orchestrated the logic so the application efficiently reuses the same QR code instance for textual updates, minimizing unnecessary DOM reflows.</li>
+          <li><strong>HTML5 Canvas Export Pipeline:</strong> Directed the AI to construct a complex HTML5 Canvas pipeline that intercepts the raw generated QR matrix, injects custom user styles (like padding and colors), and serializes it into a lossless PNG.</li>
         </ul>
       </article>
 
       <div class="highlight-card fade-in">
         <h4>Key Engineering Takeaway</h4>
         <p>
-          "Mastering the HTML5 Canvas API allowed me to turn a basic QR matrix array into a fully styled, downloadable asset without ever relying on backend image processing. It demonstrated the sheer power and privacy benefits of client-side web APIs."
+          "By employing precise prompt engineering, I was able to rapidly scaffold complex HTML5 Canvas manipulations without memorizing the API, validating how AI can serve as a hyper-efficient tool for translating architectural intent into deployable code."
         </p>
       </div>
 
       <article class="content-block fade-in">
-        <h3>3. Results & Next Steps</h3>
+        <h3>3. Results & Impact</h3>
         <p>
-          The tool is incredibly fast and serves as a reliable daily utility. Because everything executes locally in the browser, there are zero server costs and infinite scalability.
-        </p>
-        <p>
-          Next steps include adding support for embedded center logos and vector (SVG) exports for print media.
+          The tool is exceptionally performant and operates with zero backend infrastructure costs, showcasing the speed and reliability achievable through AI-assisted client-side development.
         </p>
       </article>
 
