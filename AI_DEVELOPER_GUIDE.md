@@ -8,9 +8,9 @@ This is the personal portfolio website of Tadtapong Chuenchumsaeng.
 - **No Build Tools:** There is no Node.js, Webpack, Vite, or React. It is designed to be a lightweight, zero-dependency static site. Do **not** introduce frontend frameworks or build steps unless explicitly requested by the user.
 
 ## 2. File Structure
-- `index.html`: The main landing page. Contains the layout for Hero, Portfolio, Skills, Education, and Contact sections, as well as the intricate Vanilla JS logic for the dynamic project modal.
-- `theme.css`: The central stylesheet. Contains all CSS variables (design tokens), layout rules, typography, responsive media queries, and modal animations.
-- `works/`: A directory containing individual project detail pages (e.g., `openfoam-generator.html`). Each file is a standalone HTML document.
+- `index.html`: The main landing page. Contains the layout for Hero, Portfolio, Skills, Education, and Contact sections, as well as the intricate Vanilla JS logic for the dynamic project modal. **Contains NO inline `<style>` blocks — all CSS lives in `theme.css`.**
+- `theme.css`: The **single source of truth for all CSS**. Contains design tokens, shared layout rules, project detail styles, homepage-specific styles (hero, projects grid, skills, experience, contact, filter tabs), responsive media queries, modal animations, and accessibility helpers (skip-link).
+- `works/`: A directory containing individual project detail pages (e.g., `openfoam-generator.html`). Each file is a lightweight HTML document that relies entirely on `../theme.css` for styling — **no inline `<style>` blocks.**
 - `images/`: Directory for all static image assets.
 - `favicon.svg`, `robots.txt`, `sitemap.xml`: Standard SEO and metadata files.
 
@@ -51,16 +51,21 @@ All styling is driven by CSS Custom Properties (variables) defined in the `:root
 
 **⚠️ AI Rule for Styling:** Always use these CSS variables for colors, fonts, and spacing. Do not hardcode colors (e.g., `#DF5D8D`) directly into CSS rules; use `var(--accent)`. Do not use inline styles unless strictly necessary for dynamic JS behavior.
 
+**⚠️ AI Rule for CSS Location:** ALL CSS must live in `theme.css`. Do **not** add `<style>` blocks to `index.html` or any `works/*.html` file. If a new page-specific style is needed, add it to the appropriate section in `theme.css`.
+
 ## 5. Standard Operating Procedure for Adding a New Project
 When asked to add a new project, follow these exact steps:
 
-1. **Duplicate Template:** Copy the `works/project-template.html` to a new file (e.g., `works/my-new-project.html`).
+1. **Duplicate Template:** Copy the `works/project-template.html` to a new file (e.g., `works/my-new-project.html`). The template is already lightweight — it contains NO inline `<style>` block (all CSS comes from `../theme.css`).
 2. **Fill Content:** Update the `<title>`, `<meta>` descriptions, Hero section, Meta grid, and the 3-pillar content blocks inside the new HTML file.
-3. **Update Home Page:** Open `index.html` and add a new `<a class="project-card">` element inside the appropriate `.filter-group`. 
-4. **Card Attributes:** Ensure the new card has:
+3. **Fix Canonical URL:** Update `<link rel="canonical" href="...">` to point to the new page's own URL (e.g., `https://tadtapongc.github.io/works/my-new-project.html`).
+4. **Update Home Page:** Open `index.html` and add a new `<a class="project-card">` element inside the appropriate `.filter-group`. 
+5. **Card Attributes:** Ensure the new card has:
    - `href="works/my-new-project.html"`
    - `data-date="YYYY-MM"` (crucial for auto-sorting)
+   - `loading="lazy"` on the `<img>` tag
    - Proper thumbnail structure (`.project-thumb`) and text structure (`.project-content`).
+6. **Update Sitemap:** Add the new page URL to `sitemap.xml`.
 
 ## 6. Email Obfuscation
 To prevent spam, email links in `index.html` use data attributes (`data-user` and `data-domain`). A script combines these into a `mailto:` link at runtime. Always maintain this pattern for contact links.

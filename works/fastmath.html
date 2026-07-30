@@ -8,7 +8,7 @@
   <meta name="keywords" content="Tadtapong Chuenchumsaeng, FastMath Solver, MathJax, LaTeX, JavaScript, Combinatorial Search, Arithmetic Puzzle, 24 Game Solver, Web App">
   <meta name="author" content="Tadtapong Chuenchumsaeng">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tadtapongc.github.io/">
+  <link rel="canonical" href="https://tadtapongc.github.io/works/fastmath.html">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,174 +19,10 @@
       document.documentElement.classList.add('in-modal');
     }
   </script>
-  <style>
-    /* ─── PROJECT DETAIL STYLES ───────────────────────────── */
-    #project-hero {
-      padding: clamp(3rem, 8vw, 6rem) 0 var(--gap);
-      border-top: none;
-    }
-    .project-header-tag {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .project-main-title {
-      font-family: var(--sans);
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-    .project-subtitle {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--muted);
-      max-width: 680px;
-      margin-bottom: 2.5rem;
-    }
-
-    /* Meta Info Grid */
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1.5rem;
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 3rem;
-    }
-    .meta-item h4 {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-    }
-    .meta-item p {
-      font-size: 0.88rem;
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    /* Visual Showcase Banner */
-    #project-showcase {
-      margin-bottom: 4rem;
-    }
-    .showcase-banner {
-      width: 100%;
-      height: clamp(240px, 45vw, 480px);
-      background: linear-gradient(135deg, var(--surface) 0%, var(--border) 100%);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .showcase-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .showcase-icon {
-      font-size: clamp(3.5rem, 12vw, 7rem);
-    }
-
-    /* Content Sections */
-    .content-block {
-      max-width: 720px;
-      margin-bottom: 3.5rem;
-    }
-    .content-block h3 {
-      font-family: var(--sans);
-      font-size: 1.6rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 1rem;
-    }
-    .content-block p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.85;
-      margin-bottom: 1.25rem;
-    }
-    .content-block ul {
-      list-style-type: square;
-      padding-left: 1.25rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-    }
-    .content-block ul li {
-      margin-bottom: 0.6rem;
-    }
-
-    /* Highlight Card / Note */
-    .highlight-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      padding: 1.75rem;
-      border-radius: var(--radius);
-      margin: 2.5rem 0 3.5rem;
-      max-width: 720px;
-    }
-    .highlight-card h4 {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .highlight-card p {
-      margin-bottom: 0;
-      font-size: 0.92rem;
-      line-height: 1.75;
-      color: var(--ink);
-      font-style: italic;
-    }
-
-    /* Next / Previous Work Navigation */
-    .work-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 3rem 0;
-      border-top: 1px solid var(--border);
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .work-nav-link {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      color: var(--ink);
-      text-decoration: none;
-      transition: transform var(--transition);
-    }
-    .work-nav-link:hover {
-      transform: translateY(-2px);
-    }
-    .work-nav-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .work-nav-title {
-      font-family: var(--sans);
-      font-weight: 600;
-      font-size: 1.15rem;
-      color: var(--accent);
-    }
-  </style>
 </head>
 <body>
+
+  <a href="#project-hero" class="skip-link">Skip to content</a>
 
   <!-- ── NAVIGATION ──────────────────────────────────────── -->
   <nav>
@@ -231,7 +67,7 @@
     <div class="container">
       <div class="showcase-banner">
         <span class="showcase-icon">🧮</span>
-        <img src="../images/fastmath-detail.jpg" alt="FastMath Solver UI" onerror="this.style.display='none'">
+        <img src="../images/fastmath-detail.jpg" alt="FastMath Solver UI" loading="lazy" onerror="this.style.display='none'">
       </div>
     </div>
   </section>
