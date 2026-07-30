@@ -120,6 +120,13 @@ function buildIndexPage(projects) {
   if (fs.existsSync(dataYmlPath)) {
     const siteData = yaml.load(fs.readFileSync(dataYmlPath, 'utf-8'));
     
+    // Inject Bio
+    if (siteData.bio) {
+      const bioHtml = `<p class="hero-bio fade-in">\n        ${siteData.bio}\n      </p>`;
+      indexHtml = indexHtml.replace(/<!-- AUTOMATED_BIO_START -->[\s\S]*?<!-- AUTOMATED_BIO_END -->/, 
+        `<!-- AUTOMATED_BIO_START -->\n      ${bioHtml}\n      <!-- AUTOMATED_BIO_END -->`);
+    }
+
     // Inject Skills
     if (siteData.skills) {
       const skillsHtml = siteData.skills.map(group => `

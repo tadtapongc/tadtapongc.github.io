@@ -1,23 +1,25 @@
+bio: "I'm a Computer Engineering student dedicated to applying computing systems, hardware architectures, and algorithms to solve complex challenges across other engineering disciplines. Passionate about research and R&D, I focus on bridging the gap between computer science theory and real-world physical engineering problems."
+
 skills:
   - category: "Programming & Algorithms"
     items:
       - title: "C++"
-        description: "— Competitive programming (TOI20 Bronze Medal) & algorithmic problem solving"
+        description: "â€” Competitive programming (TOI20 Bronze Medal) & algorithmic problem solving"
       - title: "Python"
-        description: "— Scientific scripting"
+        description: "â€” Scientific scripting"
       - title: "Java"
-        description: "— Object-oriented programming & core software systems"
+        description: "â€” Object-oriented programming & core software systems"
   - category: "Engineering & Manufacturing"
     items:
       - title: "Composite Layup"
-        description: "— Hands-on carbon fiber fabrication & molding for Formula Student aero package"
+        description: "â€” Hands-on carbon fiber fabrication & molding for Formula Student aero package"
       - title: "SolidWorks"
-        description: "— 3D CAD modeling & assembly design for aerodynamic elements"
+        description: "â€” 3D CAD modeling & assembly design for aerodynamic elements"
       - title: "Ansys Fluent"
-        description: "— CFD fluid dynamics simulation & aerodynamic analysis"
+        description: "â€” CFD fluid dynamics simulation & aerodynamic analysis"
 
 education:
-  - period: "Aug 2025 — Present"
+  - period: "Aug 2025 â€” Present"
     degree: "B.Eng. Computer Engineering"
     school: "Chulalongkorn University"
-    description: "Studying Computer Engineering with a focus on applying computing systems, algorithms, and hardware architectures to solve cross-disciplinary engineering problems — building a strong foundation for scientific computing, R&D, and research."
+    description: "Studying Computer Engineering with a focus on applying computing systems, algorithms, and hardware architectures to solve cross-disciplinary engineering problems â€” building a strong foundation for scientific computing, R&D, and research."
