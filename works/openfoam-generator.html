@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ✏️ EDIT: Page Title and SEO Metadata -->
+  <title>Tadtapong Chuenchumsaeng — OpenFOAM Case Generator</title>
+  <meta name="description" content="Automated CFD case generation from STL files.">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, [Keyword 1], [Keyword 2], [Keyword 3], Chulalongkorn University">
+  <meta name="author" content="Tadtapong Chuenchumsaeng">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tadtapongc.github.io/works/project-template.html">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../theme.css">
+  <script>
+    if (window.self !== window.top || window.location.search.includes('modal=true')) {
+      document.documentElement.classList.add('in-modal');
+    }
+  </script>
+</head>
+<body>
+
+  <a href="#project-hero" class="skip-link">Skip to content</a>
+
+  <!-- ── NAVIGATION ──────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <span class="nav-logo"><a href="../index.html">Tadtapong C.</a></span>
+    </div>
+  </nav>
+
+  <!-- ── HERO SECTION ────────────────────────────────────── -->
+  <section id="project-hero">
+    <div class="container">
+      <!-- ✏️ EDIT: Category Tag and Title -->
+      <div class="project-header-tag fade-in">CFD Scientific Computing · OpenFOAM & Python</div>
+      <h1 class="project-main-title fade-in">OpenFOAM Case Generator</h1>
+      
+      <!-- ✏️ EDIT: 1-Sentence High-Impact Subtitle -->
+      <p class="project-subtitle fade-in">
+        A fully automated, Python-driven CFD pipeline built through AI collaboration, intelligently processing STL geometries to construct, mesh, and solve OpenFOAM cases.
+      </p>
+
+      <!-- ✏️ EDIT: 4-Pillar Meta Grid -->
+      <div class="meta-grid fade-in">
+        <div class="meta-item">
+          <h4>Role / Type</h4>
+          <p>Architect & AI Orchestrator</p>
+        </div>
+        <div class="meta-item">
+          <h4>Timeline / Context</h4>
+          <p>Scientific Computing R&D (2026)</p>
+        </div>
+        <div class="meta-item">
+          <h4>Core Skills & Tools</h4>
+          <p>Python, OpenFOAM, AI Collaboration</p>
+        </div>
+        <div class="meta-item">
+          <h4>GitHub Repo</h4>
+          <p><a href="https://github.com/tadtapongc/OpenFOAM-CaseGenerator" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">Visit Repo ↗</a></p>
+        </div></div></div></section>
+
+  <!-- ── SHOWCASE BANNER ─────────────────────────────────── -->
+  <section id="project-showcase" class="fade-in">
+    <div class="container">
+      <div class="showcase-banner">
+        <!-- ✏️ EDIT: Fallback Icon and Image URL. When you save an image in images/, update src below. -->
+        <span class="showcase-icon">🌊</span>
+        <img src="/images/openfoam-detail.jpg" alt="OpenFOAM Case Generator" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAIN CONTENT SECTION ────────────────────────────── -->
+  <section>
+    <div class="container">
+
+      <div class="markdown-body fade-in">
+<!-- Pillar 1: Background & Objective --><h3>1. The Challenge &amp; Engineering Objectives</h3>
+<p>Traditional OpenFOAM setups demand painstaking manual tuning of countless dictionary files. To accelerate iterative aerodynamic testing for Formula Student vehicles, I collaborated with AI development tools to translate complex CFD domain knowledge into a robust, generative Python automation script.</p>
+<!-- Pillar 2: Approach, Methodology & Execution --><h3>2. Architecture &amp; Execution</h3>
+<p>By establishing strict architectural boundaries, I directed AI models to scaffold the <code>cfd_gen</code> engine around a declarative JSON configuration.</p>
+<ul>
+<li><strong>Automated Meshing Pipeline:</strong> Prompted AI to generate precise logic orchestrating <code>blockMesh</code> and <code>snappyHexMesh</code>, dynamically calculating scaling and refinement levels on the fly based on STL bounding boxes.</li>
+<li><strong>Turbulence &amp; Solver Initialization:</strong> Orchestrated the generation of scripts that inject k-ω SST turbulence parameters directly into <code>simpleFoam</code> dictionaries.</li>
+<li><strong>HPC Integration:</strong> Guided the AI to output deployment-ready SLURM execution scripts and domain decomposition routines for high-performance computing clusters.</li>
+</ul>
+<!-- Highlight Card / Insight -->
+<blockquote>
+<h4>Key Engineering Takeaway</h4>
+<p>&quot;By strategically prompting AI with complex scientific computing requirements, I successfully bridged the gap between raw aerodynamic theory and a fully functional Python CLI tool, reducing CFD setup times by a factor of five.&quot;</p>
+</blockquote>
+<!-- Pillar 3: Results, Impact & Takeaways --><h3>3. Results &amp; Impact</h3>
+<p>This AI-assisted automation empowered the engineering team to focus on aerodynamic innovation rather than software debugging, achieving a zero-fault initialization rate across all test cases.</p>
+
+      </div>
+
+      <!-- Return Navigation -->
+      <div class="work-nav fade-in" style="justify-content: center; text-align: center;">
+        <a class="btn" href="../index.html" style="padding: 0.8rem 2rem; font-size: 0.88rem;">← Explore More Work</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Tadtapong Chuenchumsaeng</span>
+      <span>Designed & built by Tadtapong</span>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
+

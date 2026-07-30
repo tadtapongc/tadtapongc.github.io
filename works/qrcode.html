@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ✏️ EDIT: Page Title and SEO Metadata -->
+  <title>Tadtapong Chuenchumsaeng — QR Code Generator</title>
+  <meta name="description" content="QR Code Generator">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, [Keyword 1], [Keyword 2], [Keyword 3], Chulalongkorn University">
+  <meta name="author" content="Tadtapong Chuenchumsaeng">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tadtapongc.github.io/works/project-template.html">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../theme.css">
+  <script>
+    if (window.self !== window.top || window.location.search.includes('modal=true')) {
+      document.documentElement.classList.add('in-modal');
+    }
+  </script>
+</head>
+<body>
+
+  <a href="#project-hero" class="skip-link">Skip to content</a>
+
+  <!-- ── NAVIGATION ──────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <span class="nav-logo"><a href="../index.html">Tadtapong C.</a></span>
+    </div>
+  </nav>
+
+  <!-- ── HERO SECTION ────────────────────────────────────── -->
+  <section id="project-hero">
+    <div class="container">
+      <!-- ✏️ EDIT: Category Tag and Title -->
+      <div class="project-header-tag fade-in">Utility Web Application · Digital Tools</div>
+      <h1 class="project-main-title fade-in">QR Code Generator</h1>
+      
+      <!-- ✏️ EDIT: 1-Sentence High-Impact Subtitle -->
+      <p class="project-subtitle fade-in">
+        A highly responsive QR code utility rapidly prototyped via AI-assisted coding, leveraging HTML5 Canvas manipulation for instantaneous client-side rendering.
+      </p>
+
+      <!-- ✏️ EDIT: 4-Pillar Meta Grid -->
+      <div class="meta-grid fade-in">
+        <div class="meta-item">
+          <h4>Role</h4>
+          <p>Architect & AI Prototyper</p>
+        </div>
+        <div class="meta-item">
+          <h4>Timeline</h4>
+          <p>2025</p>
+        </div>
+        <div class="meta-item">
+          <h4>Core Tech</h4>
+          <p>Vanilla JS, Canvas API, Prompt Engineering</p>
+        </div>
+        <div class="meta-item">
+          <h4>Live App</h4>
+          <p><a href="https://qr-korn.vercel.app" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">Visit Site ↗</a></p>
+        </div></div></div></section>
+
+  <!-- ── SHOWCASE BANNER ─────────────────────────────────── -->
+  <section id="project-showcase" class="fade-in">
+    <div class="container">
+      <div class="showcase-banner">
+        <!-- ✏️ EDIT: Fallback Icon and Image URL. When you save an image in images/, update src below. -->
+        <span class="showcase-icon">📱</span>
+        <img src="/images/qrcode-detail.jpg" alt="QR Code Generator" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAIN CONTENT SECTION ────────────────────────────── -->
+  <section>
+    <div class="container">
+
+      <div class="markdown-body fade-in">
+<h3>1. The Challenge &amp; Engineering Objectives</h3>
+<p>Many online QR generators are burdened with paywalls or slow server-side rendering. I aimed to construct a lightweight, privacy-focused utility entirely within the browser&#39;s sandbox. By leveraging AI development tools, I sought to drastically compress the prototyping phase and directly architect advanced Canvas manipulations.</p>
+<h3>2. Architecture &amp; Execution</h3>
+<p>The application revolves around a pure Vanilla JavaScript architecture, eschewing heavy frameworks to ensure sub-millisecond execution times.</p>
+<ul>
+<li><strong>Debounced Event Architecture:</strong> Prompted AI to wrap the underlying matrix encoding in a highly responsive debounce function, preventing main-thread freezing and guaranteeing a buttery-smooth user interface.</li>
+<li><strong>Client-Side Matrix Manipulation:</strong> Orchestrated the logic so the application efficiently reuses the same QR code instance for textual updates, minimizing unnecessary DOM reflows.</li>
+<li><strong>HTML5 Canvas Export Pipeline:</strong> Directed the AI to construct a complex HTML5 Canvas pipeline that intercepts the raw generated QR matrix, injects custom user styles (like padding and colors), and serializes it into a lossless PNG.</li>
+</ul>
+<blockquote>
+<h4>Key Engineering Takeaway</h4>
+<p>&quot;By employing precise prompt engineering, I was able to rapidly scaffold complex HTML5 Canvas manipulations without memorizing the API, validating how AI can serve as a hyper-efficient tool for translating architectural intent into deployable code.&quot;</p>
+</blockquote>
+<h3>3. Results &amp; Impact</h3>
+<p>The tool is exceptionally performant and operates with zero backend infrastructure costs, showcasing the speed and reliability achievable through AI-assisted client-side development.</p>
+
+      </div>
+
+      <!-- Return Navigation -->
+      <div class="work-nav fade-in" style="justify-content: center; text-align: center;">
+        <a class="btn" href="../index.html" style="padding: 0.8rem 2rem; font-size: 0.88rem;">← Explore More Work</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Tadtapong Chuenchumsaeng</span>
+      <span>Designed & built by Tadtapong</span>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
+

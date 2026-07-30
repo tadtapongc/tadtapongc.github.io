@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ✏️ EDIT: Page Title and SEO Metadata -->
+  <title>Tadtapong Chuenchumsaeng — CPxCEDT OPENHOUSE 2025</title>
+  <meta name="description" content="CPxCEDT OPENHOUSE 2025">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, [Keyword 1], [Keyword 2], [Keyword 3], Chulalongkorn University">
+  <meta name="author" content="Tadtapong Chuenchumsaeng">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tadtapongc.github.io/works/project-template.html">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../theme.css">
+  <script>
+    if (window.self !== window.top || window.location.search.includes('modal=true')) {
+      document.documentElement.classList.add('in-modal');
+    }
+  </script>
+</head>
+<body>
+
+  <a href="#project-hero" class="skip-link">Skip to content</a>
+
+  <!-- ── NAVIGATION ──────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <span class="nav-logo"><a href="../index.html">Tadtapong C.</a></span>
+    </div>
+  </nav>
+
+  <!-- ── HERO SECTION ────────────────────────────────────── -->
+  <section id="project-hero">
+    <div class="container">
+      <!-- ✏️ EDIT: Category Tag and Title -->
+      <div class="project-header-tag fade-in">Leadership & Community · Student Mentorship</div>
+      <h1 class="project-main-title fade-in">CPxCEDT OPENHOUSE 2025</h1>
+      
+      <!-- ✏️ EDIT: 1-Sentence High-Impact Subtitle -->
+      <p class="project-subtitle fade-in">
+        [Write your 1-2 sentence overview of your staff mentorship and workshop facilitation for the academic camp here...]
+      </p>
+
+      <!-- ✏️ EDIT: 4-Pillar Meta Grid -->
+      <div class="meta-grid fade-in">
+        <div class="meta-item">
+          <h4>Role / Type</h4>
+          <p>Camp Mentor & Workshop Staff</p>
+        </div>
+        <div class="meta-item">
+          <h4>Timeline / Context</h4>
+          <p>Intensive Camp (Nov 2024)</p>
+        </div>
+        <div class="meta-item">
+          <h4>Core Skills & Tools</h4>
+          <p>Team Leadership, STEM Mentorship</p>
+        </div>
+        <div class="meta-item">
+          <h4>Key Outcome & Impact</h4>
+          <p>Mentored Student Teams & Smooth Operations</p>
+        </div></div></div></section>
+
+  <!-- ── SHOWCASE BANNER ─────────────────────────────────── -->
+  <section id="project-showcase" class="fade-in">
+    <div class="container">
+      <div class="showcase-banner">
+        <!-- ✏️ EDIT: Fallback Icon and Image URL. When you save an image in images/, update src below. -->
+        <span class="showcase-icon">🏕️</span>
+        <img src="/images/camp-detail.jpg" alt="CPxCEDT OPENHOUSE 2025" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAIN CONTENT SECTION ────────────────────────────── -->
+  <section>
+    <div class="container">
+
+      <div class="markdown-body fade-in">
+<!-- Pillar 1: Background & Objective --><h3>1. The Background &amp; Community Objectives</h3>
+<!-- ✏️ Write your background context and objectives below -->
+<p>[Write about why this academic camp was organized and the goals for inspiring students in engineering here...]</p>
+<!-- Pillar 2: Approach, Methodology & Execution --><h3>2. Mentorship Approach &amp; Operational Execution</h3>
+<!-- ✏️ Write your mentorship approach and event logistics below -->
+<p>[Describe your specific responsibilities leading STEM workshops, guiding teams, and managing logistics here...]</p>
+<ul>
+<li><strong>[Workshop Facilitation]:</strong> [Explain how you taught technical design concepts...]</li>
+<li><strong>[Team Mentorship]:</strong> [Explain how you guided student teams through challenges...]</li>
+<li><strong>[Event Logistics]:</strong> [Explain how you coordinated equipment and schedules...]</li>
+</ul>
+<!-- Highlight Card / Insight -->
+<blockquote>
+<h4>Key Leadership Takeaway</h4>
+<!-- ✏️ Write your memorable lesson or leadership takeaway below --><p>&quot;[Write your key leadership lesson on mentoring engineering students and effective communication...]&quot;</p>
+</blockquote>
+<!-- Pillar 3: Results, Impact & Takeaways --><h3>3. Results, Impact &amp; Leadership Growth</h3>
+<!-- ✏️ Write your final results and personal growth below -->
+<p>[Summarize participant feedback and how this leadership role developed your communication and team management skills here...]</p>
+
+      </div>
+
+      <!-- Return Navigation -->
+      <div class="work-nav fade-in" style="justify-content: center; text-align: center;">
+        <a class="btn" href="../index.html" style="padding: 0.8rem 2rem; font-size: 0.88rem;">← Explore More Work</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Tadtapong Chuenchumsaeng</span>
+      <span>Designed & built by Tadtapong</span>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
+

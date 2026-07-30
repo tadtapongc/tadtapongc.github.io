@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ✏️ EDIT: Page Title and SEO Metadata -->
+  <title>Tadtapong Chuenchumsaeng — MemeAI Generator</title>
+  <meta name="description" content="MemeAI Generator">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, [Keyword 1], [Keyword 2], [Keyword 3], Chulalongkorn University">
+  <meta name="author" content="Tadtapong Chuenchumsaeng">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tadtapongc.github.io/works/project-template.html">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../theme.css">
+  <script>
+    if (window.self !== window.top || window.location.search.includes('modal=true')) {
+      document.documentElement.classList.add('in-modal');
+    }
+  </script>
+</head>
+<body>
+
+  <a href="#project-hero" class="skip-link">Skip to content</a>
+
+  <!-- ── NAVIGATION ──────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <span class="nav-logo"><a href="../index.html">Tadtapong C.</a></span>
+    </div>
+  </nav>
+
+  <!-- ── HERO SECTION ────────────────────────────────────── -->
+  <section id="project-hero">
+    <div class="container">
+      <!-- ✏️ EDIT: Category Tag and Title -->
+      <div class="project-header-tag fade-in">Full-Stack · AI</div>
+      <h1 class="project-main-title fade-in">MemeAI Generator</h1>
+      
+      <!-- ✏️ EDIT: 1-Sentence High-Impact Subtitle -->
+      <p class="project-subtitle fade-in">
+        A modern Next.js platform co-authored with AI, integrating advanced 27B parameter vision models to autonomously generate context-aware meme captions from user-uploaded images.
+      </p>
+
+      <!-- ✏️ EDIT: 4-Pillar Meta Grid -->
+      <div class="meta-grid fade-in">
+        <div class="meta-item">
+          <h4>Role</h4>
+          <p>Architect & AI Orchestrator</p>
+        </div>
+        <div class="meta-item">
+          <h4>Timeline</h4>
+          <p>2026</p>
+        </div>
+        <div class="meta-item">
+          <h4>Core Tech</h4>
+          <p>Next.js, Prisma, Qwen3.6 27B, AI Coding Tools</p>
+        </div>
+        <div class="meta-item">
+          <h4>Live App</h4>
+          <p><a href="https://samsantech-compengess.vercel.app" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">Visit Site ↗</a></p>
+        </div></div></div></section>
+
+  <!-- ── SHOWCASE BANNER ─────────────────────────────────── -->
+  <section id="project-showcase" class="fade-in">
+    <div class="container">
+      <div class="showcase-banner">
+        <!-- ✏️ EDIT: Fallback Icon and Image URL. When you save an image in images/, update src below. -->
+        <span class="showcase-icon">😂</span>
+        <img src="/images/meme-detail.jpg" alt="MemeAI Generator" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MAIN CONTENT SECTION ────────────────────────────── -->
+  <section>
+    <div class="container">
+
+      <div class="markdown-body fade-in">
+<h3>1. The Challenge &amp; Objectives</h3>
+<p>Translating image context into humorous text requires sophisticated multimodal AI. I aimed to bridge this gap by rapidly prototyping a full-stack platform using modern AI development tools. The challenge was orchestrating complex parsing logic and connecting multiple external APIs seamlessly.</p>
+<p>Beyond the API integration, the engineering challenge involved guiding the AI to build a resilient parsing system capable of taming unpredictable LLM outputs.</p>
+<h3>2. Architecture &amp; Execution</h3>
+<p>By taking an architect-first approach, I directed AI code generation to construct a Next.js 14 application that leverages Server Actions for secure API execution.</p>
+<ul>
+<li><strong>Multimodal Inference:</strong> Guided AI to implement client-side image downscaling and base64 conversion before interfacing with the Qwen3.6 27B vision model via the Groq API.</li>
+<li><strong>LLM Parsing Fallback Engine:</strong> Collaborated with AI to engineer a robust 3-layer parsing fallback (direct parse, aggressive sanitization, regex extraction), ensuring the application gracefully recovers even if the model hallucinates formatting.</li>
+<li><strong>Database &amp; Storage:</strong> Prompted the AI to implement efficient base64 encoding strategies with Prisma ORM, persisting image data directly as BLOBs to eliminate external object storage overhead.</li>
+</ul>
+<blockquote>
+<h4>Key Engineering Takeaway</h4>
+<p>&quot;By orchestrating AI development tools, I was able to rapidly integrate multiple disparate technologies—from Next.js Server Actions to multimodal LLM APIs—focusing purely on system architecture and robust fallback logic rather than boilerplate code.&quot;</p>
+</blockquote>
+<h3>3. Results &amp; Impact</h3>
+<p>The result is a highly performant, interactive platform featuring optimistic UI updates for likes and saves, demonstrating the sheer velocity achievable when combining modern web frameworks with AI-assisted coding.</p>
+
+      </div>
+
+      <!-- Return Navigation -->
+      <div class="work-nav fade-in" style="justify-content: center; text-align: center;">
+        <a class="btn" href="../index.html" style="padding: 0.8rem 2rem; font-size: 0.88rem;">← Explore More Work</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Tadtapong Chuenchumsaeng</span>
+      <span>Designed & built by Tadtapong</span>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
+
