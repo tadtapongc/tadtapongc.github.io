@@ -21,42 +21,34 @@ meta_items:
 ---
 
 <!-- Pillar 1: Background & Objective -->
-      <article class="content-block fade-in">
-        <h3>1. The Background & Community Objectives</h3>
+      
+        ### 1. The Background & Community Objectives
         <!-- ✏️ Write your background context and objectives below -->
-        <p>
-          [Write about why this academic camp was organized and the goals for inspiring students in engineering here...]
-        </p>
-      </article>
+        [Write about why this academic camp was organized and the goals for inspiring students in engineering here...]
+
+      
 
       <!-- Pillar 2: Approach, Methodology & Execution -->
-      <article class="content-block fade-in">
-        <h3>2. Mentorship Approach & Operational Execution</h3>
+      
+        ### 2. Mentorship Approach & Operational Execution
         <!-- ✏️ Write your mentorship approach and event logistics below -->
-        <p>
-          [Describe your specific responsibilities leading STEM workshops, guiding teams, and managing logistics here...]
-        </p>
-        <ul>
-          <li><strong>[Workshop Facilitation]:</strong> [Explain how you taught technical design concepts...]</li>
-          <li><strong>[Team Mentorship]:</strong> [Explain how you guided student teams through challenges...]</li>
-          <li><strong>[Event Logistics]:</strong> [Explain how you coordinated equipment and schedules...]</li>
-        </ul>
-      </article>
+        [Describe your specific responsibilities leading STEM workshops, guiding teams, and managing logistics here...]
+
+        - <strong>[Workshop Facilitation]:</strong> [Explain how you taught technical design concepts...]
+          - <strong>[Team Mentorship]:</strong> [Explain how you guided student teams through challenges...]
+          - <strong>[Event Logistics]:</strong> [Explain how you coordinated equipment and schedules...]
+
+      
 
       <!-- Highlight Card / Insight -->
-      <div class="highlight-card fade-in">
-        <h4>Key Leadership Takeaway</h4>
-        <!-- ✏️ Write your memorable lesson or leadership takeaway below -->
-        <p>
-          "[Write your key leadership lesson on mentoring engineering students and effective communication...]"
-        </p>
-      </div>
+      > #### Key Leadership Takeaway
+> <!-- ✏️ Write your memorable lesson or leadership takeaway below -->
+>
+> "[Write your key leadership lesson on mentoring engineering students and effective communication...]"
+
 
       <!-- Pillar 3: Results, Impact & Takeaways -->
-      <article class="content-block fade-in">
-        <h3>3. Results, Impact & Leadership Growth</h3>
+      
+        ### 3. Results, Impact & Leadership Growth
         <!-- ✏️ Write your final results and personal growth below -->
-        <p>
-          [Summarize participant feedback and how this leadership role developed your communication and team management skills here...]
-        </p>
-      </article>
+        [Summarize participant feedback and how this leadership role developed your communication and team management skills here...]

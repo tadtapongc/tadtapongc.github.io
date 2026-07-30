@@ -21,42 +21,34 @@ meta_items:
 ---
 
 <!-- Pillar 1: Background & Objective -->
-      <article class="content-block fade-in">
-        <h3>1. The Challenge & Olympiad Objectives</h3>
+      
+        ### 1. The Challenge & Olympiad Objectives
         <!-- ✏️ Write your background context and objectives below -->
-        <p>
-          [Write about the rigor of the Thailand Olympiad in Informatics and your algorithmic competition goals here...]
-        </p>
-      </article>
+        [Write about the rigor of the Thailand Olympiad in Informatics and your algorithmic competition goals here...]
+
+      
 
       <!-- Pillar 2: Approach, Methodology & Execution -->
-      <article class="content-block fade-in">
-        <h3>2. Technical Focus & Algorithmic Paradigm</h3>
+      
+        ### 2. Technical Focus & Algorithmic Paradigm
         <!-- ✏️ Write your technical training and problem-solving focus below -->
-        <p>
-          [Describe your training in graph algorithms, dynamic programming, and data structures in C++ here...]
-        </p>
-        <ul>
-          <li><strong>[Graph Theory & Routing]:</strong> [Explain your focus on shortest path / MST algorithms...]</li>
-          <li><strong>[Dynamic Programming]:</strong> [Explain your approach to combinatorial optimization...]</li>
-          <li><strong>[Data Structures]:</strong> [Explain how you utilized segment trees / Fenwick trees...]</li>
-        </ul>
-      </article>
+        [Describe your training in graph algorithms, dynamic programming, and data structures in C++ here...]
+
+        - <strong>[Graph Theory & Routing]:</strong> [Explain your focus on shortest path / MST algorithms...]
+          - <strong>[Dynamic Programming]:</strong> [Explain your approach to combinatorial optimization...]
+          - <strong>[Data Structures]:</strong> [Explain how you utilized segment trees / Fenwick trees...]
+
+      
 
       <!-- Highlight Card / Insight -->
-      <div class="highlight-card fade-in">
-        <h4>Key Engineering Takeaway</h4>
-        <!-- ✏️ Write your memorable lesson or engineering takeaway below -->
-        <p>
-          "[Write your key insight on algorithmic complexity, Big-O analysis, and software scalability...]"
-        </p>
-      </div>
+      > #### Key Engineering Takeaway
+> <!-- ✏️ Write your memorable lesson or engineering takeaway below -->
+>
+> "[Write your key insight on algorithmic complexity, Big-O analysis, and software scalability...]"
+
 
       <!-- Pillar 3: Results, Impact & Takeaways -->
-      <article class="content-block fade-in">
-        <h3>3. Results, Impact & Long-Term Growth</h3>
+      
+        ### 3. Results, Impact & Long-Term Growth
         <!-- ✏️ Write your final results and long-term impact below -->
-        <p>
-          [Summarize earning the Bronze Medal and how this algorithmic foundation helps your R&D and software engineering today...]
-        </p>
-      </article>
+        [Summarize earning the Bronze Medal and how this algorithmic foundation helps your R&D and software engineering today...]

@@ -62,8 +62,8 @@ files.forEach(file => {
   }
 
   // Handle body
-  projectHtml = projectHtml.replace(/<!-- ✏️ Pillar 1: Background & Objective -->[\s\S]*?<!-- Return Navigation -->/, 
-    `${htmlBody}\n\n      <!-- Return Navigation -->`);
+  projectHtml = projectHtml.replace(/<div class="markdown-body fade-in">[\s\S]*?<\/div>/, 
+    `<div class="markdown-body fade-in">\n${htmlBody}\n      </div>`);
 
   // Write the file
   fs.writeFileSync(path.join(WORKS_DIR, `${slug}.html`), projectHtml);
