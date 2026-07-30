@@ -78,7 +78,41 @@
   <section>
     <div class="container">
 
-      
+      <article class="content-block fade-in">
+        <h3>1. The Challenge & Objectives</h3>
+        <p>
+          Academic workflows are frequently fragmented across disparate syllabi, calendars, and note-taking silos. The objective was to engineer a singular, high-performance interface to unify this experience. By utilizing AI-assisted development, I focused heavily on data architecture and user experience, delegating the boilerplate generation to the AI.
+        </p>
+        <p>
+          The core challenge was orchestrating the AI to model highly relational academic data efficiently, avoiding expensive multi-table joins in PostgreSQL.
+        </p>
+      </article><pre><code>  &lt;article class=&quot;content-block fade-in&quot;&gt;
+    &lt;h3&gt;2. Architecture &amp; Execution&lt;/h3&gt;
+    &lt;p&gt;
+      Constructed with Next.js 14 utilizing the App Router, I served as the primary architect, directing the AI to implement a fluid, desktop-class user experience backed by a unique document-oriented data model.
+    &lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Document-Oriented SQL via JSONB:&lt;/strong&gt; Directed the AI to leverage PostgreSQL&#39;s native &lt;code&gt;jsonb&lt;/code&gt; datatype through Drizzle ORM. The complete academic hierarchy is encapsulated as a single JSON document, radically reducing read/write latency.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Algorithmic Dashboard Triage:&lt;/strong&gt; Guided the AI to construct a bespoke triage engine that aggregates tasks across active courses, intelligently categorizing items into Overdue, In-Progress, and Upcoming states.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Secure Markdown Engine:&lt;/strong&gt; Orchestrated the integration of the &lt;code&gt;marked&lt;/code&gt; library with a custom AST Renderer, prompting the AI to aggressively sanitize outputs via &lt;code&gt;DOMPurify&lt;/code&gt; to guarantee strict protection against XSS vulnerabilities.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/article&gt;
+
+  &lt;div class=&quot;highlight-card fade-in&quot;&gt;
+    &lt;h4&gt;Key Engineering Takeaway&lt;/h4&gt;
+    &lt;p&gt;
+      &quot;Collaborating with AI allowed me to boldly experiment with a JSONB document-oriented schema within a traditional SQL database. The AI seamlessly translated this architectural vision into reality, resulting in instantaneous client-side interactions paired with transparent cloud persistence.&quot;
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;article class=&quot;content-block fade-in&quot;&gt;
+    &lt;h3&gt;3. Results &amp; Impact&lt;/h3&gt;
+    &lt;p&gt;
+      Paced delivers a frictionless, real-time experience yielding zero perceptible load times, proving that modern full-stack architecture coupled with AI orchestration can produce production-grade platforms at incredible speed.
+    &lt;/p&gt;
+  &lt;/article&gt;
+</code></pre>
+
 
       <!-- Return Navigation -->
       <div class="work-nav fade-in" style="justify-content: center; text-align: center;">

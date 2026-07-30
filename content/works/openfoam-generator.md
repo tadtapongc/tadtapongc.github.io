@@ -21,19 +21,39 @@ meta_items:
     link: "https://github.com/tadtapongc/OpenFOAM-CaseGenerator"
 ---
 
-### 1. The Challenge & Engineering Objectives
-Traditional OpenFOAM setups demand painstaking manual tuning of countless dictionary files. To accelerate iterative aerodynamic testing for Formula Student vehicles, I collaborated with AI development tools to translate complex CFD domain knowledge into a robust, generative Python automation script.
+<!-- Pillar 1: Background & Objective -->
+      <article class="content-block fade-in">
+        <h3>1. The Challenge & Engineering Objectives</h3>
+        <p>
+          Traditional OpenFOAM setups demand painstaking manual tuning of countless dictionary files. To accelerate iterative aerodynamic testing for Formula Student vehicles, I collaborated with AI development tools to translate complex CFD domain knowledge into a robust, generative Python automation script.
+        </p>
+      </article>
 
-### 2. Architecture & Execution
-By establishing strict architectural boundaries, I directed AI models to scaffold the `cfd_gen` engine around a declarative JSON configuration.
-- **Automated Meshing Pipeline:** Prompted AI to generate precise logic orchestrating `blockMesh` and `snappyHexMesh`, dynamically calculating scaling and refinement levels on the fly based on STL bounding boxes.
-- **Turbulence & Solver Initialization:** Orchestrated the generation of scripts that inject k-ω SST turbulence parameters directly into `simpleFoam` dictionaries.
-- **HPC Integration:** Guided the AI to output deployment-ready SLURM execution scripts and domain decomposition routines for high-performance computing clusters.
+      <!-- Pillar 2: Approach, Methodology & Execution -->
+      <article class="content-block fade-in">
+        <h3>2. Architecture & Execution</h3>
+        <p>
+          By establishing strict architectural boundaries, I directed AI models to scaffold the <code>cfd_gen</code> engine around a declarative JSON configuration.
+        </p>
+        <ul>
+          <li><strong>Automated Meshing Pipeline:</strong> Prompted AI to generate precise logic orchestrating <code>blockMesh</code> and <code>snappyHexMesh</code>, dynamically calculating scaling and refinement levels on the fly based on STL bounding boxes.</li>
+          <li><strong>Turbulence & Solver Initialization:</strong> Orchestrated the generation of scripts that inject k-ω SST turbulence parameters directly into <code>simpleFoam</code> dictionaries.</li>
+          <li><strong>HPC Integration:</strong> Guided the AI to output deployment-ready SLURM execution scripts and domain decomposition routines for high-performance computing clusters.</li>
+        </ul>
+      </article>
 
-<div class="highlight-card fade-in">
-  <h4>Key Engineering Takeaway</h4>
-  <p>"By strategically prompting AI with complex scientific computing requirements, I successfully bridged the gap between raw aerodynamic theory and a fully functional Python CLI tool, reducing CFD setup times by a factor of five."</p>
-</div>
+      <!-- Highlight Card / Insight -->
+      <div class="highlight-card fade-in">
+        <h4>Key Engineering Takeaway</h4>
+        <p>
+          "By strategically prompting AI with complex scientific computing requirements, I successfully bridged the gap between raw aerodynamic theory and a fully functional Python CLI tool, reducing CFD setup times by a factor of five."
+        </p>
+      </div>
 
-### 3. Results & Impact
-This AI-assisted automation empowered the engineering team to focus on aerodynamic innovation rather than software debugging, achieving a zero-fault initialization rate across all test cases.
+      <!-- Pillar 3: Results, Impact & Takeaways -->
+      <article class="content-block fade-in">
+        <h3>3. Results & Impact</h3>
+        <p>
+          This AI-assisted automation empowered the engineering team to focus on aerodynamic innovation rather than software debugging, achieving a zero-fault initialization rate across all test cases.
+        </p>
+      </article>
