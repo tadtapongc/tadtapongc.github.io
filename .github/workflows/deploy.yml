@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'content/works/**'
+      - 'content/**'
       - 'admin/config.yml'
       - 'src/**'
       - 'build.js'
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -38,4 +38,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated Build: Generate HTML from Sveltia CMS [skip ci]"
-          file_pattern: "works/*.html index.html"
+          file_pattern: "works/*.html index.html sitemap.xml"

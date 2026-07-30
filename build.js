@@ -9,10 +9,14 @@ const SRC_DIR = path.join(__dirname, 'src');
 const TEMPLATE_FILE = path.join(SRC_DIR, 'project.html');
 const INDEX_TEMPLATE = path.join(SRC_DIR, 'index.html');
 const INDEX_OUT = path.join(__dirname, 'index.html');
+const SITEMAP_OUT = path.join(__dirname, 'sitemap.xml');
+const SITE_URL = 'https://tadtapongc.github.io';
+
+const REQUIRED_FIELDS = ['title', 'date', 'category', 'card_tag', 'header_tag', 'icon'];
 
 function formatDate(dateStr) {
   if (!dateStr) return '';
-  const d = new Date(dateStr + '-01');
+  const d = new Date(dateStr + '-01T00:00:00');
   if (isNaN(d.getTime())) return dateStr;
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   return `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
@@ -39,24 +43,56 @@ function generateCard(project) {
           </a>`;
 }
 
+function validateFrontmatter(data, filename) {
+  const warnings = [];
+  for (const field of REQUIRED_FIELDS) {
+    if (!data[field]) {
+      warnings.push(`  ⚠ Missing required field "${field}" in ${filename}`);
+    }
+  }
+  if (data.category && !['technical', 'activities', 'awards'].includes(data.category)) {
+    warnings.push(`  ⚠ Invalid category "${data.category}" in ${filename} (must be technical, activities, or awards)`);
+  }
+  if (data.date && !/^\d{4}-\d{2}$/.test(data.date)) {
+    warnings.push(`  ⚠ Invalid date format "${data.date}" in ${filename} (expected YYYY-MM)`);
+  }
+  if (warnings.length > 0) {
+    console.warn(`\nWarnings for ${filename}:`);
+    warnings.forEach(w => console.warn(w));
+  }
+  return warnings.length === 0;
+}
+
 function readProjects() {
-  if (!fs.existsSync(CONTENT_DIR)) return [];
+  if (!fs.existsSync(CONTENT_DIR)) {
+    console.warn('Content directory not found:', CONTENT_DIR);
+    return [];
+  }
   
   const files = fs.readdirSync(CONTENT_DIR).filter(f => f.endsWith('.md'));
   const projects = [];
 
   for (const file of files) {
-    const content = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf-8');
-    const match = content.match(/---\r?\n([\s\S]+?)\r?\n---/);
-    if (!match) continue;
+    try {
+      const content = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf-8');
+      const match = content.match(/---\r?\n([\s\S]+?)\r?\n---/);
+      if (!match) {
+        console.warn(`Skipping ${file}: no frontmatter found`);
+        continue;
+      }
 
-    const data = yaml.load(match[1]);
-    data.slug = file.replace('.md', '');
-    
-    const markdownBody = content.substring(match[0].length);
-    const htmlBody = marked.parse(markdownBody);
+      const data = yaml.load(match[1]);
+      data.slug = file.replace('.md', '');
+      
+      validateFrontmatter(data, file);
+      
+      const markdownBody = content.substring(match[0].length);
+      const htmlBody = marked.parse(markdownBody);
 
-    projects.push({ data, htmlBody });
+      projects.push({ data, htmlBody });
+    } catch (err) {
+      console.error(`Error processing ${file}:`, err.message);
+    }
   }
 
   // Sort descending by date
@@ -68,34 +104,57 @@ function buildProjectPages(projects) {
     fs.mkdirSync(WORKS_DIR, { recursive: true });
   }
 
-  const templateHtml = fs.readFileSync(TEMPLATE_FILE, 'utf-8');
+  let templateHtml;
+  try {
+    templateHtml = fs.readFileSync(TEMPLATE_FILE, 'utf-8');
+  } catch (err) {
+    console.error('Failed to read project template:', err.message);
+    process.exit(1);
+  }
 
   for (const project of projects) {
-    const { data, htmlBody } = project;
-    let projectHtml = templateHtml
-      .replace(/\[Project Title\]/g, data.title || '')
-      .replace(/\[Short 1-2 sentence description of your project or activity for search engines and social sharing\.\]/g, data.short_description || '')
-      .replace(/\[Category · Specialization Area\]/g, data.header_tag || '')
-      .replace(/\[Main Project or Activity Title\]/g, data.title || '')
-      .replace(/\[Write a crisp, high-impact 1-2 sentence summary of what this project accomplished, the problem it solved, or your leadership role\.\]/g, data.subtitle || '')
-      .replace(/<span class="showcase-icon">.*?<\/span>/s, `<span class="showcase-icon">${data.icon || '🚀'}</span>`)
-      .replace(/<img src="\.\.\/images\/\[your-image\.jpg\]" alt="\[Project Screenshot or Photo\]"/g, `<img src="${data.banner || ''}" alt="${data.title || ''}"`);
+    try {
+      const { data, htmlBody } = project;
+      
+      // Derive keywords from card_tag and header_tag
+      const keywordParts = [data.card_tag, data.header_tag]
+        .filter(Boolean)
+        .join(', ')
+        .replace(/·/g, ',')
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+      const uniqueKeywords = [...new Set(keywordParts)].join(', ');
 
-    if (data.meta_items && data.meta_items.length > 0) {
-      const metaItemsHtml = data.meta_items.map(item => `
+      let projectHtml = templateHtml
+        .replace(/\[Project Title\]/g, data.title || '')
+        .replace(/\[Short 1-2 sentence description of your project or activity for search engines and social sharing\.\]/g, data.short_description || '')
+        .replace(/\[PROJECT_KEYWORDS\]/g, uniqueKeywords || data.title || '')
+        .replace(/\[PROJECT_SLUG\]/g, data.slug)
+        .replace(/\[Category · Specialization Area\]/g, data.header_tag || '')
+        .replace(/\[Main Project or Activity Title\]/g, data.title || '')
+        .replace(/\[Write a crisp, high-impact 1-2 sentence summary of what this project accomplished, the problem it solved, or your leadership role\.\]/g, data.subtitle || '')
+        .replace(/<span class="showcase-icon">.*?<\/span>/s, `<span class="showcase-icon">${data.icon || '🚀'}</span>`)
+        .replace(/<img src="\.\.\/images\/\[your-image\.jpg\]" alt="\[Project Screenshot or Photo\]"/g, `<img src="${data.banner || ''}" alt="${data.title || ''}"`);
+
+      if (data.meta_items && data.meta_items.length > 0) {
+        const metaItemsHtml = data.meta_items.map(item => `
         <div class="meta-item">
           <h4>${item.label}</h4>
           <p>${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">${item.value}</a>` : item.value}</p>
         </div>`).join('');
-      
-      projectHtml = projectHtml.replace(/<div class="meta-grid fade-in">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/, 
-        `<div class="meta-grid fade-in">${metaItemsHtml}</div></div></section>`);
+        
+        projectHtml = projectHtml.replace(/<div class="meta-grid fade-in">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/, 
+          `<div class="meta-grid fade-in">${metaItemsHtml}</div></div></section>`);
+      }
+
+      projectHtml = projectHtml.replace(/<div class="markdown-body fade-in">[\s\S]*?<\/div>/, 
+        `<div class="markdown-body fade-in">\n${htmlBody}\n      </div>`);
+
+      fs.writeFileSync(path.join(WORKS_DIR, `${data.slug}.html`), projectHtml);
+    } catch (err) {
+      console.error(`Error building page for ${project.data.slug}:`, err.message);
     }
-
-    projectHtml = projectHtml.replace(/<div class="markdown-body fade-in">[\s\S]*?<\/div>/, 
-      `<div class="markdown-body fade-in">\n${htmlBody}\n      </div>`);
-
-    fs.writeFileSync(path.join(WORKS_DIR, `${data.slug}.html`), projectHtml);
   }
 }
 
@@ -104,7 +163,13 @@ function buildIndexPage(projects) {
   const cardsActivities = projects.filter(p => p.data.category === 'activities').map(generateCard).join('\n');
   const cardsAwards = projects.filter(p => p.data.category === 'awards').map(generateCard).join('\n');
 
-  let indexHtml = fs.readFileSync(INDEX_TEMPLATE, 'utf-8');
+  let indexHtml;
+  try {
+    indexHtml = fs.readFileSync(INDEX_TEMPLATE, 'utf-8');
+  } catch (err) {
+    console.error('Failed to read index template:', err.message);
+    process.exit(1);
+  }
 
   indexHtml = indexHtml.replace(/<!-- AUTOMATED_PROJECTS_START_TECHNICAL -->[\s\S]*?<!-- AUTOMATED_PROJECTS_END_TECHNICAL -->/, 
     `<!-- AUTOMATED_PROJECTS_START_TECHNICAL -->\n${cardsTechnical}\n<!-- AUTOMATED_PROJECTS_END_TECHNICAL -->`);
@@ -118,31 +183,32 @@ function buildIndexPage(projects) {
   // Load static data from data.yml
   const dataYmlPath = path.join(__dirname, 'content', 'data.yml');
   if (fs.existsSync(dataYmlPath)) {
-    const siteData = yaml.load(fs.readFileSync(dataYmlPath, 'utf-8'));
-    
-    // Inject Bio
-    if (siteData.bio) {
-      const bioHtml = `<p class="hero-bio fade-in">\n        ${siteData.bio}\n      </p>`;
-      indexHtml = indexHtml.replace(/<!-- AUTOMATED_BIO_START -->[\s\S]*?<!-- AUTOMATED_BIO_END -->/, 
-        `<!-- AUTOMATED_BIO_START -->\n      ${bioHtml}\n      <!-- AUTOMATED_BIO_END -->`);
-    }
+    try {
+      const siteData = yaml.load(fs.readFileSync(dataYmlPath, 'utf-8'));
+      
+      // Inject Bio
+      if (siteData.bio) {
+        const bioHtml = `<p class="hero-bio fade-in">\n        ${siteData.bio}\n      </p>`;
+        indexHtml = indexHtml.replace(/<!-- AUTOMATED_BIO_START -->[\s\S]*?<!-- AUTOMATED_BIO_END -->/, 
+          `<!-- AUTOMATED_BIO_START -->\n      ${bioHtml}\n      <!-- AUTOMATED_BIO_END -->`);
+      }
 
-    // Inject Skills
-    if (siteData.skills) {
-      const skillsHtml = siteData.skills.map(group => `
+      // Inject Skills
+      if (siteData.skills) {
+        const skillsHtml = siteData.skills.map(group => `
         <div class="skill-group fade-in">
           <h3>${group.category}</h3>
           <ul class="skill-detail-list">
             ${group.items.map(item => `<li><strong>${item.title}</strong> ${item.description}</li>`).join('\n            ')}
           </ul>
         </div>`).join('\n');
-      indexHtml = indexHtml.replace(/<!-- AUTOMATED_SKILLS_START -->[\s\S]*?<!-- AUTOMATED_SKILLS_END -->/, 
-        `<!-- AUTOMATED_SKILLS_START -->\n${skillsHtml}\n<!-- AUTOMATED_SKILLS_END -->`);
-    }
+        indexHtml = indexHtml.replace(/<!-- AUTOMATED_SKILLS_START -->[\s\S]*?<!-- AUTOMATED_SKILLS_END -->/, 
+          `<!-- AUTOMATED_SKILLS_START -->\n${skillsHtml}\n<!-- AUTOMATED_SKILLS_END -->`);
+      }
 
-    // Inject Education
-    if (siteData.education) {
-      const eduHtml = siteData.education.map(edu => `
+      // Inject Education
+      if (siteData.education) {
+        const eduHtml = siteData.education.map(edu => `
         <li class="exp-item fade-in">
           <span class="exp-period">${edu.period}</span>
           <div>
@@ -151,19 +217,61 @@ function buildIndexPage(projects) {
             <p class="exp-desc">${edu.description}</p>
           </div>
         </li>`).join('\n');
-      indexHtml = indexHtml.replace(/<!-- AUTOMATED_EDUCATION_START -->[\s\S]*?<!-- AUTOMATED_EDUCATION_END -->/, 
-        `<!-- AUTOMATED_EDUCATION_START -->\n${eduHtml}\n<!-- AUTOMATED_EDUCATION_END -->`);
+        indexHtml = indexHtml.replace(/<!-- AUTOMATED_EDUCATION_START -->[\s\S]*?<!-- AUTOMATED_EDUCATION_END -->/, 
+          `<!-- AUTOMATED_EDUCATION_START -->\n${eduHtml}\n<!-- AUTOMATED_EDUCATION_END -->`);
+      }
+    } catch (err) {
+      console.error('Error processing data.yml:', err.message);
     }
   }
 
   fs.writeFileSync(INDEX_OUT, indexHtml);
 }
 
+function buildSitemap(projects) {
+  const today = new Date().toISOString().split('T')[0];
+  
+  let urls = `  <url>
+    <loc>${SITE_URL}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>`;
+
+  for (const project of projects) {
+    urls += `\n  <url>
+    <loc>${SITE_URL}/works/${project.data.slug}.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+  }
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`;
+
+  fs.writeFileSync(SITEMAP_OUT, sitemap);
+}
+
 function main() {
+  console.log('Starting build...');
+  
   const projects = readProjects();
+  console.log(`Found ${projects.length} project(s)`);
+  
   buildProjectPages(projects);
+  console.log(`Generated ${projects.length} project page(s) in works/`);
+  
   buildIndexPage(projects);
-  console.log('Build complete!');
+  console.log('Generated index.html');
+  
+  buildSitemap(projects);
+  console.log('Generated sitemap.xml');
+  
+  console.log('\nBuild complete!');
 }
 
 main();

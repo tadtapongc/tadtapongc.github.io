@@ -53,7 +53,7 @@
     <div class="container">
       <span class="nav-logo">Tadtapong C.</span>
       <ul class="nav-links">
-        <li><a href="#portfolio" onclick="filterTab('technical')">What I've Done</a></li>
+        <li><a href="#portfolio" data-nav-filter="technical">What I've Done</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -90,9 +90,9 @@
 
       <!-- Filter Tabs -->
       <div class="filter-tabs fade-in">
-        <button class="filter-btn active" data-filter="technical">🛠️ Technical Work</button>
-        <button class="filter-btn" data-filter="activities">🤝 Activities & Leadership</button>
-        <button class="filter-btn" data-filter="awards">🏆 Awards & Competitions</button>
+        <button class="filter-btn active" data-filter="technical" aria-pressed="true">🛠️ Technical Work</button>
+        <button class="filter-btn" data-filter="activities" aria-pressed="false">🤝 Activities & Leadership</button>
+        <button class="filter-btn" data-filter="awards" aria-pressed="false">🏆 Awards & Competitions</button>
       </div>
 
       <!-- Technical Work Group -->
@@ -211,7 +211,7 @@
 <!-- AUTOMATED_PROJECTS_END_TECHNICAL -->
         </div>
         <div style="margin-top: 2.5rem; text-align: right;">
-          <button class="btn" onclick="filterTab('activities'); document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'});">Next: Activities & Leadership →</button>
+          <button class="btn" data-nav-filter="activities">Next: Activities & Leadership →</button>
         </div>
       </div>
 
@@ -241,7 +241,7 @@
 <!-- AUTOMATED_PROJECTS_END_ACTIVITIES -->
         </div>
         <div style="margin-top: 2.5rem; text-align: right;">
-          <button class="btn" onclick="filterTab('awards'); document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'});">Next: Awards & Competitions →</button>
+          <button class="btn" data-nav-filter="awards">Next: Awards & Competitions →</button>
         </div>
       </div>
 
@@ -271,7 +271,7 @@
 <!-- AUTOMATED_PROJECTS_END_AWARDS -->
         </div>
         <div style="margin-top: 2.5rem; text-align: right;">
-          <button class="btn" onclick="filterTab('technical'); document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'});">Back to Technical Work ↺</button>
+          <button class="btn" data-nav-filter="technical">Back to Technical Work ↺</button>
         </div>
       </div>
 
@@ -410,11 +410,9 @@
     // Filter Tabs Logic & Dynamic Entry Counter (with Smooth Animation)
     function filterTab(category) {
       document.querySelectorAll('.filter-btn').forEach(btn => {
-        if (btn.getAttribute('data-filter') === category) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
+        const isActive = btn.getAttribute('data-filter') === category;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
       });
 
       let visibleCards = 0;
@@ -440,6 +438,16 @@
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         filterTab(btn.getAttribute('data-filter'));
+      });
+    });
+
+    // Navigation filter buttons (Next/Back buttons and nav links)
+    document.querySelectorAll('[data-nav-filter]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        if (el.tagName === 'A') e.preventDefault();
+        const cat = el.getAttribute('data-nav-filter');
+        filterTab(cat);
+        document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
       });
     });
 
@@ -600,14 +608,14 @@
       });
       
       // Deep linking on load
-      window.addEventListener('DOMContentLoaded', () => {
+      (function() {
         const urlParams = new URLSearchParams(window.location.search);
         const projectSlug = urlParams.get('project');
         if (projectSlug) {
           const url = 'works/' + projectSlug + '.html';
           openModal(url, true);
         }
-      });
+      })();
     }
   </script>
 
@@ -615,5 +623,3 @@
   <div id="toast-notification" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
-
-<!-- Trigger CI Build -->
