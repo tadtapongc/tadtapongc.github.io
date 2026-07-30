@@ -21,34 +21,29 @@ meta_items:
 ---
 
 <!-- Pillar 1: Background & Objective -->
-      
-        ### 1. The Background & Community Objectives
-        <!-- ✏️ Write your background context and objectives below -->
-        [Write about why this academic camp was organized and the goals for inspiring students in engineering here...]
 
-      
+### 1. The Background & Community Objectives
+<!-- ✏️ Write your background context and objectives below -->
+[Write about why this academic camp was organized and the goals for inspiring students in engineering here...]
 
-      <!-- Pillar 2: Approach, Methodology & Execution -->
-      
-        ### 2. Mentorship Approach & Operational Execution
-        <!-- ✏️ Write your mentorship approach and event logistics below -->
-        [Describe your specific responsibilities leading STEM workshops, guiding teams, and managing logistics here...]
+<!-- Pillar 2: Approach, Methodology & Execution -->
 
-        - <strong>[Workshop Facilitation]:</strong> [Explain how you taught technical design concepts...]
-          - <strong>[Team Mentorship]:</strong> [Explain how you guided student teams through challenges...]
-          - <strong>[Event Logistics]:</strong> [Explain how you coordinated equipment and schedules...]
+### 2. Mentorship Approach & Operational Execution
+<!-- ✏️ Write your mentorship approach and event logistics below -->
+[Describe your specific responsibilities leading STEM workshops, guiding teams, and managing logistics here...]
 
-      
+- <strong>[Workshop Facilitation]:</strong> [Explain how you taught technical design concepts...]
+- <strong>[Team Mentorship]:</strong> [Explain how you guided student teams through challenges...]
+- <strong>[Event Logistics]:</strong> [Explain how you coordinated equipment and schedules...]
 
-      <!-- Highlight Card / Insight -->
-      > #### Key Leadership Takeaway
+<!-- Highlight Card / Insight -->
+> #### Key Leadership Takeaway
 > <!-- ✏️ Write your memorable lesson or leadership takeaway below -->
 >
 > "[Write your key leadership lesson on mentoring engineering students and effective communication...]"
 
+<!-- Pillar 3: Results, Impact & Takeaways -->
 
-      <!-- Pillar 3: Results, Impact & Takeaways -->
-      
-        ### 3. Results, Impact & Leadership Growth
-        <!-- ✏️ Write your final results and personal growth below -->
-        [Summarize participant feedback and how this leadership role developed your communication and team management skills here...]
+### 3. Results, Impact & Leadership Growth
+<!-- ✏️ Write your final results and personal growth below -->
+[Summarize participant feedback and how this leadership role developed your communication and team management skills here...]

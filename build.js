@@ -23,7 +23,7 @@ const projects = [];
 
 files.forEach(file => {
   const content = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf-8');
-  const match = content.match(/---\n([\s\S]+?)\n---/);
+  const match = content.match(/---\r?\n([\s\S]+?)\r?\n---/);
   
   if (!match) return;
 

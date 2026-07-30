@@ -21,34 +21,29 @@ meta_items:
 ---
 
 <!-- Pillar 1: Background & Objective -->
-      
-        ### 1. The Challenge & Olympiad Objectives
-        <!-- ✏️ Write your background context and objectives below -->
-        [Write about the rigor of the Thailand Olympiad in Informatics and your algorithmic competition goals here...]
 
-      
+### 1. The Challenge & Olympiad Objectives
+<!-- ✏️ Write your background context and objectives below -->
+[Write about the rigor of the Thailand Olympiad in Informatics and your algorithmic competition goals here...]
 
-      <!-- Pillar 2: Approach, Methodology & Execution -->
-      
-        ### 2. Technical Focus & Algorithmic Paradigm
-        <!-- ✏️ Write your technical training and problem-solving focus below -->
-        [Describe your training in graph algorithms, dynamic programming, and data structures in C++ here...]
+<!-- Pillar 2: Approach, Methodology & Execution -->
 
-        - <strong>[Graph Theory & Routing]:</strong> [Explain your focus on shortest path / MST algorithms...]
-          - <strong>[Dynamic Programming]:</strong> [Explain your approach to combinatorial optimization...]
-          - <strong>[Data Structures]:</strong> [Explain how you utilized segment trees / Fenwick trees...]
+### 2. Technical Focus & Algorithmic Paradigm
+<!-- ✏️ Write your technical training and problem-solving focus below -->
+[Describe your training in graph algorithms, dynamic programming, and data structures in C++ here...]
 
-      
+- <strong>[Graph Theory & Routing]:</strong> [Explain your focus on shortest path / MST algorithms...]
+- <strong>[Dynamic Programming]:</strong> [Explain your approach to combinatorial optimization...]
+- <strong>[Data Structures]:</strong> [Explain how you utilized segment trees / Fenwick trees...]
 
-      <!-- Highlight Card / Insight -->
-      > #### Key Engineering Takeaway
+<!-- Highlight Card / Insight -->
+> #### Key Engineering Takeaway
 > <!-- ✏️ Write your memorable lesson or engineering takeaway below -->
 >
 > "[Write your key insight on algorithmic complexity, Big-O analysis, and software scalability...]"
 
+<!-- Pillar 3: Results, Impact & Takeaways -->
 
-      <!-- Pillar 3: Results, Impact & Takeaways -->
-      
-        ### 3. Results, Impact & Long-Term Growth
-        <!-- ✏️ Write your final results and long-term impact below -->
-        [Summarize earning the Bronze Medal and how this algorithmic foundation helps your R&D and software engineering today...]
+### 3. Results, Impact & Long-Term Growth
+<!-- ✏️ Write your final results and long-term impact below -->
+[Summarize earning the Bronze Medal and how this algorithmic foundation helps your R&D and software engineering today...]
