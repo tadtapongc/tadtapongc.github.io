@@ -1,7 +1,7 @@
 ---
 title: "FastMath Solver"
 subtitle: "A blazing-fast, client-side combinatorial solver prototyped through AI collaboration, evaluating complex permutations and rendering exact algorithmic steps via MathJax."
-short_description: "FastMath Solver"
+short_description: "Client-side combinatorial math solver evaluating complex permutations and rendering steps via MathJax."
 date: "2025-10"
 category: "technical"
 card_tag: "Interactive Web Tool · Mathematical Algorithms"

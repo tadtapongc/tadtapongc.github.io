@@ -1,7 +1,7 @@
 ---
 title: "OpenFOAM Case Generator"
 subtitle: "A fully automated, Python-driven CFD pipeline built through AI collaboration, intelligently processing STL geometries to construct, mesh, and solve OpenFOAM cases."
-short_description: "Automated CFD case generation from STL files."
+short_description: "Python-driven CFD pipeline for automated meshing and solving OpenFOAM cases from STL files."
 date: "2026-05"
 category: "technical"
 card_tag: "CFD Tool · OpenFOAM"

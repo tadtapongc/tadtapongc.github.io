@@ -1,7 +1,7 @@
 ---
 title: MemeAI Generator
 subtitle: A modern Next.js platform co-authored with AI, integrating advanced 27B parameter vision models to autonomously generate context-aware meme captions from user-uploaded images.
-short_description: MemeAI Generator
+short_description: "Next.js platform using 27B parameter vision models to autonomously generate context-aware meme captions."
 date: 2026-05
 category: technical
 card_tag: Full-Stack · AI

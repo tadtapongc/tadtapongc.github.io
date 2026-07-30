@@ -1,7 +1,7 @@
 ---
 title: "TOI20 Bronze Medal"
 subtitle: "[Write your 1-2 sentence overview of competing at TOI20 and earning the Bronze Medal in algorithmic problem-solving here...]"
-short_description: "TOI20 Bronze Medal"
+short_description: "Bronze Medalist at the 20th Thailand Olympiad in Informatics (TOI20) for algorithmic programming."
 date: "2024-05"
 category: "awards"
 card_tag: "National Olympiad · Algorithmic Programming & C++"

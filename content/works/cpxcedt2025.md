@@ -1,7 +1,7 @@
 ---
 title: CPxCEDT OPENHOUSE 2025
 subtitle: '[Write your 1-2 sentence overview of your staff mentorship and workshop facilitation for the academic camp here...]'
-short_description: CPxCEDT OPENHOUSE 2025
+short_description: "Staff mentor and STEM workshop facilitator for the CPxCEDT Openhouse 2025 academic camp."
 date: 2024-11
 category: activities
 card_tag: Leadership & Community · Student Mentorship

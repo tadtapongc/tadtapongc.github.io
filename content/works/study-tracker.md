@@ -1,7 +1,7 @@
 ---
 title: Paced Study Tracker
 subtitle: A centralized academic management dashboard co-architected with AI, featuring dynamic timeline triage, markdown note parsing, and JSONB cloud synchronization.
-short_description: Paced Study Tracker
+short_description: "AI-architected academic dashboard with dynamic timeline triage and JSONB cloud sync."
 date: 2026-05
 category: technical
 card_tag: Full-Stack · Productivity

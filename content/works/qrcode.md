@@ -1,7 +1,7 @@
 ---
 title: "QR Code Generator"
 subtitle: "A highly responsive QR code utility rapidly prototyped via AI-assisted coding, leveraging HTML5 Canvas manipulation for instantaneous client-side rendering."
-short_description: "QR Code Generator"
+short_description: "Highly responsive QR code utility using HTML5 Canvas for instantaneous client-side rendering."
 date: "2025-08"
 category: "technical"
 card_tag: "Utility Web Application · Digital Tools"
