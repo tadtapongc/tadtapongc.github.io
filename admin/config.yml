@@ -6,7 +6,7 @@ backend:
   base_url: https://sveltia-cms-auth.tadtapong2549.workers.dev/
 
 media_folder: "images"
-public_folder: "../images"
+public_folder: "/images"
 
 collections:
   - name: "works"
