@@ -159,12 +159,7 @@ nav .breadcrumb { margin-bottom: 0; }
   transition: background var(--transition), color var(--transition);
 }
 .btn:hover { background: var(--ink); color: var(--bg); }
-.btn-accent {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--bg);
-}
-.btn-accent:hover { background: var(--ink); border-color: var(--ink); }
+
 
 /* ─── FORM ELEMENTS ──────────────────────────────────────── */
 label {
@@ -339,9 +334,7 @@ footer .container {
 /* Ensure clean styling inside modal body */
 .modal-body nav,
 .modal-body footer,
-.modal-body .work-nav {
-  display: none !important;
-}
+
 .modal-body #project-hero {
   padding-top: 1rem !important;
   padding-bottom: 2rem !important;
@@ -438,13 +431,8 @@ footer .container {
   .meta-item p {
     font-size: 0.82rem !important;
   }
-  .work-nav {
-    padding: 2rem 0 !important;
-    gap: 1rem !important;
-  }
-  .work-nav-title {
-    font-size: 1rem !important;
-  }
+  
+  
   .section-heading h2 {
     font-size: 1.45rem !important;
   }
@@ -674,38 +662,11 @@ footer .container {
 }
 
 /* Next / Previous Work Navigation */
-.work-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 3rem 0;
-  border-top: 1px solid var(--border);
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-.work-nav-link {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  color: var(--ink);
-  text-decoration: none;
-  transition: transform var(--transition);
-}
-.work-nav-link:hover {
-  transform: translateY(-2px);
-}
-.work-nav-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.work-nav-title {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 1.15rem;
-  color: var(--accent);
-}
+
+
+
+
+
 
 /* ═══════════════════════════════════════════════════════════
    ACCESSIBILITY
@@ -955,17 +916,7 @@ footer .container {
 .exp-role { font-family: var(--sans); font-size: 1.15rem; font-weight: 600; }
 .exp-company { color: var(--accent); font-size: 0.85rem; margin: 0.2rem 0 0.5rem; }
 .exp-desc { color: var(--muted); font-size: 0.84rem; line-height: 1.75; }
-.exp-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.65rem;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--accent);
-  transition: all 0.2s ease;
-}
-.exp-link:hover { color: var(--ink); transform: translateX(3px); }
+
 
 /* ─── CONTACT ─────────────────────────────────────────────── */
 #contact { border-bottom: 1px solid var(--border); }
@@ -1108,3 +1059,4 @@ footer .container {
   .contact-text p { font-size: 0.82rem !important; }
   .contact-links { align-items: flex-start; }
 }
+

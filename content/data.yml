@@ -1,0 +1,23 @@
+skills:
+  - category: "Programming & Algorithms"
+    items:
+      - title: "C++"
+        description: "— Competitive programming (TOI20 Bronze Medal) & algorithmic problem solving"
+      - title: "Python"
+        description: "— Scientific scripting"
+      - title: "Java"
+        description: "— Object-oriented programming & core software systems"
+  - category: "Engineering & Manufacturing"
+    items:
+      - title: "Composite Layup"
+        description: "— Hands-on carbon fiber fabrication & molding for Formula Student aero package"
+      - title: "SolidWorks"
+        description: "— 3D CAD modeling & assembly design for aerodynamic elements"
+      - title: "Ansys Fluent"
+        description: "— CFD fluid dynamics simulation & aerodynamic analysis"
+
+education:
+  - period: "Aug 2025 — Present"
+    degree: "B.Eng. Computer Engineering"
+    school: "Chulalongkorn University"
+    description: "Studying Computer Engineering with a focus on applying computing systems, algorithms, and hardware architectures to solve cross-disciplinary engineering problems — building a strong foundation for scientific computing, R&D, and research."

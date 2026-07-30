@@ -115,6 +115,40 @@ function buildIndexPage(projects) {
   indexHtml = indexHtml.replace(/<!-- AUTOMATED_PROJECTS_START_AWARDS -->[\s\S]*?<!-- AUTOMATED_PROJECTS_END_AWARDS -->/, 
     `<!-- AUTOMATED_PROJECTS_START_AWARDS -->\n${cardsAwards}\n<!-- AUTOMATED_PROJECTS_END_AWARDS -->`);
 
+  // Load static data from data.yml
+  const dataYmlPath = path.join(__dirname, 'content', 'data.yml');
+  if (fs.existsSync(dataYmlPath)) {
+    const siteData = yaml.load(fs.readFileSync(dataYmlPath, 'utf-8'));
+    
+    // Inject Skills
+    if (siteData.skills) {
+      const skillsHtml = siteData.skills.map(group => `
+        <div class="skill-group fade-in">
+          <h3>${group.category}</h3>
+          <ul class="skill-detail-list">
+            ${group.items.map(item => `<li><strong>${item.title}</strong> ${item.description}</li>`).join('\n            ')}
+          </ul>
+        </div>`).join('\n');
+      indexHtml = indexHtml.replace(/<!-- AUTOMATED_SKILLS_START -->[\s\S]*?<!-- AUTOMATED_SKILLS_END -->/, 
+        `<!-- AUTOMATED_SKILLS_START -->\n${skillsHtml}\n<!-- AUTOMATED_SKILLS_END -->`);
+    }
+
+    // Inject Education
+    if (siteData.education) {
+      const eduHtml = siteData.education.map(edu => `
+        <li class="exp-item fade-in">
+          <span class="exp-period">${edu.period}</span>
+          <div>
+            <div class="exp-role">${edu.degree}</div>
+            <div class="exp-company">${edu.school}</div>
+            <p class="exp-desc">${edu.description}</p>
+          </div>
+        </li>`).join('\n');
+      indexHtml = indexHtml.replace(/<!-- AUTOMATED_EDUCATION_START -->[\s\S]*?<!-- AUTOMATED_EDUCATION_END -->/, 
+        `<!-- AUTOMATED_EDUCATION_START -->\n${eduHtml}\n<!-- AUTOMATED_EDUCATION_END -->`);
+    }
+  }
+
   fs.writeFileSync(INDEX_OUT, indexHtml);
 }
 
