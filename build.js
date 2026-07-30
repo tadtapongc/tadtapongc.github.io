@@ -5,76 +5,18 @@ const yaml = require('js-yaml');
 
 const CONTENT_DIR = path.join(__dirname, 'content', 'works');
 const WORKS_DIR = path.join(__dirname, 'works');
-const TEMPLATE_FILE = path.join(WORKS_DIR, 'project-template.html');
-const INDEX_FILE = path.join(__dirname, 'index.html');
+const SRC_DIR = path.join(__dirname, 'src');
+const TEMPLATE_FILE = path.join(SRC_DIR, 'project.html');
+const INDEX_TEMPLATE = path.join(SRC_DIR, 'index.html');
+const INDEX_OUT = path.join(__dirname, 'index.html');
 
-// Read the template
-const templateHtml = fs.readFileSync(TEMPLATE_FILE, 'utf-8');
-
-// Ensure works directory exists
-if (!fs.existsSync(WORKS_DIR)) {
-  fs.mkdirSync(WORKS_DIR, { recursive: true });
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + '-01');
+  if (isNaN(d.getTime())) return dateStr;
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
 }
-
-// Get all markdown files
-const files = fs.existsSync(CONTENT_DIR) ? fs.readdirSync(CONTENT_DIR).filter(f => f.endsWith('.md')) : [];
-
-const projects = [];
-
-files.forEach(file => {
-  const content = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf-8');
-  const match = content.match(/---\r?\n([\s\S]+?)\r?\n---/);
-  
-  if (!match) return;
-
-  const frontmatterStr = match[1];
-  const markdownBody = content.substring(match[0].length);
-  
-  const data = yaml.load(frontmatterStr);
-  const slug = file.replace('.md', '');
-  data.slug = slug;
-  
-  // Parse markdown
-  const htmlBody = marked.parse(markdownBody);
-
-  projects.push({ data, htmlBody });
-
-  // Render project HTML
-  let projectHtml = templateHtml
-    .replace(/\[Project Title\]/g, data.title || '')
-    .replace(/\[Short 1-2 sentence description of your project or activity for search engines and social sharing\.\]/g, data.short_description || '')
-    .replace(/\[Category · Specialization Area\]/g, data.header_tag || '')
-    .replace(/\[Main Project or Activity Title\]/g, data.title || '')
-    .replace(/\[Write a crisp, high-impact 1-2 sentence summary of what this project accomplished, the problem it solved, or your leadership role\.\]/g, data.subtitle || '')
-    .replace(/<span class="showcase-icon">.*?<\/span>/s, `<span class="showcase-icon">${data.icon || '🚀'}</span>`)
-    .replace(/<img src="\.\.\/images\/\[your-image\.jpg\]" alt="\[Project Screenshot or Photo\]"/g, `<img src="${data.banner || ''}" alt="${data.title || ''}"`);
-
-  // Handle meta items (replace the whole meta-grid block)
-  if (data.meta_items && data.meta_items.length > 0) {
-    const metaItemsHtml = data.meta_items.map(item => `
-        <div class="meta-item">
-          <h4>${item.label}</h4>
-          <p>${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">${item.value}</a>` : item.value}</p>
-        </div>`).join('');
-    
-    projectHtml = projectHtml.replace(/<div class="meta-grid fade-in">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/, 
-      `<div class="meta-grid fade-in">${metaItemsHtml}</div></div></section>`);
-  }
-
-  // Handle body
-  projectHtml = projectHtml.replace(/<div class="markdown-body fade-in">[\s\S]*?<\/div>/, 
-    `<div class="markdown-body fade-in">\n${htmlBody}\n      </div>`);
-
-  // Write the file
-  fs.writeFileSync(path.join(WORKS_DIR, `${slug}.html`), projectHtml);
-});
-
-// Update index.html
-projects.sort((a, b) => {
-  const dateA = a.data.date || '1970-01';
-  const dateB = b.data.date || '1970-01';
-  return dateB.localeCompare(dateA);
-});
 
 function generateCard(project) {
   return `
@@ -97,29 +39,90 @@ function generateCard(project) {
           </a>`;
 }
 
-function formatDate(dateStr) {
-  if (!dateStr) return '';
-  const d = new Date(dateStr + '-01');
-  if (isNaN(d.getTime())) return dateStr;
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
+function readProjects() {
+  if (!fs.existsSync(CONTENT_DIR)) return [];
+  
+  const files = fs.readdirSync(CONTENT_DIR).filter(f => f.endsWith('.md'));
+  const projects = [];
+
+  for (const file of files) {
+    const content = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf-8');
+    const match = content.match(/---\r?\n([\s\S]+?)\r?\n---/);
+    if (!match) continue;
+
+    const data = yaml.load(match[1]);
+    data.slug = file.replace('.md', '');
+    
+    const markdownBody = content.substring(match[0].length);
+    const htmlBody = marked.parse(markdownBody);
+
+    projects.push({ data, htmlBody });
+  }
+
+  // Sort descending by date
+  return projects.sort((a, b) => (b.data.date || '1970-01').localeCompare(a.data.date || '1970-01'));
 }
 
-const cardsTechnical = projects.filter(p => p.data.category === 'technical').map(generateCard).join('\n');
-const cardsActivities = projects.filter(p => p.data.category === 'activities').map(generateCard).join('\n');
-const cardsAwards = projects.filter(p => p.data.category === 'awards').map(generateCard).join('\n');
+function buildProjectPages(projects) {
+  if (!fs.existsSync(WORKS_DIR)) {
+    fs.mkdirSync(WORKS_DIR, { recursive: true });
+  }
 
-let indexHtml = fs.readFileSync(INDEX_FILE, 'utf-8');
+  const templateHtml = fs.readFileSync(TEMPLATE_FILE, 'utf-8');
 
-// Replace sections in index.html (we will use comments as markers)
-indexHtml = indexHtml.replace(/<!-- AUTOMATED_PROJECTS_START_TECHNICAL -->[\s\S]*?<!-- AUTOMATED_PROJECTS_END_TECHNICAL -->/, 
-  `<!-- AUTOMATED_PROJECTS_START_TECHNICAL -->\n${cardsTechnical}\n<!-- AUTOMATED_PROJECTS_END_TECHNICAL -->`);
+  for (const project of projects) {
+    const { data, htmlBody } = project;
+    let projectHtml = templateHtml
+      .replace(/\[Project Title\]/g, data.title || '')
+      .replace(/\[Short 1-2 sentence description of your project or activity for search engines and social sharing\.\]/g, data.short_description || '')
+      .replace(/\[Category · Specialization Area\]/g, data.header_tag || '')
+      .replace(/\[Main Project or Activity Title\]/g, data.title || '')
+      .replace(/\[Write a crisp, high-impact 1-2 sentence summary of what this project accomplished, the problem it solved, or your leadership role\.\]/g, data.subtitle || '')
+      .replace(/<span class="showcase-icon">.*?<\/span>/s, `<span class="showcase-icon">${data.icon || '🚀'}</span>`)
+      .replace(/<img src="\.\.\/images\/\[your-image\.jpg\]" alt="\[Project Screenshot or Photo\]"/g, `<img src="${data.banner || ''}" alt="${data.title || ''}"`);
 
-indexHtml = indexHtml.replace(/<!-- AUTOMATED_PROJECTS_START_ACTIVITIES -->[\s\S]*?<!-- AUTOMATED_PROJECTS_END_ACTIVITIES -->/, 
-  `<!-- AUTOMATED_PROJECTS_START_ACTIVITIES -->\n${cardsActivities}\n<!-- AUTOMATED_PROJECTS_END_ACTIVITIES -->`);
+    if (data.meta_items && data.meta_items.length > 0) {
+      const metaItemsHtml = data.meta_items.map(item => `
+        <div class="meta-item">
+          <h4>${item.label}</h4>
+          <p>${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">${item.value}</a>` : item.value}</p>
+        </div>`).join('');
+      
+      projectHtml = projectHtml.replace(/<div class="meta-grid fade-in">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/, 
+        `<div class="meta-grid fade-in">${metaItemsHtml}</div></div></section>`);
+    }
 
-indexHtml = indexHtml.replace(/<!-- AUTOMATED_PROJECTS_START_AWARDS -->[\s\S]*?<!-- AUTOMATED_PROJECTS_END_AWARDS -->/, 
-  `<!-- AUTOMATED_PROJECTS_START_AWARDS -->\n${cardsAwards}\n<!-- AUTOMATED_PROJECTS_END_AWARDS -->`);
+    projectHtml = projectHtml.replace(/<div class="markdown-body fade-in">[\s\S]*?<\/div>/, 
+      `<div class="markdown-body fade-in">\n${htmlBody}\n      </div>`);
 
-fs.writeFileSync(INDEX_FILE, indexHtml);
-console.log('Build complete!');
+    fs.writeFileSync(path.join(WORKS_DIR, `${data.slug}.html`), projectHtml);
+  }
+}
+
+function buildIndexPage(projects) {
+  const cardsTechnical = projects.filter(p => p.data.category === 'technical').map(generateCard).join('\n');
+  const cardsActivities = projects.filter(p => p.data.category === 'activities').map(generateCard).join('\n');
+  const cardsAwards = projects.filter(p => p.data.category === 'awards').map(generateCard).join('\n');
+
+  let indexHtml = fs.readFileSync(INDEX_TEMPLATE, 'utf-8');
+
+  indexHtml = indexHtml.replace(/<!-- AUTOMATED_PROJECTS_START_TECHNICAL -->[\s\S]*?<!-- AUTOMATED_PROJECTS_END_TECHNICAL -->/, 
+    `<!-- AUTOMATED_PROJECTS_START_TECHNICAL -->\n${cardsTechnical}\n<!-- AUTOMATED_PROJECTS_END_TECHNICAL -->`);
+
+  indexHtml = indexHtml.replace(/<!-- AUTOMATED_PROJECTS_START_ACTIVITIES -->[\s\S]*?<!-- AUTOMATED_PROJECTS_END_ACTIVITIES -->/, 
+    `<!-- AUTOMATED_PROJECTS_START_ACTIVITIES -->\n${cardsActivities}\n<!-- AUTOMATED_PROJECTS_END_ACTIVITIES -->`);
+
+  indexHtml = indexHtml.replace(/<!-- AUTOMATED_PROJECTS_START_AWARDS -->[\s\S]*?<!-- AUTOMATED_PROJECTS_END_AWARDS -->/, 
+    `<!-- AUTOMATED_PROJECTS_START_AWARDS -->\n${cardsAwards}\n<!-- AUTOMATED_PROJECTS_END_AWARDS -->`);
+
+  fs.writeFileSync(INDEX_OUT, indexHtml);
+}
+
+function main() {
+  const projects = readProjects();
+  buildProjectPages(projects);
+  buildIndexPage(projects);
+  console.log('Build complete!');
+}
+
+main();
