@@ -78,41 +78,34 @@
   <section>
     <div class="container">
 
-      <article class="content-block fade-in">
-        <h3>1. The Challenge & Objectives</h3>
-        <p>
-          Translating image context into humorous text requires sophisticated multimodal AI. I aimed to bridge this gap by rapidly prototyping a full-stack platform using modern AI development tools. The challenge was orchestrating complex parsing logic and connecting multiple external APIs seamlessly.
-        </p>
-        <p>
-          Beyond the API integration, the engineering challenge involved guiding the AI to build a resilient parsing system capable of taming unpredictable LLM outputs.
-        </p>
-      </article><pre><code>  &lt;article class=&quot;content-block fade-in&quot;&gt;
-    &lt;h3&gt;2. Architecture &amp; Execution&lt;/h3&gt;
-    &lt;p&gt;
-      By taking an architect-first approach, I directed AI code generation to construct a Next.js 14 application that leverages Server Actions for secure API execution.
-    &lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Multimodal Inference:&lt;/strong&gt; Guided AI to implement client-side image downscaling and base64 conversion before interfacing with the Qwen3.6 27B vision model via the Groq API.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;LLM Parsing Fallback Engine:&lt;/strong&gt; Collaborated with AI to engineer a robust 3-layer parsing fallback (direct parse, aggressive sanitization, regex extraction), ensuring the application gracefully recovers even if the model hallucinates formatting.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Database &amp; Storage:&lt;/strong&gt; Prompted the AI to implement efficient base64 encoding strategies with Prisma ORM, persisting image data directly as BLOBs to eliminate external object storage overhead.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/article&gt;
+      <div class="markdown-body fade-in">
+<h3>1. The Challenge &amp; Objectives</h3>
+<pre><code>    Translating image context into humorous text requires sophisticated multimodal AI. I aimed to bridge this gap by rapidly prototyping a full-stack platform using modern AI development tools. The challenge was orchestrating complex parsing logic and connecting multiple external APIs seamlessly.
 
-  &lt;div class=&quot;highlight-card fade-in&quot;&gt;
-    &lt;h4&gt;Key Engineering Takeaway&lt;/h4&gt;
-    &lt;p&gt;
-      &quot;By orchestrating AI development tools, I was able to rapidly integrate multiple disparate technologies—from Next.js Server Actions to multimodal LLM APIs—focusing purely on system architecture and robust fallback logic rather than boilerplate code.&quot;
-    &lt;/p&gt;
-  &lt;/div&gt;
+    Beyond the API integration, the engineering challenge involved guiding the AI to build a resilient parsing system capable of taming unpredictable LLM outputs.
 
-  &lt;article class=&quot;content-block fade-in&quot;&gt;
-    &lt;h3&gt;3. Results &amp; Impact&lt;/h3&gt;
-    &lt;p&gt;
-      The result is a highly performant, interactive platform featuring optimistic UI updates for likes and saves, demonstrating the sheer velocity achievable when combining modern web frameworks with AI-assisted coding.
-    &lt;/p&gt;
-  &lt;/article&gt;
+  
+
+  
+    ### 2. Architecture &amp; Execution
+    By taking an architect-first approach, I directed AI code generation to construct a Next.js 14 application that leverages Server Actions for secure API execution.
+
+    - &lt;strong&gt;Multimodal Inference:&lt;/strong&gt; Guided AI to implement client-side image downscaling and base64 conversion before interfacing with the Qwen3.6 27B vision model via the Groq API.
+      - &lt;strong&gt;LLM Parsing Fallback Engine:&lt;/strong&gt; Collaborated with AI to engineer a robust 3-layer parsing fallback (direct parse, aggressive sanitization, regex extraction), ensuring the application gracefully recovers even if the model hallucinates formatting.
+      - &lt;strong&gt;Database &amp; Storage:&lt;/strong&gt; Prompted the AI to implement efficient base64 encoding strategies with Prisma ORM, persisting image data directly as BLOBs to eliminate external object storage overhead.
+
+  
+
+  &gt; #### Key Engineering Takeaway
+</code></pre>
+<blockquote>
+<p>&quot;By orchestrating AI development tools, I was able to rapidly integrate multiple disparate technologies—from Next.js Server Actions to multimodal LLM APIs—focusing purely on system architecture and robust fallback logic rather than boilerplate code.&quot;</p>
+</blockquote>
+<pre><code>    ### 3. Results &amp; Impact
+    The result is a highly performant, interactive platform featuring optimistic UI updates for likes and saves, demonstrating the sheer velocity achievable when combining modern web frameworks with AI-assisted coding.
 </code></pre>
 
+      </div>
 
       <!-- Return Navigation -->
       <div class="work-nav fade-in" style="justify-content: center; text-align: center;">

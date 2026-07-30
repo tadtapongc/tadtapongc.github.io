@@ -78,38 +78,32 @@
   <section>
     <div class="container">
 
-      <article class="content-block fade-in">
-        <h3>1. The Challenge & Engineering Objectives</h3>
-        <p>
-          Many online QR generators are burdened with paywalls or slow server-side rendering. I aimed to construct a lightweight, privacy-focused utility entirely within the browser's sandbox. By leveraging AI development tools, I sought to drastically compress the prototyping phase and directly architect advanced Canvas manipulations.
-        </p>
-      </article><pre><code>  &lt;article class=&quot;content-block fade-in&quot;&gt;
-    &lt;h3&gt;2. Architecture &amp; Execution&lt;/h3&gt;
-    &lt;p&gt;
-      The application revolves around a pure Vanilla JavaScript architecture, eschewing heavy frameworks to ensure sub-millisecond execution times.
-    &lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Debounced Event Architecture:&lt;/strong&gt; Prompted AI to wrap the underlying matrix encoding in a highly responsive debounce function, preventing main-thread freezing and guaranteeing a buttery-smooth user interface.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Client-Side Matrix Manipulation:&lt;/strong&gt; Orchestrated the logic so the application efficiently reuses the same QR code instance for textual updates, minimizing unnecessary DOM reflows.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;HTML5 Canvas Export Pipeline:&lt;/strong&gt; Directed the AI to construct a complex HTML5 Canvas pipeline that intercepts the raw generated QR matrix, injects custom user styles (like padding and colors), and serializes it into a lossless PNG.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/article&gt;
+      <div class="markdown-body fade-in">
+<h3>1. The Challenge &amp; Engineering Objectives</h3>
+<pre><code>    Many online QR generators are burdened with paywalls or slow server-side rendering. I aimed to construct a lightweight, privacy-focused utility entirely within the browser&#39;s sandbox. By leveraging AI development tools, I sought to drastically compress the prototyping phase and directly architect advanced Canvas manipulations.
 
-  &lt;div class=&quot;highlight-card fade-in&quot;&gt;
-    &lt;h4&gt;Key Engineering Takeaway&lt;/h4&gt;
-    &lt;p&gt;
-      &quot;By employing precise prompt engineering, I was able to rapidly scaffold complex HTML5 Canvas manipulations without memorizing the API, validating how AI can serve as a hyper-efficient tool for translating architectural intent into deployable code.&quot;
-    &lt;/p&gt;
-  &lt;/div&gt;
+  
 
-  &lt;article class=&quot;content-block fade-in&quot;&gt;
-    &lt;h3&gt;3. Results &amp; Impact&lt;/h3&gt;
-    &lt;p&gt;
-      The tool is exceptionally performant and operates with zero backend infrastructure costs, showcasing the speed and reliability achievable through AI-assisted client-side development.
-    &lt;/p&gt;
-  &lt;/article&gt;
+  
+    ### 2. Architecture &amp; Execution
+    The application revolves around a pure Vanilla JavaScript architecture, eschewing heavy frameworks to ensure sub-millisecond execution times.
+
+    - &lt;strong&gt;Debounced Event Architecture:&lt;/strong&gt; Prompted AI to wrap the underlying matrix encoding in a highly responsive debounce function, preventing main-thread freezing and guaranteeing a buttery-smooth user interface.
+      - &lt;strong&gt;Client-Side Matrix Manipulation:&lt;/strong&gt; Orchestrated the logic so the application efficiently reuses the same QR code instance for textual updates, minimizing unnecessary DOM reflows.
+      - &lt;strong&gt;HTML5 Canvas Export Pipeline:&lt;/strong&gt; Directed the AI to construct a complex HTML5 Canvas pipeline that intercepts the raw generated QR matrix, injects custom user styles (like padding and colors), and serializes it into a lossless PNG.
+
+  
+
+  &gt; #### Key Engineering Takeaway
+</code></pre>
+<blockquote>
+<p>&quot;By employing precise prompt engineering, I was able to rapidly scaffold complex HTML5 Canvas manipulations without memorizing the API, validating how AI can serve as a hyper-efficient tool for translating architectural intent into deployable code.&quot;</p>
+</blockquote>
+<pre><code>    ### 3. Results &amp; Impact
+    The tool is exceptionally performant and operates with zero backend infrastructure costs, showcasing the speed and reliability achievable through AI-assisted client-side development.
 </code></pre>
 
+      </div>
 
       <!-- Return Navigation -->
       <div class="work-nav fade-in" style="justify-content: center; text-align: center;">
