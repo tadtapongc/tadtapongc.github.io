@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ✏️ EDIT: Page Title and SEO Metadata -->
   <title>Tadtapong Chuenchumsaeng — Paced Study Tracker</title>
-  <meta name="description" content="A modern dashboard to track university courses, topics, and deadlines with built-in markdown notes and cloud sync.">
-  <meta name="keywords" content="Tadtapong Chuenchumsaeng, Full-Stack, Productivity, Next.js, Drizzle ORM, Chulalongkorn University">
+  <meta name="description" content="Paced Study Tracker">
+  <meta name="keywords" content="Tadtapong Chuenchumsaeng, [Keyword 1], [Keyword 2], [Keyword 3], Chulalongkorn University">
   <meta name="author" content="Tadtapong Chuenchumsaeng">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tadtapongc.github.io/works/study-tracker.html">
+  <link rel="canonical" href="https://tadtapongc.github.io/works/project-template.html">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,13 +35,16 @@
   <!-- ── HERO SECTION ────────────────────────────────────── -->
   <section id="project-hero">
     <div class="container">
+      <!-- ✏️ EDIT: Category Tag and Title -->
       <div class="project-header-tag fade-in">Full-Stack · Productivity</div>
       <h1 class="project-main-title fade-in">Paced Study Tracker</h1>
       
+      <!-- ✏️ EDIT: 1-Sentence High-Impact Subtitle -->
       <p class="project-subtitle fade-in">
         A centralized academic management dashboard co-architected with AI, featuring dynamic timeline triage, markdown note parsing, and JSONB cloud synchronization.
       </p>
 
+      <!-- ✏️ EDIT: 4-Pillar Meta Grid -->
       <div class="meta-grid fade-in">
         <div class="meta-item">
           <h4>Role</h4>
@@ -56,18 +60,16 @@
         </div>
         <div class="meta-item">
           <h4>Live App</h4>
-          <p><a href="https://getpaced.vercel.app" target="_blank" style="color: var(--accent);">Visit Site ↗</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <p><a href="https://getpaced.vercel.app" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">Visit Site ↗</a></p>
+        </div></div></div></section>
 
   <!-- ── SHOWCASE BANNER ─────────────────────────────────── -->
   <section id="project-showcase" class="fade-in">
     <div class="container">
       <div class="showcase-banner">
+        <!-- ✏️ EDIT: Fallback Icon and Image URL. When you save an image in images/, update src below. -->
         <span class="showcase-icon">📚</span>
-        <img src="../images/study-detail.jpg" alt="Paced Study Tracker Dashboard" loading="lazy" onerror="this.style.display='none'">
+        <img src="../images/study-detail.jpg" alt="Paced Study Tracker" loading="lazy" onerror="this.style.display='none'">
       </div>
     </div>
   </section>
@@ -76,41 +78,7 @@
   <section>
     <div class="container">
 
-      <article class="content-block fade-in">
-        <h3>1. The Challenge & Objectives</h3>
-        <p>
-          Academic workflows are frequently fragmented across disparate syllabi, calendars, and note-taking silos. The objective was to engineer a singular, high-performance interface to unify this experience. By utilizing AI-assisted development, I focused heavily on data architecture and user experience, delegating the boilerplate generation to the AI.
-        </p>
-        <p>
-          The core challenge was orchestrating the AI to model highly relational academic data efficiently, avoiding expensive multi-table joins in PostgreSQL.
-        </p>
-      </article>
-
-      <article class="content-block fade-in">
-        <h3>2. Architecture & Execution</h3>
-        <p>
-          Constructed with Next.js 14 utilizing the App Router, I served as the primary architect, directing the AI to implement a fluid, desktop-class user experience backed by a unique document-oriented data model.
-        </p>
-        <ul>
-          <li><strong>Document-Oriented SQL via JSONB:</strong> Directed the AI to leverage PostgreSQL's native <code>jsonb</code> datatype through Drizzle ORM. The complete academic hierarchy is encapsulated as a single JSON document, radically reducing read/write latency.</li>
-          <li><strong>Algorithmic Dashboard Triage:</strong> Guided the AI to construct a bespoke triage engine that aggregates tasks across active courses, intelligently categorizing items into Overdue, In-Progress, and Upcoming states.</li>
-          <li><strong>Secure Markdown Engine:</strong> Orchestrated the integration of the <code>marked</code> library with a custom AST Renderer, prompting the AI to aggressively sanitize outputs via <code>DOMPurify</code> to guarantee strict protection against XSS vulnerabilities.</li>
-        </ul>
-      </article>
-
-      <div class="highlight-card fade-in">
-        <h4>Key Engineering Takeaway</h4>
-        <p>
-          "Collaborating with AI allowed me to boldly experiment with a JSONB document-oriented schema within a traditional SQL database. The AI seamlessly translated this architectural vision into reality, resulting in instantaneous client-side interactions paired with transparent cloud persistence."
-        </p>
-      </div>
-
-      <article class="content-block fade-in">
-        <h3>3. Results & Impact</h3>
-        <p>
-          Paced delivers a frictionless, real-time experience yielding zero perceptible load times, proving that modern full-stack architecture coupled with AI orchestration can produce production-grade platforms at incredible speed.
-        </p>
-      </article>
+      
 
       <!-- Return Navigation -->
       <div class="work-nav fade-in" style="justify-content: center; text-align: center;">
@@ -146,3 +114,4 @@
 
 </body>
 </html>
+

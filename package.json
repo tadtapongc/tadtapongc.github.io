@@ -1,0 +1,25 @@
+{
+  "name": "tadtapongc.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tadtapongc/tadtapongc.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tadtapongc/tadtapongc.github.io/issues"
+  },
+  "homepage": "https://github.com/tadtapongc/tadtapongc.github.io#readme",
+  "dependencies": {
+    "js-yaml": "^5.2.2",
+    "marked": "^18.0.7"
+  }
+}

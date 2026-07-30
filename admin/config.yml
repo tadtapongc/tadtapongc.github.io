@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: tadtapongc/tadtapongc.github.io
+  branch: main
+  # TODO: Update this base_url with your deployed Cloudflare Worker URL
+  base_url: https://sveltia-cms-auth.tadtapong2549.workers.dev/
+
+media_folder: "images"
+public_folder: "../images"
+
+collections:
+  - name: "works"
+    label: "Projects & Works"
+    folder: "content/works"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "text", required: false }
+      - { label: "Short Description", name: "short_description", widget: "string", hint: "Used for the card on the homepage" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
+      - { label: "Category", name: "category", widget: "select", options: ["technical", "activities", "awards"] }
+      - { label: "Card Tag", name: "card_tag", widget: "string", hint: "e.g., 'CFD Tool · OpenFOAM'" }
+      - { label: "Header Tag", name: "header_tag", widget: "string", hint: "e.g., 'CFD Scientific Computing · OpenFOAM & Python'" }
+      - { label: "Thumbnail Icon", name: "icon", widget: "string", hint: "Emoji for the thumbnail" }
+      - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false }
+      - { label: "Banner Image", name: "banner", widget: "image", required: false }
+      - label: "Meta Grid Items"
+        name: "meta_items"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Label (e.g. Role)", name: "label", widget: "string" }
+          - { label: "Value", name: "value", widget: "string" }
+          - { label: "Link (Optional)", name: "link", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }

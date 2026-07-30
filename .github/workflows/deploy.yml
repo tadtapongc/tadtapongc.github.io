@@ -1,0 +1,38 @@
+name: Build Sveltia CMS Content
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/works/**'
+      - 'admin/config.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Build Script
+        run: node build.js
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated Build: Generate HTML from Sveltia CMS [skip ci]"
+          file_pattern: "works/*.html index.html"
