@@ -774,7 +774,7 @@ footer .container {
   box-shadow: none;
   border-bottom-color: var(--border);
 }
-.project-card:focus { outline: 2px solid var(--accent); outline-offset: 4px; }
+.project-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 .project-thumb {
   width: clamp(220px, 32%, 340px);
