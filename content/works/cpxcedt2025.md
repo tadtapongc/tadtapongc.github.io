@@ -48,7 +48,6 @@ meta_items:
 
 > #### Key Leadership Takeaway
 > <!-- ✏️ Write your memorable lesson or leadership takeaway below -->
-> >
 > "[Write your key leadership lesson on mentoring engineering students and effective communication...]"
 
 <!-- Pillar 3: Results, Impact & Takeaways -->
