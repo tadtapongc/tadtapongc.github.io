@@ -334,7 +334,7 @@
 
           const hero = doc.getElementById('project-hero');
           const showcase = doc.getElementById('project-showcase');
-          const mainContent = showcase ? showcase.nextElementSibling : null;
+          const mainContent = showcase ? showcase.nextElementSibling : (hero ? hero.nextElementSibling : null);
 
           let newContent = '';
           if (hero) newContent += hero.outerHTML;

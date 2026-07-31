@@ -133,9 +133,7 @@ function buildProjectPages(projects) {
         .replace(/\[PROJECT_SLUG\]/g, data.slug)
         .replace(/\[Category · Specialization Area\]/g, data.header_tag || '')
         .replace(/\[Main Project or Activity Title\]/g, data.title || '')
-        .replace(/\[Write a crisp, high-impact 1-2 sentence summary of what this project accomplished, the problem it solved, or your leadership role\.\]/g, data.subtitle || '')
-        .replace(/<span class="showcase-icon">.*?<\/span>/s, `<span class="showcase-icon">${data.icon || '🚀'}</span>`)
-        .replace(/<img src="\.\.\/images\/\[your-image\.jpg\]" alt="\[Project Screenshot or Photo\]"/g, `<img src="${data.banner || ''}" alt="${data.title || ''}"`);
+        .replace(/\[Write a crisp, high-impact 1-2 sentence summary of what this project accomplished, the problem it solved, or your leadership role\.\]/g, data.subtitle || '');
 
       if (data.meta_items && data.meta_items.length > 0) {
         const metaItemsHtml = data.meta_items.map(item => `

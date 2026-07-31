@@ -26,11 +26,11 @@ This is the personal portfolio website of Tadtapong Chuenchumsaeng.
 ### A. The Dynamic Project Modal (CRITICAL)
 The most complex part of this website is the project modal system located at the bottom of `src/index.html`. 
 - **How it works:** When a user clicks a `.project-card`, the default navigation is prevented. Instead, the script uses `fetch()` to download the target HTML file from the `works/` directory.
-- **DOM Parsing:** It parses the fetched HTML, specifically looking for `<section id="project-hero">`, `<section id="project-showcase">`, and the subsequent main `<section>` containing the content blocks.
+- **DOM Parsing:** It parses the fetched HTML, specifically looking for `<section id="project-hero">` and the subsequent main `<section>` containing the content blocks.
 - **Injection:** It strips out the target page's navigation and footer, and injects only the core content into the `#modal-content-container` overlay.
 - **History API:** It uses `history.pushState` to update the browser URL (e.g., `?project=openfoam-generator`), allowing users to use the browser's back/forward buttons and share direct links to the modal view.
 
-**⚠️ AI Rule for Modifying Projects:** When creating or editing content in `content/works/`, you MUST ensure the generated page maintains the `<section id="project-hero">` and `<section id="project-showcase">` structure, as the modal parsing logic relies on these IDs to render correctly.
+**⚠️ AI Rule for Modifying Projects:** When creating or editing content in `content/works/`, you MUST ensure the generated page maintains the `<section id="project-hero">` structure, as the modal parsing logic relies on this ID to render correctly.
 
 ### B. Scroll Animations
 - Elements with the class `.fade-in` are hidden by default via `theme.css`.
