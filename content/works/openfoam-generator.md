@@ -43,7 +43,6 @@ By establishing strict architectural boundaries, I directed AI models to scaffol
 <!-- Highlight Card / Insight -->
 
 > #### Key Engineering Takeaway
-> >
 > "By strategically prompting AI with complex scientific computing requirements, I successfully bridged the gap between raw aerodynamic theory and a fully functional Python CLI tool, reducing CFD setup times by a factor of five."
 
 <!-- Pillar 3: Results, Impact & Takeaways -->
