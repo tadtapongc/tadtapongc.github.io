@@ -48,19 +48,6 @@
 
   <a href="#hero" class="skip-link">Skip to content</a>
 
-  <!-- ── NAVIGATION ──────────────────────────────────────── -->
-  <nav>
-    <div class="container">
-      <span class="nav-logo">Tadtapong C.</span>
-      <ul class="nav-links">
-        <li><a href="#portfolio" data-nav-filter="technical">What I've Done</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
   <!-- ── HERO ────────────────────────────────────────────── -->
   <section id="hero">
     <div class="container">
@@ -526,6 +513,8 @@
           
           const workNav = contentWrapper.querySelector('.work-nav');
           if (workNav) workNav.remove();
+          const navBack = contentWrapper.querySelector('.nav-back-link');
+          if (navBack) navBack.remove();
 
           const loader = document.getElementById('modal-loader');
           const showContent = () => {

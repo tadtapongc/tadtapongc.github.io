@@ -226,28 +226,17 @@ function buildIndexPage(projects) {
   fs.writeFileSync(INDEX_OUT, indexHtml);
 }
 
-function buildSitemap(projects) {
+function buildSitemap() {
   const today = new Date().toISOString().split('T')[0];
   
-  let urls = `  <url>
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
     <loc>${SITE_URL}/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>`;
-
-  for (const project of projects) {
-    urls += `\n  <url>
-    <loc>${SITE_URL}/works/${project.data.slug}.html</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>`;
-  }
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
+  </url>
 </urlset>
 `;
 
@@ -266,7 +255,7 @@ function main() {
   buildIndexPage(projects);
   console.log('Generated index.html');
   
-  buildSitemap(projects);
+  buildSitemap();
   console.log('Generated sitemap.xml');
   
   console.log('\nBuild complete!');

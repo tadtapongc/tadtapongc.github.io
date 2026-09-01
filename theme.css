@@ -333,7 +333,8 @@ footer .container {
 }
 /* Ensure clean styling inside modal body */
 .modal-body nav,
-.modal-body footer {
+.modal-body footer,
+.modal-body .nav-back-link {
   display: none;
 }
 
@@ -525,6 +526,22 @@ footer .container {
   padding: clamp(3rem, 8vw, 6rem) 0 var(--gap);
   border-top: none;
 }
+.nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  transition: color var(--transition), transform var(--transition);
+  text-decoration: none;
+}
+.nav-back-link:hover {
+  color: var(--accent);
+  transform: translateX(-3px);
+}
 .project-header-tag {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
@@ -706,7 +723,7 @@ footer .container {
 
 /* ─── HERO ────────────────────────────────────────────────── */
 #hero {
-  padding: clamp(2.5rem, 7vw, 4.5rem) 0 var(--gap);
+  padding: clamp(4rem, 9vw, 6.5rem) 0 var(--gap);
   border-top: none;
 }
 .hero-label {
