@@ -158,19 +158,8 @@
     </div>
   </section>
 
-  <!-- ── FOOTER ─────────────────────────────────────────────── -->
-  <footer>
-    <div class="container">
-      <span>© <span id="year"></span> Tadtapong Chuenchumsaeng</span>
-      <span>Designed & built by Tadtapong</span>
-    </div>
-  </footer>
-
   <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
   <script>
-    // Auto-update copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
     // Intersection Observer — fade elements in on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {

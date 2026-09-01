@@ -94,18 +94,8 @@
     </div>
   </section>
 
-  <!-- ── FOOTER ─────────────────────────────────────────────── -->
-  <footer>
-    <div class="container">
-      <span>© <span id="year"></span> Tadtapong Chuenchumsaeng</span>
-      <span>Designed & built by Tadtapong</span>
-    </div>
-  </footer>
-
   <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {

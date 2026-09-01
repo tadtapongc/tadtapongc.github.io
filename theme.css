@@ -945,7 +945,10 @@ footer .container {
 
 
 /* ─── CONTACT ─────────────────────────────────────────────── */
-#contact { border-bottom: 1px solid var(--border); }
+#contact {
+  border-bottom: none;
+  padding-bottom: clamp(4rem, 10vw, 7rem);
+}
 .contact-block {
   display: flex;
   flex-wrap: wrap;
