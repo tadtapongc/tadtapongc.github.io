@@ -255,7 +255,7 @@ function main() {
   buildIndexPage(projects);
   console.log('Generated index.html');
   
-  buildSitemap();
+  buildSitemap(projects);
   console.log('Generated sitemap.xml');
   
   console.log('\nBuild complete!');
