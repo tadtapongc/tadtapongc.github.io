@@ -191,19 +191,6 @@ function buildIndexPage(projects) {
           `<!-- AUTOMATED_BIO_START -->\n      ${bioHtml}\n      <!-- AUTOMATED_BIO_END -->`);
       }
 
-      // Inject Skills
-      if (siteData.skills) {
-        const skillsHtml = siteData.skills.map(group => `
-        <div class="skill-group fade-in">
-          <h3>${group.category}</h3>
-          <ul class="skill-detail-list">
-            ${group.items.map(item => `<li><strong>${item.title}</strong> ${item.description}</li>`).join('\n            ')}
-          </ul>
-        </div>`).join('\n');
-        indexHtml = indexHtml.replace(/<!-- AUTOMATED_SKILLS_START -->[\s\S]*?<!-- AUTOMATED_SKILLS_END -->/, 
-          `<!-- AUTOMATED_SKILLS_START -->\n${skillsHtml}\n<!-- AUTOMATED_SKILLS_END -->`);
-      }
-
       // Inject Education
       if (siteData.education) {
         const eduHtml = siteData.education.map(edu => `
