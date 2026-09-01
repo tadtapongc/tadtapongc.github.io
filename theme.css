@@ -1010,17 +1010,7 @@ footer .container {
   border-color: var(--ink);
 }
 .filter-group {
-  margin-bottom: 2rem;
-}
-.group-title {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 /* ─── HOMEPAGE RESPONSIVE (≤ 640px) ───────────────────────── */
