@@ -27,7 +27,7 @@ function generateCard(project) {
           <a class="project-card" href="works/${project.data.slug}.html" data-date="${project.data.date || ''}">
             <div class="project-thumb">
               <span class="project-thumb-icon">${project.data.icon || ''}</span>
-              <img src="${(project.data.thumbnail || '').replace('../', '')}" alt="${project.data.title || ''}" loading="lazy" onerror="this.style.display='none'">
+              <img src="${(project.data.thumbnail || '').replace('../', '')}" alt="${project.data.title || ''}" loading="lazy" decoding="async" onerror="this.style.display='none'">
             </div>
             <div class="project-content">
               <span class="project-tag">${project.data.card_tag || ''}</span>
@@ -144,6 +144,9 @@ function buildProjectPages(projects) {
         
         projectHtml = projectHtml.replace(/<div class="meta-grid fade-in">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/, 
           `<div class="meta-grid fade-in">${metaItemsHtml}</div></div></section>`);
+      } else {
+        projectHtml = projectHtml.replace(/<div class="meta-grid fade-in">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/, 
+          `</div></section>`);
       }
 
       projectHtml = projectHtml.replace(/<div class="markdown-body fade-in">[\s\S]*?<\/div>/, 
@@ -213,8 +216,14 @@ function buildIndexPage(projects) {
   fs.writeFileSync(INDEX_OUT, indexHtml);
 }
 
-function buildSitemap() {
+function buildSitemap(projects) {
   const today = new Date().toISOString().split('T')[0];
+  const projectUrls = (projects || []).map(p => `  <url>
+    <loc>${SITE_URL}/works/${p.data.slug}.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`).join('\n');
   
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -224,6 +233,7 @@ function buildSitemap() {
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+${projectUrls}
 </urlset>
 `;
 

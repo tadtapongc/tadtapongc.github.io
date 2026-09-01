@@ -69,9 +69,6 @@
 
   <!-- ── WHAT I'VE DONE ───────────────────────────────────── -->
   <section id="portfolio">
-    <span id="projects"></span>
-    <span id="experience"></span>
-    <span id="rewards"></span>
     <div class="container">
       <div class="section-heading fade-in">
         <h2>What I've Done</h2>
@@ -269,6 +266,7 @@
     const modalOverlay = document.getElementById('project-modal-overlay');
     const modalContainer = document.getElementById('modal-content-container');
     const modalCloseBtn = document.getElementById('modal-close-btn');
+    const projectCache = new Map();
     let originalTitle = document.title;
 
     function extractProjectSlug(url) {
@@ -276,10 +274,65 @@
       return match ? match[1] : null;
     }
 
+    function renderModalContent(html) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      
+      if (doc.title) {
+        document.title = doc.title;
+      }
+
+      const hero = doc.getElementById('project-hero');
+      const showcase = doc.getElementById('project-showcase');
+      const mainContent = showcase ? showcase.nextElementSibling : (hero ? hero.nextElementSibling : null);
+
+      let newContent = '';
+      if (hero) newContent += hero.outerHTML;
+      if (showcase) newContent += showcase.outerHTML;
+      if (mainContent && mainContent.tagName === 'SECTION') newContent += mainContent.outerHTML;
+      
+      if (!newContent) {
+         const bodySections = doc.querySelectorAll('body > section');
+         bodySections.forEach(sec => newContent += sec.outerHTML);
+      }
+
+      const contentWrapper = document.createElement('div');
+      contentWrapper.style.opacity = '0';
+      contentWrapper.style.transition = 'opacity 0.35s ease';
+      contentWrapper.innerHTML = newContent;
+      
+      const workNav = contentWrapper.querySelector('.work-nav');
+      if (workNav) workNav.remove();
+      const navBack = contentWrapper.querySelector('.nav-back-link');
+      if (navBack) navBack.remove();
+
+      const loader = document.getElementById('modal-loader');
+      const showContent = () => {
+        modalContainer.appendChild(contentWrapper);
+        setTimeout(() => {
+           contentWrapper.style.opacity = '1';
+           contentWrapper.querySelectorAll('.fade-in').forEach(el => {
+             el.classList.add('visible');
+             el.style.transition = 'none';
+           });
+        }, 30);
+      };
+
+      if (loader) {
+        loader.style.transition = 'opacity 0.25s ease';
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          if (loader.parentNode) loader.remove();
+          showContent();
+        }, 250);
+      } else {
+        showContent();
+      }
+    }
+
     function openModal(url, fromPopState = false) {
       const slug = extractProjectSlug(url);
 
-      modalContainer.innerHTML = '<div id="modal-loader" class="modal-loader-box"><div class="modal-spinner"></div><div class="modal-loader-text">Loading architectural specs...</div></div>';
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
 
@@ -287,62 +340,23 @@
         history.pushState({ modalOpen: true, url }, '', '?project=' + slug);
       }
 
+      // Instant render from cache if available
+      if (projectCache.has(url)) {
+        modalContainer.innerHTML = '';
+        renderModalContent(projectCache.get(url));
+        return;
+      }
+
+      modalContainer.innerHTML = '<div id="modal-loader" class="modal-loader-box"><div class="modal-spinner"></div><div class="modal-loader-text">Loading architectural specs...</div></div>';
+
       fetch(url)
-        .then(response => response.text())
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+          return response.text();
+        })
         .then(html => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, 'text/html');
-          
-          if (doc.title) {
-            document.title = doc.title;
-          }
-
-          const hero = doc.getElementById('project-hero');
-          const showcase = doc.getElementById('project-showcase');
-          const mainContent = showcase ? showcase.nextElementSibling : (hero ? hero.nextElementSibling : null);
-
-          let newContent = '';
-          if (hero) newContent += hero.outerHTML;
-          if (showcase) newContent += showcase.outerHTML;
-          if (mainContent && mainContent.tagName === 'SECTION') newContent += mainContent.outerHTML;
-          
-          if (!newContent) {
-             const bodySections = doc.querySelectorAll('body > section');
-             bodySections.forEach(sec => newContent += sec.outerHTML);
-          }
-
-          const contentWrapper = document.createElement('div');
-          contentWrapper.style.opacity = '0';
-          contentWrapper.style.transition = 'opacity 0.35s ease';
-          contentWrapper.innerHTML = newContent;
-          
-          const workNav = contentWrapper.querySelector('.work-nav');
-          if (workNav) workNav.remove();
-          const navBack = contentWrapper.querySelector('.nav-back-link');
-          if (navBack) navBack.remove();
-
-          const loader = document.getElementById('modal-loader');
-          const showContent = () => {
-            modalContainer.appendChild(contentWrapper);
-            setTimeout(() => {
-               contentWrapper.style.opacity = '1';
-               contentWrapper.querySelectorAll('.fade-in').forEach(el => {
-                 el.classList.add('visible');
-                 el.style.transition = 'none'; // Avoid delay if already loaded
-               });
-            }, 30);
-          };
-
-          if (loader) {
-            loader.style.transition = 'opacity 0.25s ease';
-            loader.style.opacity = '0';
-            setTimeout(() => {
-              if (loader.parentNode) loader.remove();
-              showContent();
-            }, 250);
-          } else {
-            showContent();
-          }
+          projectCache.set(url, html);
+          renderModalContent(html);
         })
         .catch(err => {
           console.error("Failed to load project:", err);
@@ -392,10 +406,22 @@
       });
 
       document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-          const url = card.getAttribute('href');
-          if (!url || url.startsWith('http') || url.startsWith('#')) return;
+        const url = card.getAttribute('href');
+        if (!url || url.startsWith('http') || url.startsWith('#')) return;
 
+        // Hover & focus prefetching for instant 0ms modal open
+        const prefetch = () => {
+          if (!projectCache.has(url)) {
+            fetch(url)
+              .then(res => res.ok ? res.text() : null)
+              .then(html => { if (html) projectCache.set(url, html); })
+              .catch(() => {});
+          }
+        };
+        card.addEventListener('mouseenter', prefetch, { passive: true, once: true });
+        card.addEventListener('focusin', prefetch, { passive: true, once: true });
+
+        card.addEventListener('click', (e) => {
           e.preventDefault();
           openModal(url);
         });
