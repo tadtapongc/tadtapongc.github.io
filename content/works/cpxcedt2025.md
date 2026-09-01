@@ -1,26 +1,26 @@
 ---
 title: CPxCEDT OPENHOUSE 2025
 subtitle: '[Write your 1-2 sentence overview of your staff mentorship and workshop facilitation for the academic camp here...]'
-short_description: Staff mentor and STEM workshop facilitator for the CPxCEDT Openhouse 2025 academic camp.
-date: 2024-11
+short_description: CPxCEDT Openhouse 2025
+date: 2025-10
 category: activities
-card_tag: Leadership & Community · Student Mentorship
-header_tag: Leadership & Community · Student Mentorship
+card_tag: Leadership & Community
+header_tag: Leadership & Community
 icon: 🏕️
 thumbnail: /images/camp.jpg
 banner: ''
 meta_items:
   - label: Role / Type
-    value: Camp Mentor & Workshop Staff
+    value: Workshop Staff
     link: ''
   - label: Timeline / Context
-    value: Intensive Camp (Nov 2024)
+    value: Oct 2025
     link: ''
   - label: Core Skills & Tools
-    value: Team Leadership, STEM Mentorship
+    value: Public Speaking
     link: ''
   - label: Key Outcome & Impact
-    value: Mentored Student Teams & Smooth Operations
+    value: Smooth Operations
     link: ''
 ---
 
