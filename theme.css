@@ -523,8 +523,12 @@ footer .container {
 
 /* ─── PROJECT DETAIL STYLES ───────────────────────────── */
 #project-hero {
-  padding: clamp(3rem, 8vw, 6rem) 0 var(--gap);
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(1.5rem, 3.5vw, 2.25rem);
   border-top: none;
+}
+#project-hero + section,
+.modal-body section:not(#project-hero) {
+  padding-top: clamp(1.5rem, 3.5vw, 2.25rem);
 }
 .nav-back-link {
   display: inline-flex;
@@ -625,6 +629,12 @@ footer .container {
   letter-spacing: -0.01em;
   margin-top: 2rem;
   margin-bottom: 1rem;
+}
+.markdown-body > *:first-child,
+.markdown-body > h1:first-of-type,
+.markdown-body > h2:first-of-type,
+.markdown-body > h3:first-of-type {
+  margin-top: 0;
 }
 .markdown-body h1 { font-size: 2rem; }
 .markdown-body h2 { font-size: 1.8rem; }
