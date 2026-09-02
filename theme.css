@@ -425,8 +425,8 @@ footer .container {
   .meta-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 1rem !important;
-    padding: 1.25rem 0 !important;
-    margin-bottom: 2.25rem !important;
+    padding: 1.25rem 0 0.25rem 0 !important;
+    margin-bottom: 0 !important;
   }
   .meta-item h4 {
     font-size: 0.68rem !important;
@@ -570,10 +570,9 @@ footer .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.5rem;
-  padding: 1.5rem 0;
+  padding: 1.5rem 0 0.5rem 0;
   border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 .meta-item h4 {
   font-size: 0.7rem;
