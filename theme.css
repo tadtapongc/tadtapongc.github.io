@@ -32,8 +32,8 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--mono);
-  font-size: clamp(13px, 1.4vw, 15px);
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.4vw, 15.5px);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -91,6 +91,7 @@ nav .container {
 }
 .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .nav-links a {
+  font-family: var(--mono);
   color: var(--muted);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
@@ -113,6 +114,7 @@ nav .container {
   letter-spacing: -0.02em;
 }
 .section-heading .count {
+  font-family: var(--mono);
   font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.08em;
@@ -120,6 +122,7 @@ nav .container {
 
 /* ─── BREADCRUMB ─────────────────────────────────────────── */
 .breadcrumb {
+  font-family: var(--mono);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -133,6 +136,7 @@ nav .breadcrumb { margin-bottom: 0; }
 /* ─── TAGS ───────────────────────────────────────────────── */
 .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tag {
+  font-family: var(--mono);
   border: 1px solid var(--border);
   padding: 0.3rem 0.75rem;
   font-size: 0.78rem;
@@ -547,6 +551,7 @@ footer .container {
   transform: translateX(-3px);
 }
 .project-header-tag {
+  font-family: var(--mono);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -562,8 +567,9 @@ footer .container {
   margin-bottom: 1.5rem;
 }
 .project-subtitle {
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-family: var(--sans);
+  font-size: 1.08rem;
+  line-height: 1.75;
   color: var(--muted);
   max-width: 680px;
   margin-bottom: 2.5rem;
@@ -579,6 +585,7 @@ footer .container {
   margin-bottom: 0;
 }
 .meta-item h4 {
+  font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -586,7 +593,8 @@ footer .container {
   margin-bottom: 0.3rem;
 }
 .meta-item p {
-  font-size: 0.88rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
   color: var(--ink);
   font-weight: 500;
 }
@@ -642,24 +650,52 @@ footer .container {
 .markdown-body h4 { font-size: 1.3rem; margin-top: 1.5rem; margin-bottom: 0.8rem; }
 
 .markdown-body p {
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.85;
-  margin-bottom: 1.25rem;
+  font-family: var(--sans);
+  color: #352d30;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.35rem;
 }
 .markdown-body ul,
 .markdown-body ol {
-  padding-left: 1.25rem;
-  color: var(--muted);
-  font-size: 0.92rem;
+  padding-left: 1.35rem;
+  color: #352d30;
+  font-size: 0.98rem;
   line-height: 1.8;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
 }
 .markdown-body ul { list-style-type: square; }
 .markdown-body ol { list-style-type: decimal; }
 .markdown-body ul li,
 .markdown-body ol li {
+  font-family: var(--sans);
   margin-bottom: 0.6rem;
+}
+
+/* Inline Code & Code Blocks in Markdown */
+.markdown-body code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+.markdown-body pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+.markdown-body pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
 /* Highlight Card / Note (Mapped to Blockquote) */
@@ -683,7 +719,8 @@ footer .container {
 }
 .markdown-body blockquote p {
   margin-bottom: 0;
-  font-size: 0.92rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
   line-height: 1.75;
   color: var(--ink);
   font-style: italic;
@@ -736,6 +773,7 @@ footer .container {
   border-top: none;
 }
 .hero-label {
+  font-family: var(--mono);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -752,10 +790,12 @@ footer .container {
 }
 .hero-name em { font-style: normal; color: var(--muted); font-weight: 400; }
 .hero-bio {
-  max-width: 520px;
+  max-width: 540px;
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.6vw, 1.08rem);
   color: var(--muted);
   margin-bottom: 1.75rem;
-  line-height: 1.85;
+  line-height: 1.75;
 }
 .hero-cta {
   display: inline-flex;
@@ -853,8 +893,9 @@ footer .container {
   flex: 1;
 }
 .project-tag {
+  font-family: var(--mono);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
@@ -872,6 +913,7 @@ footer .container {
   color: var(--accent);
 }
 .project-desc {
+  font-family: var(--sans);
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.65;
@@ -883,20 +925,22 @@ footer .container {
   overflow: hidden;
 }
 .project-footer {
+  font-family: var(--mono);
   display: flex;
   align-items: center;
   gap: 1.5rem;
   padding-top: 0;
   border-top: none;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--muted);
 }
 .project-link {
+  font-family: var(--mono);
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   color: var(--ink);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
   opacity: 0.85;
   transition: all 0.2s ease;
@@ -914,6 +958,7 @@ footer .container {
   gap: 1.75rem;
 }
 .skill-group h3 {
+  font-family: var(--mono);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -928,13 +973,14 @@ footer .container {
   gap: 0.85rem;
 }
 .skill-detail-list li {
-  font-size: 0.85rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
   color: var(--muted);
-  line-height: 1.75;
+  line-height: 1.7;
 }
 .skill-detail-list li strong {
   color: var(--ink);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* ─── EDUCATION / EXPERIENCE ─────────────────────────────── */
@@ -953,10 +999,26 @@ footer .container {
   border-bottom: none;
   padding-bottom: 0;
 }
-.exp-period { font-size: 0.78rem; color: var(--muted); padding-top: 0.2rem; }
+.exp-period { 
+  font-family: var(--mono);
+  font-size: 0.78rem; 
+  color: var(--muted); 
+  padding-top: 0.2rem; 
+}
 .exp-role { font-family: var(--sans); font-size: 1.15rem; font-weight: 600; }
-.exp-company { color: var(--accent); font-size: 0.85rem; margin: 0.2rem 0 0.5rem; }
-.exp-desc { color: var(--muted); font-size: 0.84rem; line-height: 1.75; }
+.exp-company { 
+  font-family: var(--sans);
+  color: var(--accent); 
+  font-size: 0.88rem; 
+  font-weight: 500;
+  margin: 0.2rem 0 0.5rem; 
+}
+.exp-desc { 
+  font-family: var(--sans);
+  color: var(--muted); 
+  font-size: 0.9rem; 
+  line-height: 1.7; 
+}
 
 
 /* ─── CONTACT ─────────────────────────────────────────────── */
@@ -979,9 +1041,16 @@ footer .container {
   line-height: 1.1;
   margin-bottom: 1rem;
 }
-.contact-text p { color: var(--muted); max-width: 380px; }
+.contact-text p { 
+  font-family: var(--sans);
+  color: var(--muted); 
+  font-size: 0.95rem;
+  line-height: 1.65;
+  max-width: 380px; 
+}
 .contact-links { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-end; }
 .contact-link {
+  font-family: var(--mono);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
