@@ -30,8 +30,6 @@ meta_items:
 
 The CPxCEDT Openhouse at Chulalongkorn University was organized to introduce high school students to the Computer Engineering and Digital Technology curriculum. The initiative aimed to demystify computer engineering through approachable, hands-on workshops, giving prospective applicants a clear understanding of computational foundations.
 
-![CPxCEDT Openhouse Workshop](/images/camp-detail.jpg "Workshop Session")
-
 <!-- Pillar 2: Approach, Methodology & Execution -->
 
 ### 2. Mentorship Approach & Operational Execution
