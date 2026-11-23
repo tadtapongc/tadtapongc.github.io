@@ -12,7 +12,7 @@ This is the personal portfolio website of Tadtapong Chuenchumsaeng.
 - `src/index.html`: The **source template** for the main landing page. Contains the layout for Hero, Portfolio, Skills, Education, and Contact sections, plus all Vanilla JS logic. The build script injects content between `<!-- AUTOMATED_*_START -->` and `<!-- AUTOMATED_*_END -->` markers.
 - `src/project.html`: The **source template** for individual project detail pages. The build script replaces placeholder text and injects markdown content.
 - `index.html`: The **generated** main landing page (output of `build.js`). Do not edit directly — edit `src/index.html` instead.
-- `works/`: A directory containing **generated** individual project detail pages (e.g., `openfoam-generator.html`). Do not edit directly — edit the corresponding `content/works/*.md` file instead.
+- `works/`: A directory containing **generated** individual project detail pages (e.g., `rapidfoam.html`). Do not edit directly — edit the corresponding `content/works/*.md` file instead.
 - `build.js`: The Node.js build script that reads content from `content/` and templates from `src/`, then generates `index.html`, `works/*.html`, and `sitemap.xml`.
 - `content/data.yml`: Site-wide data (bio, skills, education) injected into `index.html` by the build script.
 - `content/works/*.md`: Individual project content files with YAML frontmatter.
@@ -28,7 +28,7 @@ The most complex part of this website is the project modal system located at the
 - **How it works:** When a user clicks a `.project-card`, the default navigation is prevented. Instead, the script uses `fetch()` to download the target HTML file from the `works/` directory.
 - **DOM Parsing:** It parses the fetched HTML, specifically looking for `<section id="project-hero">` and the subsequent main `<section>` containing the content blocks.
 - **Injection:** It strips out the target page's navigation and footer, and injects only the core content into the `#modal-content-container` overlay.
-- **History API:** It uses `history.pushState` to update the browser URL (e.g., `?project=openfoam-generator`), allowing users to use the browser's back/forward buttons and share direct links to the modal view.
+- **History API:** It uses `history.pushState` to update the browser URL (e.g., `?project=rapidfoam`), allowing users to use the browser's back/forward buttons and share direct links to the modal view.
 
 **⚠️ AI Rule for Modifying Projects:** When creating or editing content in `content/works/`, you MUST ensure the generated page maintains the `<section id="project-hero">` structure, as the modal parsing logic relies on this ID to render correctly.
 
