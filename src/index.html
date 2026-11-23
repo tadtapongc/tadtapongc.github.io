@@ -87,12 +87,14 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
-  <a href="#hero" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <main id="main" tabindex="-1">
 
   <!-- ── HERO ────────────────────────────────────────────── -->
   <section id="hero">
@@ -196,6 +198,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
   <script>
     // Intersection Observer — fade elements in on scroll
@@ -263,21 +267,21 @@
       if (countEl) {
         countEl.textContent = String(visibleCards).padStart(2, '0') + (visibleCards === 1 ? ' entry' : ' entries');
       }
+
+      // Keep the active category in the URL so Back from a project page
+      // returns to the same tab.
+      const url = new URL(window.location.href);
+      if (category === 'technical') {
+        url.searchParams.delete('filter');
+      } else {
+        url.searchParams.set('filter', category);
+      }
+      history.replaceState(null, '', url.toString());
     }
 
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         filterTab(btn.getAttribute('data-filter'));
-      });
-    });
-
-    // Navigation filter buttons (Next/Back buttons and nav links)
-    document.querySelectorAll('[data-nav-filter]').forEach(el => {
-      el.addEventListener('click', (e) => {
-        if (el.tagName === 'A') e.preventDefault();
-        const cat = el.getAttribute('data-nav-filter');
-        filterTab(cat);
-        document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
       });
     });
 
@@ -291,193 +295,10 @@
       });
       cards.forEach(card => grid.appendChild(card));
     });
-    filterTab('technical');
-  </script>
 
-  <!-- ── PROJECT MODAL OVERLAY (Must exist before script runs) ── -->
-  <div id="project-modal-overlay" class="modal-overlay" aria-hidden="true">
-    <div class="modal-window" role="dialog" aria-modal="true">
-      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">✕</button>
-      <div id="modal-content-container" class="modal-body"></div>
-    </div>
-  </div>
-
-  <script>
-    // ─── POP-UP MODAL OVERLAY LOGIC ────────────────────────
-    const modalOverlay = document.getElementById('project-modal-overlay');
-    const modalContainer = document.getElementById('modal-content-container');
-    const modalCloseBtn = document.getElementById('modal-close-btn');
-    const projectCache = new Map();
-    let originalTitle = document.title;
-
-    function extractProjectSlug(url) {
-      const match = url.match(/\/([^\/]+)\.html/);
-      return match ? match[1] : null;
-    }
-
-    function renderModalContent(html) {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      
-      if (doc.title) {
-        document.title = doc.title;
-      }
-
-      const hero = doc.getElementById('project-hero');
-      const showcase = doc.getElementById('project-showcase');
-      const mainContent = showcase ? showcase.nextElementSibling : (hero ? hero.nextElementSibling : null);
-
-      let newContent = '';
-      if (hero) newContent += hero.outerHTML;
-      if (showcase) newContent += showcase.outerHTML;
-      if (mainContent && mainContent.tagName === 'SECTION') newContent += mainContent.outerHTML;
-      
-      if (!newContent) {
-         const bodySections = doc.querySelectorAll('body > section');
-         bodySections.forEach(sec => newContent += sec.outerHTML);
-      }
-
-      const contentWrapper = document.createElement('div');
-      contentWrapper.style.opacity = '0';
-      contentWrapper.style.transition = 'opacity 0.35s ease';
-      contentWrapper.innerHTML = newContent;
-      
-      const workNav = contentWrapper.querySelector('.work-nav');
-      if (workNav) workNav.remove();
-      const navBack = contentWrapper.querySelector('.nav-back-link');
-      if (navBack) navBack.remove();
-
-      const loader = document.getElementById('modal-loader');
-      const showContent = () => {
-        modalContainer.appendChild(contentWrapper);
-        setTimeout(() => {
-           contentWrapper.style.opacity = '1';
-           contentWrapper.querySelectorAll('.fade-in').forEach(el => {
-             el.classList.add('visible');
-             el.style.transition = 'none';
-           });
-        }, 30);
-      };
-
-      if (loader) {
-        loader.style.transition = 'opacity 0.25s ease';
-        loader.style.opacity = '0';
-        setTimeout(() => {
-          if (loader.parentNode) loader.remove();
-          showContent();
-        }, 250);
-      } else {
-        showContent();
-      }
-    }
-
-    function openModal(url, fromPopState = false) {
-      const slug = extractProjectSlug(url);
-
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      if (!fromPopState && slug) {
-        history.pushState({ modalOpen: true, url }, '', '?project=' + slug);
-      }
-
-      // Instant render from cache if available
-      if (projectCache.has(url)) {
-        modalContainer.innerHTML = '';
-        renderModalContent(projectCache.get(url));
-        return;
-      }
-
-      modalContainer.innerHTML = '<div id="modal-loader" class="modal-loader-box"><div class="modal-spinner"></div><div class="modal-loader-text">Loading architectural specs...</div></div>';
-
-      fetch(url)
-        .then(response => {
-          if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-          return response.text();
-        })
-        .then(html => {
-          projectCache.set(url, html);
-          renderModalContent(html);
-        })
-        .catch(err => {
-          console.error("Failed to load project:", err);
-          modalContainer.innerHTML = '<div style="padding: 4rem; text-align: center; color: var(--accent);">Failed to load project data. Please try again.</div>';
-        });
-    }
-
-    function closeModal(fromPopState = false) {
-      if (!modalOverlay.classList.contains('active')) return;
-      modalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-      
-      document.title = originalTitle;
-
-      setTimeout(() => {
-        modalContainer.innerHTML = '';
-      }, 300);
-
-      if (!fromPopState) {
-        if (history.state && history.state.modalOpen) {
-          history.back();
-        } else {
-          history.pushState({}, '', window.location.pathname);
-        }
-      }
-    }
-
-    if (modalCloseBtn && modalOverlay) {
-      modalCloseBtn.addEventListener('click', () => closeModal(false));
-      modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) closeModal(false);
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal(false);
-      });
-      
-      window.addEventListener('popstate', (e) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const projectSlug = urlParams.get('project');
-        
-        if (projectSlug) {
-          const url = 'works/' + projectSlug + '.html';
-          openModal(url, true);
-        } else if (modalOverlay.classList.contains('active')) {
-          closeModal(true);
-        }
-      });
-
-      document.querySelectorAll('.project-card').forEach(card => {
-        const url = card.getAttribute('href');
-        if (!url || url.startsWith('http') || url.startsWith('#')) return;
-
-        // Hover & focus prefetching for instant 0ms modal open
-        const prefetch = () => {
-          if (!projectCache.has(url)) {
-            fetch(url)
-              .then(res => res.ok ? res.text() : null)
-              .then(html => { if (html) projectCache.set(url, html); })
-              .catch(() => {});
-          }
-        };
-        card.addEventListener('mouseenter', prefetch, { passive: true, once: true });
-        card.addEventListener('focusin', prefetch, { passive: true, once: true });
-
-        card.addEventListener('click', (e) => {
-          e.preventDefault();
-          openModal(url);
-        });
-      });
-      
-      // Deep linking on load
-      (function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const projectSlug = urlParams.get('project');
-        if (projectSlug) {
-          const url = 'works/' + projectSlug + '.html';
-          openModal(url, true);
-        }
-      })();
-    }
+    const validFilters = ['technical', 'activities', 'awards'];
+    const requestedFilter = new URLSearchParams(window.location.search).get('filter');
+    filterTab(validFilters.includes(requestedFilter) ? requestedFilter : 'technical');
   </script>
 
   <!-- ── TOAST NOTIFICATION BANNER ────────────────────────── -->

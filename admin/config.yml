@@ -24,7 +24,7 @@ collections:
       - { label: "Header Tag", name: "header_tag", widget: "string", hint: "e.g., 'CFD Scientific Computing · OpenFOAM & Python'" }
       - { label: "Thumbnail Icon", name: "icon", widget: "string", hint: "Emoji for the thumbnail" }
       - { label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false }
-      - { label: "Banner Image", name: "banner", widget: "image", required: false }
+      - { label: "Social Share Image", name: "banner", widget: "image", required: false, hint: "Used for social previews only, not displayed on the page. Falls back to the thumbnail." }
       - label: "Meta Grid Items"
         name: "meta_items"
         widget: "list"

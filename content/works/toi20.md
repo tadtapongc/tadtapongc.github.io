@@ -8,7 +8,7 @@ card_tag: National Olympiad · Algorithmic Programming & C++
 header_tag: National Olympiad · Algorithmic Programming & C++
 icon: 🥉
 thumbnail: /images/1000002198.jpg
-banner: /images/toi20-detail.jpg
+banner: /images/1000002198.jpg
 meta_items:
   - label: Role / Type
     value: SUT Center Representative

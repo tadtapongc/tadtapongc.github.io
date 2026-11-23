@@ -1,32 +1,42 @@
-# Portfolio Images Directory
+# Portfolio Images
 
-Place your project photos and screenshots in this folder.
-When an image file matches the filename below, the website will automatically display it in place of the fallback emoji!
+Images in this folder are used by the homepage cards and social preview images. The build script normalizes paths, so frontmatter may use `/images/foo.jpg`, `images/foo.jpg`, or `../images/foo.jpg`.
 
-## Naming Convention Rule:
-1. **`{project-name}.jpg`** -> Home Page Card Thumbnail (minimalist graphics or icons)
-2. **`{project-name}-detail.jpg`** -> Detail Page Showcase Banner (full UI dashboards or realistic photos)
+## Current assets
 
-## Expected Image Filenames:
+### Portraits and social cards
+- `profile-avatar.jpg` — circular hero portrait (256×256)
+- `profile.jpg` — larger portrait used by Person JSON-LD (1000×1000)
+- `og-card.jpg` — homepage social card (1200×630)
 
-### Home Page Card Thumbnails (~600px wide, landscape)
-- `meme-generator.jpg` (MemeAI Generator Icon)
-- `study-tracker.jpg` (Paced Study Tracker Icon)
-- `formula.jpg` (Formula Student Composite Wing)
-- `openfoam.webp` (OpenFOAM CFD Generator)
-- `fastmath.jpg` (FastMath Engineering Solver)
-- `qrcode.jpg` (High-Density QR Generator)
-- `camp.jpg` (2-Day Academic Camp Staff)
-- `toi20.jpg` (TOI20 Olympiad Medal)
+### RapidFOAM
+- `rapidfoam-studio-card.webp` — homepage card
+- `rapidfoam-studio.webp` — social preview image (not displayed on the page)
 
-### Detail Page Banner Photos (~1200px wide, landscape)
-- `meme-detail.jpg` (MemeAI Dashboard UI)
-- `study-detail.jpg` (Paced Study Tracker Dashboard UI)
-- `formula-detail.jpg`
-- `openfoam-detail.jpg`
-- `fastmath-detail.jpg`
-- `qrcode-detail.jpg`
-- `camp-detail.jpg`
-- `toi20-detail.jpg`
+### FSAE / TSAE2027
+- `1000002015.jpg` — homepage card (portrait photo)
+- `formula.jpg` — social preview image (not displayed on the page)
 
-Note: You can also use `.png` or `.webp` files, or use custom names — just remember to update the `src="images/..."` or `src="../images/..."` attribute in `index.html` or `works/*.html`!
+### CPxCEDT Openhouse 2025
+- `camp.jpg` — homepage card
+- `camp-detail.jpg` — social preview image (not displayed on the page)
+
+### TOI20
+- `1000002198.jpg` — homepage card and social preview image
+
+## Unused legacy assets
+
+These remain from earlier versions of the portfolio and are not referenced:
+- `meme-generator.jpg`
+- `study-tracker.jpg`
+- `fastmath.jpg`
+- `qrcode.jpg`
+- `openfoam.webp`
+
+## Adding images
+
+1. Use a descriptive name, preferably `{slug}-card.webp` and `{slug}-social.webp` for new projects.
+2. Card images: roughly 600–900px wide, landscape, compressed.
+3. Social images: roughly 1200px wide, landscape, compressed.
+4. Set `thumbnail:` and, optionally, `banner:` in the project frontmatter. The thumbnail appears on the homepage card; `banner` is used only for the social preview and falls back to the thumbnail.
+5. Run `npm test`; it verifies that every local image reference exists.

@@ -8,7 +8,7 @@ card_tag: Leadership & Community
 header_tag: Leadership & Community · Academic Workshop
 icon: 🏕️
 thumbnail: /images/camp.jpg
-banner: ''
+banner: /images/camp-detail.jpg
 meta_items:
   - label: Role / Type
     value: Workshop Staff & Speaker
