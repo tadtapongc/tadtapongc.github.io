@@ -4,4 +4,7 @@ education:
   - period: "Aug 2025 — Present"
     degree: "B.Eng. Computer Engineering"
     school: "Chulalongkorn University"
-    description: "Pursuing Computer Engineering with Mechanical Engineering electives to apply computing to physical engineering."
+    curriculum_url: "https://www.cp.eng.chula.ac.th/academic/undergrad/cp"
+    electives:
+      - "Statics"
+      - "Differential Equations"

@@ -196,15 +196,22 @@ function buildIndexPage(projects) {
 
       // Inject Education
       if (siteData.education) {
-        const eduHtml = siteData.education.map(edu => `
+        const eduHtml = siteData.education.map(edu => {
+          const details = [
+            `<div class="exp-role">${edu.degree}</div>`,
+            `<div class="exp-school-line"><span class="exp-company">${edu.school}</span>${edu.curriculum_url ? `<span class="exp-sep">·</span><a class="exp-link" href="${edu.curriculum_url}" target="_blank" rel="noopener noreferrer">Standard curriculum ↗</a>` : ''}</div>`,
+            edu.description ? `<p class="exp-desc">${edu.description}</p>` : '',
+            edu.electives && edu.electives.length > 0 ? `<p class="exp-electives"><span class="exp-electives-label">Electives:</span> ${edu.electives.join(', ')}</p>` : '',
+          ].filter(Boolean).join('\n            ');
+
+          return `
         <li class="exp-item fade-in">
           <span class="exp-period">${edu.period}</span>
           <div>
-            <div class="exp-role">${edu.degree}</div>
-            <div class="exp-company">${edu.school}</div>
-            <p class="exp-desc">${edu.description}</p>
+            ${details}
           </div>
-        </li>`).join('\n');
+        </li>`;
+        }).join('\n');
         indexHtml = indexHtml.replace(/<!-- AUTOMATED_EDUCATION_START -->[\s\S]*?<!-- AUTOMATED_EDUCATION_END -->/, 
           `<!-- AUTOMATED_EDUCATION_START -->\n${eduHtml}\n<!-- AUTOMATED_EDUCATION_END -->`);
       }

@@ -1013,11 +1013,47 @@ footer .container {
   font-weight: 500;
   margin: 0.2rem 0 0.5rem; 
 }
+.exp-school-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin: 0.2rem 0 0.5rem;
+}
+.exp-school-line .exp-company { margin: 0; }
+.exp-school-line .exp-link { margin: 0; }
+.exp-sep {
+  color: var(--muted);
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
 .exp-desc { 
   font-family: var(--sans);
   color: var(--muted); 
   font-size: 0.9rem; 
   line-height: 1.7; 
+}
+.exp-link {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+  transition: color var(--transition);
+}
+.exp-link:hover { color: var(--ink); }
+.exp-electives {
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+.exp-electives-label {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-right: 0.25rem;
 }
 
 
