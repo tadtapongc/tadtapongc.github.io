@@ -813,6 +813,42 @@ footer .container {
 .hero-cta .arrow { transition: transform var(--transition); }
 .hero-cta:hover .arrow { transform: translateX(4px); }
 
+/* Hero header: compact portrait + intro */
+.hero-header {
+  display: grid;
+  grid-template-columns: clamp(104px, 12vw, 128px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: start;
+}
+.hero-avatar {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+}
+.hero-content { min-width: 0; }
+.hero-header .hero-name {
+  font-size: clamp(2.6rem, 6.5vw, 4.2rem);
+}
+
+@media (max-width: 760px) {
+  .hero-header {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .hero-avatar {
+    width: 104px;
+    height: 104px;
+    justify-self: start;
+  }
+  .hero-header .hero-name {
+    font-size: clamp(2.2rem, 7vw, 3rem);
+  }
+}
+
 /* ─── PROJECTS ────────────────────────────────────────────── */
 .projects-grid {
   display: flex;
