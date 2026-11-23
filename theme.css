@@ -772,14 +772,6 @@ footer .container {
   padding: clamp(2rem, 5vw, 3.5rem) 0 var(--gap);
   border-top: none;
 }
-.hero-label {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.25rem;
-}
 .hero-name {
   font-family: var(--sans);
   font-size: clamp(2.8rem, 8vw, 6rem);
@@ -790,7 +782,7 @@ footer .container {
 }
 .hero-name em { font-style: normal; color: var(--muted); font-weight: 400; }
 .hero-bio {
-  max-width: 540px;
+  max-width: 640px;
   font-family: var(--sans);
   font-size: clamp(1rem, 1.6vw, 1.08rem);
   color: var(--muted);
@@ -812,11 +804,43 @@ footer .container {
 .hero-cta:hover { background: var(--ink); color: var(--bg); }
 .hero-cta .arrow { transition: transform var(--transition); }
 .hero-cta:hover .arrow { transform: translateX(4px); }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.25rem;
+}
+.hero-availability {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-availability::before {
+  content: "";
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 0.1em;
+}
+@media (max-width: 480px) {
+  .hero-availability {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+  }
+}
 
 /* Hero header: compact portrait + intro */
 .hero-header {
+  /* Two name lines at 1.05 line-height = 2.1em. The portrait column and
+     circle use the same size so the portrait height matches the name. */
+  --hero-name-size: clamp(2.6rem, 6.5vw, 4.2rem);
   display: grid;
-  grid-template-columns: clamp(104px, 12vw, 128px) minmax(0, 1fr);
+  grid-template-columns: calc(var(--hero-name-size) * 2.1) minmax(0, 1fr);
   gap: clamp(1.5rem, 4vw, 2.5rem);
   align-items: start;
 }
@@ -829,9 +853,8 @@ footer .container {
   border-radius: 50%;
   background: var(--surface);
 }
-.hero-content { min-width: 0; }
 .hero-header .hero-name {
-  font-size: clamp(2.6rem, 6.5vw, 4.2rem);
+  font-size: var(--hero-name-size);
 }
 
 @media (max-width: 760px) {
