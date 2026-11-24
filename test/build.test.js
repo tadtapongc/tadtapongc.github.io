@@ -66,7 +66,7 @@ test('TSAE page includes the manufacturing gallery', () => {
   assert.match(html, /tsae-rear-wing-mold\.jpg/);
   assert.match(html, /tsae-rear-wing-skin\.jpg/);
   assert.match(html, /tsae-front-wing-weight\.jpg/);
-  assert.match(html, /tsae-front-wing-complete\.jpg/);
+  assert.match(html, /tsae-front-wing-complete-card\.jpg/);
   assert.match(html, /tsae-cnc-endplate\.jpg/);
   assert.match(html, /tsae-front-wing-structure\.jpg/);
   assert.doesNotMatch(html, /tsae-carbon-weave\.jpg/);
@@ -79,7 +79,7 @@ test('TSAE card and social image use the complete front wing', () => {
   const page = read('works/tsae2027.html');
 
   assert.match(home, /tsae-front-wing-complete-card\.jpg/);
-  assert.match(page, /property="og:image" content="https:\/\/tadtapongc\.github\.io\/images\/tsae-front-wing-complete\.jpg"/);
+  assert.match(page, /property="og:image" content="https:\/\/tadtapongc\.github\.io\/images\/tsae-front-wing-complete-card\.jpg"/);
 });
 
 test('RapidFOAM social image uses the JPEG OG card', () => {

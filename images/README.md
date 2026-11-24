@@ -15,8 +15,8 @@ Images in this folder are used by the homepage cards and social preview images. 
 - `rapidfoam-studio-og.jpg` — social preview image (1200×630)
 
 ### FSAE / TSAE2027
-- `tsae-front-wing-complete-card.jpg` — homepage card (landscape crop of the completed front wing)
-- `tsae-front-wing-complete.jpg` — complete front-wing assembly; project page and social preview
+- `tsae-front-wing-complete-card.jpg` — homepage card, project page, and social preview (landscape crop of the completed front wing)
+- `tsae-front-wing-complete.jpg` — full-resolution archive of the completed front wing
 - `1000002015.jpg` — alternate carbon-part photo (archive, not currently used)
 - `formula.jpg` — team banner (archive, not currently used)
 - `tsae-foam-plug.jpg` — front-wing foam plug with flange boards
