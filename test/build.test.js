@@ -17,6 +17,13 @@ test('homepage uses real project links and has no modal', () => {
   assert.match(output, /<a class="project-card" href="works\/[^"]+\.html"/);
 });
 
+test('homepage uses the Selected Work heading', () => {
+  const output = read('index.html');
+
+  assert.match(output, /<h2>Selected Work<\/h2>/);
+  assert.doesNotMatch(output, /<h2>What I've Done<\/h2>/);
+});
+
 test('homepage filter state is reflected in the URL', () => {
   const source = read('src/index.html');
 
