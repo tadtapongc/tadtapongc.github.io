@@ -53,6 +53,27 @@ test('project pages have landmarks, pager, and social metadata but no showcase b
   }
 });
 
+test('TSAE page includes the manufacturing gallery', () => {
+  const html = read('works/tsae2027.html');
+
+  assert.match(html, /class="project-gallery"/);
+  assert.match(html, /tsae-foam-plug\.jpg/);
+  assert.match(html, /tsae-mold-gelcoat\.jpg/);
+  assert.match(html, /tsae-mold-csm\.jpg/);
+  assert.match(html, /tsae-mold-halves\.jpg/);
+  assert.match(html, /tsae-sidepod-foam\.jpg/);
+  assert.match(html, /tsae-rear-wing-infusion\.jpg/);
+  assert.match(html, /tsae-rear-wing-mold\.jpg/);
+  assert.match(html, /tsae-rear-wing-skin\.jpg/);
+  assert.match(html, /tsae-front-wing-weight\.jpg/);
+  assert.match(html, /tsae-front-wing-complete\.jpg/);
+  assert.match(html, /tsae-cnc-endplate\.jpg/);
+  assert.match(html, /tsae-front-wing-structure\.jpg/);
+  assert.doesNotMatch(html, /tsae-carbon-weave\.jpg/);
+  assert.doesNotMatch(html, /tsae-wing-split-cad\.png/);
+  assert.doesNotMatch(html, /CAD check of the split line/);
+});
+
 test('pink accents use the shared bright token', () => {
   const css = read('theme.css');
 

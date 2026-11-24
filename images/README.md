@@ -16,6 +16,20 @@ Images in this folder are used by the homepage cards and social preview images. 
 ### FSAE / TSAE2027
 - `1000002015.jpg` — homepage card (portrait photo)
 - `formula.jpg` — social preview image (not displayed on the page)
+- `tsae-foam-plug.jpg` — front-wing foam plug with flange boards
+- `tsae-mold-gelcoat.jpg` — pigmented gelcoat on the front-wing plug
+- `tsae-mold-csm.jpg` — early one-piece CSM layup that trapped air (mistake example)
+- `tsae-mold-layup.jpg` — fiberglass tooling layup
+- `tsae-mold-halves.jpg` — front-wing mold halves before final trimming
+- `tsae-rear-wing-mold.jpg` — rear-wing mold half, before trimming
+- `tsae-rear-wing-infusion.jpg` — rear-wing skin under vacuum during infusion
+- `tsae-rear-wing-skin.jpg` — demoulded rear-wing carbon skin, before trimming
+- `tsae-cnc-endplate.jpg` — CNC cutting an endplate skin to shape
+- `tsae-front-wing-structure.jpg` — front-wing internal ribs and spar
+- `tsae-front-wing-weight.jpg` — dry-fit front-wing assembly on the scale
+- `tsae-front-wing-complete.jpg` — complete front-wing assembly with all elements fitted
+- `tsae-sidepod-foam.jpg` — shaped sidepod foam form
+- `tsae-sidepod-filler.jpg` — sidepod surface filler
 
 ### CPxCEDT Openhouse 2025
 - `camp.jpg` — homepage card

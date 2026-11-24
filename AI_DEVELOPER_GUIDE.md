@@ -66,6 +66,7 @@ The template also uses placeholders such as `[Project Title]`, `[PROJECT_SLUG]`,
 - `thumbnail` is used on the homepage card and as the social-image fallback.
 - `banner` is used only for the social preview (`og:image` / Twitter card); it is not displayed on the page. If the banner is missing or its file does not exist, the build falls back to the thumbnail.
 - Image paths in frontmatter may be `/images/foo.jpg`, `images/foo.jpg`, or `../images/foo.jpg`. The build normalizes them for each page and for social metadata.
+- Images inside a project body use `../images/...` paths. Wrap them in `<figure class="project-figure">` with a `<figcaption>`, or use `<div class="project-gallery">` for a two-column photo group. The supporting styles live in `theme.css`.
 - Do not reference an image that does not exist; `npm test` checks local image references.
 
 ### F. Email obfuscation

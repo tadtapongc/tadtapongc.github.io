@@ -512,6 +512,46 @@ footer .container {
   font-style: italic;
 }
 
+/* Project media */
+.markdown-body figure {
+  margin: 1.75rem 0;
+}
+.markdown-body figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.markdown-body figcaption {
+  margin-top: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+  margin: 1.75rem 0 2.5rem;
+}
+.project-gallery figure {
+  margin: 0;
+}
+.project-figure--narrow {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 640px) {
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ─── PROJECT PAGER & RETURN NAVIGATION ───────────────────── */
 .project-pager {
   display: flex;
