@@ -11,11 +11,14 @@ Images in this folder are used by the homepage cards and social preview images. 
 
 ### RapidFOAM
 - `rapidfoam-studio-card.webp` — homepage card
-- `rapidfoam-studio.webp` — social preview image (not displayed on the page)
+- `rapidfoam-studio.webp` — source screenshot (archive, not displayed)
+- `rapidfoam-studio-og.jpg` — social preview image (1200×630)
 
 ### FSAE / TSAE2027
-- `1000002015.jpg` — homepage card (portrait photo)
-- `formula.jpg` — social preview image (not displayed on the page)
+- `tsae-front-wing-complete-card.jpg` — homepage card (landscape crop of the completed front wing)
+- `tsae-front-wing-complete.jpg` — complete front-wing assembly; project page and social preview
+- `1000002015.jpg` — alternate carbon-part photo (archive, not currently used)
+- `formula.jpg` — team banner (archive, not currently used)
 - `tsae-foam-plug.jpg` — front-wing foam plug with flange boards
 - `tsae-mold-gelcoat.jpg` — pigmented gelcoat on the front-wing plug
 - `tsae-mold-csm.jpg` — early one-piece CSM layup that trapped air (mistake example)

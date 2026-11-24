@@ -74,6 +74,20 @@ test('TSAE page includes the manufacturing gallery', () => {
   assert.doesNotMatch(html, /CAD check of the split line/);
 });
 
+test('TSAE card and social image use the complete front wing', () => {
+  const home = read('index.html');
+  const page = read('works/tsae2027.html');
+
+  assert.match(home, /tsae-front-wing-complete-card\.jpg/);
+  assert.match(page, /property="og:image" content="https:\/\/tadtapongc\.github\.io\/images\/tsae-front-wing-complete\.jpg"/);
+});
+
+test('RapidFOAM social image uses the JPEG OG card', () => {
+  const page = read('works/rapidfoam.html');
+
+  assert.match(page, /property="og:image" content="https:\/\/tadtapongc\.github\.io\/images\/rapidfoam-studio-og\.jpg"/);
+});
+
 test('pink accents use the shared bright token', () => {
   const css = read('theme.css');
 

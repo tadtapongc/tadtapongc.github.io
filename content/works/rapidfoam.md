@@ -8,7 +8,7 @@ card_tag: CFD Platform · OpenFOAM & Python
 header_tag: CFD Scientific Computing · OpenFOAM Automation & Tooling
 icon: 🌊
 thumbnail: /images/rapidfoam-studio-card.webp
-banner: /images/rapidfoam-studio.webp
+banner: /images/rapidfoam-studio-og.jpg
 meta_items:
   - label: Role / Type
     value: Lead Developer & Maintainer
